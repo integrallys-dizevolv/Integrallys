@@ -135,6 +135,64 @@ export const RecebimentosView = ({ onPageChange }: RecebimentosViewProps) => {
         setIsCobrancaOpen(true)
     }
 
+    const handleConfirmCobranca = (payload: {
+        valor: number
+        metodo: string
+        observacao?: string
+        data: string
+    }) => {
+        if (!selectedItem) return
+
+        setReceivables((prev) =>
+            prev.map((item) => {
+                if (item.id !== selectedItem.id) return item
+
+                const pagamentosAtuais = item.pagamentos || []
+                const novosPagamentos = [
+                    ...pagamentosAtuais,
+                    { data: payload.data, valor: payload.valor, metodo: payload.metodo }
+                ]
+                const totalPago = novosPagamentos.reduce((acc, p) => acc + p.valor, 0)
+                const saldo = Math.max(0, item.value - totalPago)
+                const status: ReceivableItem['status'] = saldo <= 0
+                    ? 'pago'
+                    : item.status === 'atrasado'
+                        ? 'atrasado'
+                        : 'pendente'
+
+                return {
+                    ...item,
+                    status,
+                    pagamentos: novosPagamentos,
+                    description: payload.observacao
+                        ? `${item.description || ''} ${item.description ? '• ' : ''}${payload.observacao}`.trim()
+                        : item.description
+                }
+            })
+        )
+
+        setSelectedItem((prev) => {
+            if (!prev) return prev
+            const pagamentosAtuais = prev.pagamentos || []
+            const novosPagamentos = [
+                ...pagamentosAtuais,
+                { data: payload.data, valor: payload.valor, metodo: payload.metodo }
+            ]
+            const totalPago = novosPagamentos.reduce((acc, p) => acc + p.valor, 0)
+            const saldo = Math.max(0, prev.value - totalPago)
+            return {
+                ...prev,
+                status: saldo <= 0 ? 'pago' : prev.status === 'atrasado' ? 'atrasado' : 'pendente',
+                pagamentos: novosPagamentos,
+                description: payload.observacao
+                    ? `${prev.description || ''} ${prev.description ? '• ' : ''}${payload.observacao}`.trim()
+                    : prev.description
+            }
+        })
+
+        toast.success('Recebimento registrado com sucesso.')
+    }
+
     const openDetails = (item: ReceivableItem) => {
         setSelectedItem(item)
         setIsDetailsOpen(true)
@@ -427,6 +485,7 @@ export const RecebimentosView = ({ onPageChange }: RecebimentosViewProps) => {
                 procedimento={selectedItem?.procedure}
                 valorProcedimento={selectedItem?.value}
                 pagamentos={selectedItem?.pagamentos}
+                onConfirm={handleConfirmCobranca}
             />
 
             <Dialog open={isDetailsOpen} onOpenChange={setIsDetailsOpen}>

@@ -15,6 +15,17 @@ interface BloqueioAgendaModalProps {
     horario?: string;
     profissional?: string;
   };
+  professionals?: string[];
+  onSave?: (payload: {
+    dataInicio: string;
+    dataFim: string;
+    horarioInicio: string;
+    horarioFim: string;
+    profissional: string;
+    tipo: TipoBloqueio;
+    justificativa: string;
+    bloquearDiaInteiro: boolean;
+  }) => void;
 }
 
 type TipoBloqueio = 'ferias' | 'folga' | 'reuniao' | 'outro';
@@ -22,7 +33,9 @@ type TipoBloqueio = 'ferias' | 'folga' | 'reuniao' | 'outro';
 export function BloqueioAgendaModal({
   isOpen,
   onClose,
-  initialData
+  initialData,
+  professionals = [],
+  onSave
 }: BloqueioAgendaModalProps) {
   const [formData, setFormData] = useState({
     dataInicio: initialData?.data || '',
@@ -65,8 +78,16 @@ export function BloqueioAgendaModal({
 
     if (!validateForm()) return;
 
-    // Aqui seria chamada a API para salvar o bloqueio
-    console.log('Bloqueio criado:', formData);
+    onSave?.({
+      dataInicio: formData.dataInicio,
+      dataFim: formData.dataFim,
+      horarioInicio: formData.horarioInicio,
+      horarioFim: formData.horarioFim,
+      profissional: formData.profissional,
+      tipo: formData.tipo as TipoBloqueio,
+      justificativa: formData.justificativa.trim(),
+      bloquearDiaInteiro: formData.bloquearDiaInteiro,
+    });
     onClose();
     resetForm();
   };
@@ -129,10 +150,20 @@ export function BloqueioAgendaModal({
                 <SelectValue preferPlaceholder placeholder="Selecione o profissional" />
               </SelectTrigger>
               <SelectContent className="rounded-[10px]">
-                <SelectItem value="joao">Dr. João Santos</SelectItem>
-                <SelectItem value="ana">Dra. Ana Lima</SelectItem>
-                <SelectItem value="flavia">Dra. Flávia Alves</SelectItem>
-                <SelectItem value="sofia">Dra. Sofia Castro</SelectItem>
+                {professionals.length > 0 ? (
+                  professionals.map((profissional) => (
+                    <SelectItem key={profissional} value={profissional}>
+                      {profissional}
+                    </SelectItem>
+                  ))
+                ) : (
+                  <>
+                    <SelectItem value="Dr. João Santos">Dr. João Santos</SelectItem>
+                    <SelectItem value="Dra. Ana Lima">Dra. Ana Lima</SelectItem>
+                    <SelectItem value="Dra. Flávia Alves">Dra. Flávia Alves</SelectItem>
+                    <SelectItem value="Dra. Sofia Castro">Dra. Sofia Castro</SelectItem>
+                  </>
+                )}
               </SelectContent>
             </Select>
             {errors.profissional && (

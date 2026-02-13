@@ -126,6 +126,18 @@ interface AgendaGenerationRule {
   duracaoRetorno: number;
 }
 
+interface AgendaBlockRule {
+  id: string;
+  profissional: string;
+  dataInicio: string;
+  dataFim: string;
+  horarioInicio: string;
+  horarioFim: string;
+  tipo: "ferias" | "folga" | "reuniao" | "outro";
+  justificativa: string;
+  bloquearDiaInteiro: boolean;
+}
+
 const PRO_MAP: { [key: string]: string } = {
   pedro: "Dr. Pedro Oliveira",
   ana: "Dra. Ana Costa",
@@ -205,6 +217,8 @@ export function AgendaView({
   const [selectedProfessional, setSelectedProfessional] = useState("todos");
   const [viewMode, setViewMode] = useState("dia");
   const [agendaRules, setAgendaRules] = useState<AgendaGenerationRule[]>([]);
+  const [agendaBlocks, setAgendaBlocks] = useState<AgendaBlockRule[]>([]);
+  const [agendaItems, setAgendaItems] = useState<AgendaItem[]>(mockAgendaItems);
   const [itemStatuses, setItemStatuses] = useState<{ [key: number]: string }>(
     mockAgendaItems.reduce(
       (acc, item) => ({ ...acc, [item.id]: item.status }),
@@ -223,6 +237,16 @@ export function AgendaView({
   // Estado da data atual
   const [currentDate, setCurrentDate] = useState(new Date());
 
+  useEffect(() => {
+    setAgendaItems(mockAgendaItems);
+    setItemStatuses(
+      mockAgendaItems.reduce(
+        (acc, item) => ({ ...acc, [item.id]: item.status }),
+        {},
+      ),
+    );
+  }, [mockAgendaItems]);
+
   const allowedProfessionalList =
     allowedProfessionals && allowedProfessionals.length > 0
       ? allowedProfessionals
@@ -240,7 +264,7 @@ export function AgendaView({
 
   const professionalOptions = Array.from(
     new Set([
-      ...mockAgendaItems.map((item) => item.profissional),
+      ...agendaItems.map((item) => item.profissional),
       ...Object.values(PRO_MAP),
     ]),
   )
@@ -328,11 +352,44 @@ export function AgendaView({
     return NATIONAL_HOLIDAYS.includes(`${month}-${day}`);
   };
 
+  const isDateWithinRange = (date: Date, start: string, end: string) => {
+    const dateOnly = new Date(date.getFullYear(), date.getMonth(), date.getDate());
+    const startDate = new Date(`${start}T00:00:00`);
+    const endDate = new Date(`${end}T00:00:00`);
+    return dateOnly >= startDate && dateOnly <= endDate;
+  };
+
+  const isBlockedFullDay = (date: Date, professionalName: string) => {
+    return agendaBlocks.some(
+      (block) =>
+        block.profissional === professionalName &&
+        block.bloquearDiaInteiro &&
+        isDateWithinRange(date, block.dataInicio, block.dataFim),
+    );
+  };
+
+  const isBlockedSlot = (date: Date, time: string, professionalName: string) => {
+    const targetMinutes = parseTimeToMinutes(time);
+    return agendaBlocks.some((block) => {
+      if (block.profissional !== professionalName) return false;
+      if (!isDateWithinRange(date, block.dataInicio, block.dataFim)) return false;
+      if (block.bloquearDiaInteiro) return true;
+
+      const inicio = parseTimeToMinutes(block.horarioInicio);
+      const fim = parseTimeToMinutes(block.horarioFim);
+      return targetMinutes >= inicio && targetMinutes < fim;
+    });
+  };
+
   const getSlotAvailability = (
     date: Date,
     time: string,
     professionalName: string,
   ) => {
+    if (isBlockedSlot(date, time, professionalName)) {
+      return { allowed: false, holidayOverride: false, blocked: true };
+    }
+
     const rules = agendaRules.filter(
       (rule) => rule.profissional === professionalName,
     );
@@ -368,23 +425,27 @@ export function AgendaView({
 
         if (targetMinutes >= inicio && targetMinutes < fim) {
           if (!rule.considerarFeriados && isHoliday(dateOnly)) {
-            return { allowed: false, holidayOverride: true };
+            return { allowed: false, holidayOverride: true, blocked: false };
           }
-          return { allowed: true, holidayOverride: false };
+          return { allowed: true, holidayOverride: false, blocked: false };
         }
       }
     }
 
-    return { allowed: false, holidayOverride: false };
+    return { allowed: false, holidayOverride: false, blocked: false };
   };
 
   const getDayAvailability = (date: Date, professionalName: string) => {
+    if (isBlockedFullDay(date, professionalName)) {
+      return { allowed: false, holidayOverride: false, blocked: true };
+    }
+
     const rules = agendaRules.filter(
       (rule) => rule.profissional === professionalName,
     );
 
     if (rules.length === 0) {
-      return { allowed: true, holidayOverride: false };
+      return { allowed: true, holidayOverride: false, blocked: false };
     }
 
     const dateOnly = new Date(
@@ -408,13 +469,13 @@ export function AgendaView({
       }
 
       if (!rule.considerarFeriados && isHoliday(dateOnly)) {
-        return { allowed: false, holidayOverride: true };
+        return { allowed: false, holidayOverride: true, blocked: false };
       }
 
-      return { allowed: true, holidayOverride: false };
+      return { allowed: true, holidayOverride: false, blocked: false };
     }
 
-    return { allowed: false, holidayOverride: false };
+    return { allowed: false, holidayOverride: false, blocked: false };
   };
 
   // Automação: Verificar atrasos
@@ -428,7 +489,7 @@ export function AgendaView({
       const updatedStatuses = { ...itemStatuses };
       let hasUpdates = false;
 
-      mockAgendaItems.forEach((item) => {
+      agendaItems.forEach((item) => {
         const currentStatus = normalizeStatus(
           updatedStatuses[item.id] || item.status,
         );
@@ -461,7 +522,7 @@ export function AgendaView({
     checkDelays();
     const interval = setInterval(checkDelays, 60000);
     return () => clearInterval(interval);
-  }, [currentDate, itemStatuses, mockAgendaItems]);
+  }, [currentDate, itemStatuses, agendaItems]);
 
   // Função para gerar slots do dia
   const generateDaySlots = () => {
@@ -536,6 +597,52 @@ export function AgendaView({
     setIsMarcarConsultaOpen(true);
   };
 
+  const handleCreateAppointment = (data: {
+    paciente: string;
+    profissional: string;
+    data: string;
+    horario: string;
+    tipo: string;
+    observacoes: string;
+  }) => {
+    const maxId = Math.max(
+      0,
+      ...agendaItems.map((item) => item.id),
+      ...Object.values(MOCK_WEEKLY_CONSULTAS)
+        .flat()
+        .map((item) => item.id),
+    );
+
+    const typeMap: Record<string, string> = {
+      consulta: "Consulta",
+      exame: "Exame",
+      retorno: "Retorno",
+    };
+    const priceMap: Record<string, number> = {
+      consulta: 250,
+      exame: 180,
+      retorno: 150,
+    };
+
+    const newItem: AgendaItem = {
+      id: maxId + 1,
+      hora: data.horario,
+      duracao: "30min",
+      paciente: data.paciente,
+      tipo: typeMap[data.tipo] || "Consulta",
+      profissional: data.profissional,
+      unidade: "Unidade Centro",
+      status: "Confirmado",
+      pagamento: "Pendente",
+      data: data.data || format(selectedDate || currentDate, "yyyy-MM-dd"),
+      valorProcedimento: priceMap[data.tipo] || 0,
+      pagamentos: [],
+    };
+
+    setAgendaItems((prev) => [...prev, newItem]);
+    setItemStatuses((prev) => ({ ...prev, [newItem.id]: newItem.status }));
+  };
+
   // Connect external prop if provided, otherwise use local handler
   const effectiveNewAppointmentClick =
     onNewAppointmentClick || handleNewAppointmentClick;
@@ -579,10 +686,9 @@ export function AgendaView({
     onListaEsperaClick?.();
   };
 
-  // Filtrar consultas baseado no tab ativo
-  // Filtrar consultas baseado no tab ativo e no filtro selecionado
-  const getFilteredItems = () => {
-    let items = mockAgendaItems;
+  // Filtrar consultas baseado no tab ativo/profissional
+  const getBaseItems = () => {
+    let items = agendaItems;
 
     if (allowedProfessionalSet) {
       items = items.filter((item) => isAllowedProfessional(item.profissional));
@@ -596,7 +702,11 @@ export function AgendaView({
       items = items.filter((item) => item.profissional.includes(profName));
     }
 
-    // Filtra por selectedFilter
+    return items;
+  };
+
+  // Filtrar consultas baseado no filtro selecionado
+  const getFilteredItems = (items: AgendaItem[]) => {
     // Ordem: Todos – Agendamentos – Aguardando – Em atendimento – Atendidos
     switch (selectedFilter) {
       case "agendamentos":
@@ -627,10 +737,48 @@ export function AgendaView({
     }
   };
 
-  const filteredItems = getFilteredItems();
+  const baseItems = getBaseItems();
+  const filteredItems = getFilteredItems(baseItems);
   const showSlots =
     activeTab === "global" &&
     (selectedFilter === "todos" || selectedFilter === "agendamentos");
+
+  const freedSlotsFromCancelledInAgendamentos =
+    showSlots && selectedFilter === "agendamentos"
+      ? baseItems
+          .filter((item) => isCancelledStatus(getResolvedStatus(item)))
+          .filter(
+            (item) =>
+              !baseItems.some(
+                (other) =>
+                  other.id !== item.id &&
+                  other.hora === item.hora &&
+                  other.profissional === item.profissional &&
+                  !isCancelledStatus(getResolvedStatus(other)),
+              ),
+          )
+          .map((item) => ({
+            item,
+            availability: getSlotAvailability(
+              currentDate,
+              item.hora,
+              item.profissional,
+            ),
+          }))
+          .filter(
+            ({ availability }) =>
+              availability.allowed || availability.holidayOverride,
+          )
+          .filter(
+            ({ item }, index, all) =>
+              index ===
+              all.findIndex(
+                ({ item: current }) =>
+                  current.hora === item.hora &&
+                  current.profissional === item.profissional,
+              ),
+          )
+      : [];
 
   const buildWeekDaysFromCurrentDate = () => {
     const base = new Date(currentDate);
@@ -663,7 +811,7 @@ export function AgendaView({
   const getConsultasForDate = (dateKey: string) => {
     const currentDateKey = format(currentDate, "yyyy-MM-dd");
     let targetConsultas = [
-      ...mockAgendaItems.filter((item) =>
+      ...agendaItems.filter((item) =>
         item.data ? item.data === dateKey : dateKey === currentDateKey,
       ),
       ...(MOCK_WEEKLY_CONSULTAS[dateKey] || []),
@@ -875,7 +1023,7 @@ export function AgendaView({
       [cancelamentoItemId]: cancelamentoMotivo.trim(),
     }));
 
-    const cancelledItem = mockAgendaItems.find(
+    const cancelledItem = agendaItems.find(
       (item) => item.id === cancelamentoItemId,
     );
     if (cancelledItem) {
@@ -909,6 +1057,51 @@ export function AgendaView({
     setIsEmitirCobrancaOpen(true);
   };
 
+  const handleConfirmCobranca = (payload: {
+    valor: number;
+    metodo: string;
+    observacao?: string;
+    data: string;
+  }) => {
+    if (!selectedConsulta) return;
+
+    const pagamentosAtuais = selectedConsulta.pagamentos || [];
+    const novosPagamentos = [
+      ...pagamentosAtuais,
+      { data: payload.data, valor: payload.valor, metodo: payload.metodo },
+    ];
+    const valorTotal = selectedConsulta.valorProcedimento || 0;
+    const totalPago = novosPagamentos.reduce((acc, p) => acc + p.valor, 0);
+    const pagamentoStatus =
+      totalPago >= valorTotal && valorTotal > 0
+        ? "Pago"
+        : totalPago > 0
+          ? "Pago Parcial"
+          : "Pendente";
+
+    setAgendaItems((prev) =>
+      prev.map((item) =>
+        item.id === selectedConsulta.id
+          ? {
+              ...item,
+              pagamentos: novosPagamentos,
+              pagamento: pagamentoStatus,
+            }
+          : item,
+      ),
+    );
+
+    setSelectedConsulta((prev) =>
+      prev
+        ? {
+            ...prev,
+            pagamentos: novosPagamentos,
+            pagamento: pagamentoStatus,
+          }
+        : prev,
+    );
+  };
+
   const handleOpenVisualizarConsulta = (consulta: AgendaItem) => {
     setSelectedConsulta(consulta);
     setIsVisualizarConsultaOpen(true);
@@ -922,6 +1115,39 @@ export function AgendaView({
   const handleOpenCancelarConsulta = (consulta: AgendaItem) => {
     setSelectedConsulta(consulta);
     setIsCancelarConsultaOpen(true);
+  };
+
+  const handleConfirmCancelarConsulta = (reason: string) => {
+    if (!selectedConsulta || !reason.trim()) return;
+
+    const itemId = selectedConsulta.id;
+    setItemStatuses((prev) => ({ ...prev, [itemId]: "Cancelado" }));
+    setCancelamentoMotivos((prev) => ({
+      ...prev,
+      [itemId]: reason.trim(),
+    }));
+
+    appendAgendaCancellationEvent({
+      appointmentDate: selectedConsulta.data || format(currentDate, "yyyy-MM-dd"),
+      appointmentTime: selectedConsulta.hora,
+      patient: selectedConsulta.paciente,
+      professional: selectedConsulta.profissional,
+      unit: selectedConsulta.unidade,
+      procedure: selectedConsulta.tipo || "Consulta",
+      reason: reason.trim(),
+      cancelledBy: "Recepção",
+      amount: selectedConsulta.valorProcedimento,
+    });
+
+    setSelectedConsulta((prev) =>
+      prev
+        ? {
+            ...prev,
+            status: "Cancelado",
+          }
+        : prev,
+    );
+    setIsCancelarConsultaOpen(false);
   };
 
   // Handler para mudança de status de itens pessoais
@@ -974,6 +1200,24 @@ export function AgendaView({
     setAgendaRules((prev) => [...prev, newRule]);
   };
 
+  const handleBloquearAgenda = (payload: {
+    dataInicio: string;
+    dataFim: string;
+    horarioInicio: string;
+    horarioFim: string;
+    profissional: string;
+    tipo: "ferias" | "folga" | "reuniao" | "outro";
+    justificativa: string;
+    bloquearDiaInteiro: boolean;
+  }) => {
+    const newBlock: AgendaBlockRule = {
+      id: `${payload.profissional}-${payload.dataInicio}-${payload.horarioInicio}-${Date.now()}`,
+      ...payload,
+    };
+    setAgendaBlocks((prev) => [...prev, newBlock]);
+    setIsBloqueioAgendaOpen(false);
+  };
+
   const showRecepcaoShortcuts =
     recepcaoLayout && showShortcutButtons && activeTab === "global";
 
@@ -1019,6 +1263,7 @@ export function AgendaView({
         procedimento={selectedConsulta?.tipo}
         valorProcedimento={selectedConsulta?.valorProcedimento}
         pagamentos={selectedConsulta?.pagamentos}
+        onConfirm={handleConfirmCobranca}
       />
       <VisualizarConsultaModal
         isOpen={isVisualizarConsultaOpen}
@@ -1041,6 +1286,7 @@ export function AgendaView({
       <CancelarConsultaModal
         isOpen={isCancelarConsultaOpen}
         onClose={() => setIsCancelarConsultaOpen(false)}
+        onConfirm={handleConfirmCancelarConsulta}
         consulta={
           selectedConsulta
             ? {
@@ -1081,6 +1327,8 @@ export function AgendaView({
       <BloqueioAgendaModal
         isOpen={isBloqueioAgendaOpen}
         onClose={() => setIsBloqueioAgendaOpen(false)}
+        professionals={professionalOptions}
+        onSave={handleBloquearAgenda}
       />
       <GerarAgendaModal
         isOpen={isGerarAgendaOpen}
@@ -1517,14 +1765,24 @@ export function AgendaView({
               ) : (
                 <>
                   {!recepcaoLayout && (
-                    <Button
-                      variant="outline"
-                      onClick={() => setIsGerarAgendaOpen(true)}
-                      className="h-10 px-4 rounded-xl gap-2 font-normal border-app-border dark:border-gray-700 hover:border-[#0039A6] hover:text-[#0039A6] whitespace-nowrap"
-                    >
-                      <CalendarPlus size={18} />
-                      Gerar Agenda
-                    </Button>
+                    <>
+                      <Button
+                        variant="outline"
+                        onClick={() => setIsBloqueioAgendaOpen(true)}
+                        className="h-10 px-4 rounded-xl gap-2 font-normal border-app-border dark:border-gray-700 hover:border-[#0039A6] hover:text-[#0039A6] whitespace-nowrap"
+                      >
+                        <Lock size={18} />
+                        Bloqueios
+                      </Button>
+                      <Button
+                        variant="outline"
+                        onClick={() => setIsGerarAgendaOpen(true)}
+                        className="h-10 px-4 rounded-xl gap-2 font-normal border-app-border dark:border-gray-700 hover:border-[#0039A6] hover:text-[#0039A6] whitespace-nowrap"
+                      >
+                        <CalendarPlus size={18} />
+                        Gerar Agenda
+                      </Button>
+                    </>
                   )}
                   {recepcaoLayout &&
                     !showShortcutButtons &&
@@ -2057,12 +2315,31 @@ export function AgendaView({
                   <>
                     {filteredItems.map((item) => {
                       const currentStatus = getResolvedStatus(item);
+                      const hasActiveAtSameSlotForProfessional = filteredItems.some(
+                        (other) =>
+                          other.id !== item.id &&
+                          other.hora === item.hora &&
+                          other.profissional === item.profissional &&
+                          !isCancelledStatus(getResolvedStatus(other)),
+                      );
+                      const freedSlotAvailability = getSlotAvailability(
+                        currentDate,
+                        item.hora,
+                        item.profissional,
+                      );
+                      const shouldShowFreedSlot =
+                        showSlots &&
+                        isCancelledStatus(currentStatus) &&
+                        !hasActiveAtSameSlotForProfessional &&
+                        (freedSlotAvailability.allowed ||
+                          freedSlotAvailability.holidayOverride);
+
                       return (
-                        <div
-                          key={item.id}
-                          className={`${getStatusColor(currentStatus)} rounded-[10px] p-4 transition-colors duration-300`}
-                        >
-                          <div className="flex flex-wrap sm:flex-nowrap items-center justify-between gap-4 sm:gap-0">
+                        <div key={item.id} className="space-y-2">
+                          <div
+                            className={`${getStatusColor(currentStatus)} rounded-[10px] p-4 transition-colors duration-300`}
+                          >
+                            <div className="flex flex-wrap sm:flex-nowrap items-center justify-between gap-4 sm:gap-0">
                             {/* Hora e Duração */}
                             <div className="flex-shrink-0 w-[60px]">
                               <p className="text-[20px] font-normal text-app-text-primary dark:text-white leading-[30px]">
@@ -2239,12 +2516,86 @@ export function AgendaView({
                                 </DropdownMenuContent>
                               </DropdownMenu>
                             </div>
+                            </div>
                           </div>
+
+                          {shouldShowFreedSlot && (
+                            <button
+                              onClick={() => handleTimeSlotClick(item.hora)}
+                              className="w-full bg-white dark:bg-app-bg-dark border border-dashed border-gray-300 dark:border-gray-700 rounded-[10px] p-4 flex items-center gap-4 hover:bg-gray-50 dark:hover:bg-gray-800/50 transition-all group"
+                            >
+                              <div className="w-[60px] text-left">
+                                <p className="text-[20px] font-normal text-gray-400 dark:text-gray-500 group-hover:text-[#0039A6] dark:group-hover:text-[#0039A6] transition-colors leading-[30px]">
+                                  {item.hora}
+                                </p>
+                                <div className="flex items-center gap-1 mt-0.5 opacity-0 group-hover:opacity-100 transition-opacity">
+                                  <Clock className="h-3 w-3 text-[#0039A6]" />
+                                  <span className="text-[12px] font-normal text-[#0039A6]">
+                                    30min
+                                  </span>
+                                </div>
+                              </div>
+                              <div className="flex-1 text-left flex items-center">
+                                <div className="w-8 h-8 rounded-full bg-gray-100 dark:bg-gray-800 flex items-center justify-center group-hover:bg-[#0039A6]/10 transition-colors">
+                                  <Plus className="w-5 h-5 text-gray-400 dark:text-gray-500 group-hover:text-[#0039A6] transition-colors" />
+                                </div>
+                                <div className="flex flex-col ml-3">
+                                  <span className="text-[16px] text-gray-400 dark:text-gray-500 font-normal group-hover:text-[#0039A6] transition-colors">
+                                    {freedSlotAvailability.holidayOverride
+                                      ? "Feriado (encaixe)"
+                                      : "Disponível"}
+                                  </span>
+                                  <span className="text-[11px] text-app-text-muted">
+                                    {item.profissional}
+                                  </span>
+                                </div>
+                              </div>
+                            </button>
+                          )}
                         </div>
                       );
                     })}
 
-                    {filteredItems.length === 0 && (
+                    {selectedFilter === "agendamentos" &&
+                      freedSlotsFromCancelledInAgendamentos.map(
+                        ({ item, availability }) => (
+                          <button
+                            key={`freed-slot-${item.profissional}-${item.hora}`}
+                            onClick={() => handleTimeSlotClick(item.hora)}
+                            className="w-full bg-white dark:bg-app-bg-dark border border-dashed border-gray-300 dark:border-gray-700 rounded-[10px] p-4 flex items-center gap-4 hover:bg-gray-50 dark:hover:bg-gray-800/50 transition-all group"
+                          >
+                            <div className="w-[60px] text-left">
+                              <p className="text-[20px] font-normal text-gray-400 dark:text-gray-500 group-hover:text-[#0039A6] dark:group-hover:text-[#0039A6] transition-colors leading-[30px]">
+                                {item.hora}
+                              </p>
+                              <div className="flex items-center gap-1 mt-0.5 opacity-0 group-hover:opacity-100 transition-opacity">
+                                <Clock className="h-3 w-3 text-[#0039A6]" />
+                                <span className="text-[12px] font-normal text-[#0039A6]">
+                                  30min
+                                </span>
+                              </div>
+                            </div>
+                            <div className="flex-1 text-left flex items-center">
+                              <div className="w-8 h-8 rounded-full bg-gray-100 dark:bg-gray-800 flex items-center justify-center group-hover:bg-[#0039A6]/10 transition-colors">
+                                <Plus className="w-5 h-5 text-gray-400 dark:text-gray-500 group-hover:text-[#0039A6] transition-colors" />
+                              </div>
+                              <div className="flex flex-col ml-3">
+                                <span className="text-[16px] text-gray-400 dark:text-gray-500 font-normal group-hover:text-[#0039A6] transition-colors">
+                                  {availability.holidayOverride
+                                    ? "Feriado (encaixe)"
+                                    : "Disponível"}
+                                </span>
+                                <span className="text-[11px] text-app-text-muted">
+                                  {item.profissional}
+                                </span>
+                              </div>
+                            </div>
+                          </button>
+                        ),
+                      )}
+
+                    {filteredItems.length === 0 &&
+                      freedSlotsFromCancelledInAgendamentos.length === 0 && (
                       <div className="bg-app-bg-secondary dark:bg-app-bg-dark/50 rounded-[10px] p-12 flex flex-col items-center justify-center">
                         <Calendar className="h-12 w-12 text-app-text-muted dark:text-app-text-muted mb-4" />
                         <h3 className="text-app-text-primary dark:text-white mb-2">
@@ -2898,6 +3249,7 @@ export function AgendaView({
         preSelectedTime={preSelectedTime}
         currentDate={selectedDate || undefined}
         professionals={professionalOptions}
+        onSubmit={handleCreateAppointment}
       />
       </div>
     </div>

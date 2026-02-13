@@ -20,6 +20,8 @@ export interface AgendaItem {
   cpf?: string;
   telefone?: string;
   observacoes?: string;
+  valorProcedimento?: number;
+  pagamentos?: { data: string; valor: number; metodo?: string }[];
 }
 
 export interface AgendaPersonalItem {
@@ -43,6 +45,16 @@ const buildAgendaItem = (item: (typeof BASE_AGENDAMENTOS)[number]): AgendaItem =
   const procedimento = getProcedimentoById(item.procedimentoId)!;
   const unidade = getUnidadeById(item.unidadeId)!;
 
+  const buildPagamentos = () => {
+    if (item.pagamento === 'Pago Parcial') {
+      return [{ data: '2026-02-10', valor: procedimento.valor * 0.5, metodo: 'PIX' }];
+    }
+    if (item.pagamento === 'Pago') {
+      return [{ data: '2026-02-10', valor: procedimento.valor, metodo: 'Cartão' }];
+    }
+    return [];
+  };
+
   return {
     id: item.id,
     hora: item.hora,
@@ -56,7 +68,9 @@ const buildAgendaItem = (item: (typeof BASE_AGENDAMENTOS)[number]): AgendaItem =
     data: item.data,
     cpf: paciente.cpf,
     telefone: paciente.phone,
-    observacoes: 'Atendimento planejado.'
+    observacoes: 'Atendimento planejado.',
+    valorProcedimento: procedimento.valor,
+    pagamentos: buildPagamentos()
   };
 };
 

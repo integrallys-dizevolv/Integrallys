@@ -13,6 +13,14 @@ interface NovoAgendamentoModalProps {
     preSelectedTime?: string | null;
     currentDate?: Date;
     professionals?: string[];
+    onSubmit?: (data: {
+        paciente: string;
+        profissional: string;
+        data: string;
+        horario: string;
+        tipo: string;
+        observacoes: string;
+    }) => void;
 }
 
 export function NovoAgendamentoModal({
@@ -20,7 +28,8 @@ export function NovoAgendamentoModal({
     onClose,
     preSelectedTime,
     currentDate,
-    professionals = []
+    professionals = [],
+    onSubmit
 }: NovoAgendamentoModalProps) {
     const [paciente, setPaciente] = useState('');
     const [profissional, setProfissional] = useState('');
@@ -50,14 +59,24 @@ export function NovoAgendamentoModal({
 
     const handleSubmit = (e: React.FormEvent) => {
         e.preventDefault();
-        console.log('Novo Agendamento:', { paciente, profissional, data, horario, tipo, observacoes });
+        if (!paciente.trim() || !profissional || !data || !horario) {
+            return;
+        }
 
-        // Here would be the API call to save
+        onSubmit?.({
+            paciente: paciente.trim(),
+            profissional,
+            data,
+            horario,
+            tipo,
+            observacoes: observacoes.trim(),
+        });
 
         onClose();
         // Reset form
         setPaciente('');
         setProfissional('');
+        setTipo('consulta');
         setObservacoes('');
     };
 
@@ -168,7 +187,7 @@ export function NovoAgendamentoModal({
                             Cancelar
                         </Button>
                         <Button
-                            onClick={handleSubmit}
+                            type="submit"
                             className="w-full sm:w-auto h-11 px-8 rounded-[10px] bg-[#0039A6] hover:bg-[#002d82] text-white shadow-sm font-normal"
                         >
                             Agendar
