@@ -1,4 +1,4 @@
-# Integrall
+# Integrallys
 
 Aplicação React.js construída com TypeScript, Tailwind CSS e Supabase.
 
