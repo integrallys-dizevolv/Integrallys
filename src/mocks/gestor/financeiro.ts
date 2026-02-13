@@ -1,0 +1,8 @@
+export const MOCK_TRANSACTIONS = [
+    { id: 1, date: '05/11/2026', time: '14:30', type: 'Entrada', typeValue: 'entrada', unidade: 'Clínica Central', unidadeValue: 'central', desc: 'Consulta - João Silva', cat: 'Consulta', catValue: 'consultas', total: '350,00', pago: '350,00', saldo: '0,00', forma: 'PIX', formaValue: 'pix', variant: 'green' },
+    { id: 2, date: '05/11/2026', time: '11:15', type: 'Saída', typeValue: 'saida', unidade: 'Unidade Norte', unidadeValue: 'norte', desc: 'Fornecedor - Material Hospitalar XYZ', cat: 'Fornecedor', catValue: 'fornecedores', total: '1.850,00', pago: '1.000,00', saldo: '850,00', forma: 'Boleto', formaValue: 'boleto', variant: 'rose' },
+    { id: 3, date: '05/11/2026', time: '09:45', type: 'Entrada', typeValue: 'entrada', unidade: 'Consultório Sul', unidadeValue: 'sul', desc: 'Procedimento - Maria Santos', cat: 'Procedimento', catValue: 'procedimentos', total: '580,00', pago: '0,00', saldo: '580,00', forma: 'Cartão', formaValue: 'cartao', variant: 'green' },
+    { id: 4, date: '04/11/2026', time: '16:20', type: 'Saída', typeValue: 'saida', unidade: 'Clínica Central', unidadeValue: 'central', desc: 'Impostos - INSS', cat: 'Impostos', catValue: 'impostos', total: '3.200,00', pago: '3.200,00', saldo: '0,00', forma: 'Transferência', formaValue: 'transferencia', variant: 'rose' },
+    { id: 5, date: '04/11/2026', time: '10:30', type: 'Entrada', typeValue: 'entrada', unidade: 'Unidade Norte', unidadeValue: 'norte', desc: 'Prescrição/Venda Produto - Suplemento', cat: 'Produto', catValue: 'produtos', total: '120,00', pago: '120,00', saldo: '0,00', forma: 'Dinheiro', formaValue: 'dinheiro', variant: 'green' },
+];
+

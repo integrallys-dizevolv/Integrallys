@@ -1,0 +1,33 @@
+# Contexto do Projeto: Integrallys (Base Antigravity)
+
+## 1. Visão Geral do Produto
+O **Integrallys** é um ecossistema SaaS para gestão de clínicas de saúde integrativa e ortomolecular. O sistema integra a jornada completa do paciente, desde a captação e agendamento inteligente via IA até ao atendimento clínico e gestão financeira/estoque.
+
+## 2. Pilares de Contexto (Antigravity Rules)
+* **Sincronização Ativa:** A prescrição clínica deve estar integrada em tempo real com o estoque (baixa automática e orçamentação).
+* **Segurança Jurídica:** Prontuários assinados digitalmente tornam-se imutáveis (apenas notas/erratas permitidas).
+* **Eficiência Operacional:** Redução de carga manual na recepção através de auto-agendamento e IA.
+* **Fidelização Financeira:** Regra de reserva de horário condicionada a pagamento antecipado (50% ou integral).
+
+## 3. Estrutura de Módulos (EAP)
+1.  **Recepção/Secretária (PRD 001):** Gestão de agenda com cores, lista de espera dinâmica e integração de pagamentos (Cielo).
+2.  **Especialista Clínico (PRD 002):** Prontuário eletrônico, suporte visual por Anatomia 3D e busca CID-11.
+3.  **Gestor de Unidade (PRD 003):** Dashboard financeiro (DRE), controle de estoque e "Tombamento" entre unidades.
+4.  **Admin SaaS (PRD 004):** Gestão master de permissões, logs de auditoria e configurações de API.
+5.  **Portal do Paciente (PRD 005):** Histórico de consultas, auto-agendamento e lembretes via WhatsApp.
+6.  **Assistente Virtual IA (PRD 006/007):** Chatbot 24/7 para agendamentos e alertas de tendências clínicas.
+
+## 4. Stack e Dependências Críticas
+* **Arquitetura:** Web SaaS Responsiva.
+* **Integrações:** Cielo (Pagamentos), WhatsApp (Notificações), Biodigital (Anatomia 3D), API CID-11.
+* **Controlo de Acesso:** RBAC (Role-Based Access Control) granular.
+
+## 5. Regras de Negócio Fundamentais (RNs)
+* **RN-009:** Proibida a edição de prontuários após a finalização.
+* **RN-019:** Regra de Retorno (35 dias) integrada no cálculo de pagamentos do portal.
+* **RN-003:** Bloqueio de agendamento por falta de dados obrigatórios no cadastro.
+
+## 6. Glossário Técnico-Negocial
+* **Tombamento:** Transferência física e lógica de stock entre unidades remotas.
+* **Check-in/Check-out:** Gestão de fluxo de presença física na clínica.
+* **DRE Analítico:** Demonstração de Resultados do Exercício automatizada por lançamentos de caixa.
