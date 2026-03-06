@@ -263,7 +263,7 @@ export function DocumentacaoClinicaView({ onPageChange }: { onPageChange: (page:
                                         <Input type="date" hideDateIcon
                                             value={dataInicio || ''}
                                             onChange={(e) => handleDataInicioChange(e.target.value)}
-                                            className="w-full h-12 pl-12 pr-4 rounded-[12px] bg-app-card dark:bg-[#0c1e3d] border border-app-border dark:border-app-border-dark text-gray-800 dark:text-gray-200 transition-all font-normal placeholder:text-app-text-muted dark:placeholder:text-gray-600 focus:ring-2 focus:ring-[#0039A6]/10 focus:border-[#0039A6] dark:focus:border-emerald-500/50 shadow-sm"
+                                            className="w-full h-12 pl-12 pr-4 rounded-[12px] bg-app-card dark:bg-[#0c1e3d] border border-app-border dark:border-app-border-dark text-gray-800 dark:text-gray-200 transition-all font-normal placeholder:text-app-text-muted dark:placeholder:text-gray-600 focus:ring-2 focus:ring-[#0039A6]/10 focus:border-[#0039A6] dark:focus:border-[#0039A6]/50 shadow-sm"
                                         />
                                     </div>
                                 </div>
@@ -276,7 +276,7 @@ export function DocumentacaoClinicaView({ onPageChange }: { onPageChange: (page:
                                         <Input type="date" hideDateIcon
                                             value={dataFim || ''}
                                             onChange={(e) => handleDataFimChange(e.target.value)}
-                                            className={`w-full h-12 pl-12 pr-4 rounded-[12px] bg-app-card dark:bg-[#0c1e3d] border border-app-border dark:border-app-border-dark text-gray-800 dark:text-gray-200 transition-all font-normal placeholder:text-app-text-muted dark:placeholder:text-gray-600 focus:ring-2 focus:ring-[#0039A6]/10 focus:border-[#0039A6] dark:focus:border-emerald-500/50 shadow-sm ${dateError ? 'border-red-500 ring-1 ring-red-500' : ''}`}
+                                            className={`w-full h-12 pl-12 pr-4 rounded-[12px] bg-app-card dark:bg-[#0c1e3d] border border-app-border dark:border-app-border-dark text-gray-800 dark:text-gray-200 transition-all font-normal placeholder:text-app-text-muted dark:placeholder:text-gray-600 focus:ring-2 focus:ring-[#0039A6]/10 focus:border-[#0039A6] dark:focus:border-[#0039A6]/50 shadow-sm ${dateError ? 'border-red-500 ring-1 ring-red-500' : ''}`}
                                         />
                                     </div>
                                     {dateError && <p className="text-[11px] text-red-500 font-normal uppercase tracking-wider ml-1 mt-1">{dateError}</p>}
@@ -357,7 +357,7 @@ export function DocumentacaoClinicaView({ onPageChange }: { onPageChange: (page:
                                     placeholder="Pesquisar por nome ou categoria..."
                                     value={searchTerm}
                                     onChange={(e) => setSearchTerm(e.target.value)}
-                                    className="w-full h-11 pl-12 pr-4 rounded-xl bg-app-bg-secondary dark:bg-app-card/5 border border-gray-100 dark:border-app-border-dark text-gray-800 dark:text-gray-200 transition-all font-normal placeholder:text-app-text-muted dark:placeholder:text-gray-600 focus:ring-2 focus:ring-[#0039A6]/10 focus:border-[#0039A6] dark:focus:border-emerald-500/50 shadow-sm"
+                                    className="w-full h-11 pl-12 pr-4 rounded-xl bg-app-bg-secondary dark:bg-app-card/5 border border-gray-100 dark:border-app-border-dark text-gray-800 dark:text-gray-200 transition-all font-normal placeholder:text-app-text-muted dark:placeholder:text-gray-600 focus:ring-2 focus:ring-[#0039A6]/10 focus:border-[#0039A6] dark:focus:border-[#0039A6]/50 shadow-sm"
                                 />
                             </div>
                                 <Select value={especialistaFiltro} onValueChange={setEspecialistaFiltro}>
@@ -408,7 +408,7 @@ export function DocumentacaoClinicaView({ onPageChange }: { onPageChange: (page:
                                             </TableCell>
                                             <TableCell className="px-8 py-6 text-right">
                                                 <div className="flex items-center justify-end gap-2 transition-all duration-300">
-                                                    <button onClick={() => handleViewDocument(model)} className="h-10 w-10 flex items-center justify-center rounded-xl text-app-text-muted hover:text-emerald-500 hover:bg-emerald-50 dark:hover:bg-emerald-500/10 transition-colors"><Eye size={18} /></button>
+                                                    <button onClick={() => handleViewDocument(model)} className="h-10 w-10 flex items-center justify-center rounded-xl text-app-text-muted hover:text-[#0039A6] hover:bg-blue-50 dark:hover:bg-[#0039A6]/10 transition-colors"><Eye size={18} /></button>
                                                     <button onClick={() => handleEditDocument(model)} className="h-10 w-10 flex items-center justify-center rounded-xl text-app-text-muted hover:text-blue-500 hover:bg-blue-50 dark:hover:bg-blue-500/10 transition-colors"><Edit2 size={18} /></button>
                                                     <button onClick={() => handleDeleteDocument(model)} className="h-10 w-10 flex items-center justify-center rounded-xl text-app-text-muted hover:text-red-500 hover:bg-red-50 dark:hover:bg-red-500/10 transition-colors"><Trash2 size={18} /></button>
                                                 </div>

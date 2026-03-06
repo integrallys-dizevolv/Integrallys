@@ -296,7 +296,7 @@ export function UnidadesView({ onPageChange }: { onPageChange?: (page: string) =
                             </Button>
                             {modalType !== 'view' && (
                                 <Button
-                                    className="h-11 px-8 rounded-lg bg-[#0039A6] hover:bg-[#1d3b2e] text-white shadow-sm font-normal"
+                                    className="h-11 px-8 rounded-lg bg-[#0039A6] hover:bg-[#002d82] text-white shadow-sm font-normal"
                                 >
                                     {modalType === 'create' ? 'Cadastrar unidade' : 'Salvar alterações'}
                                 </Button>

@@ -241,7 +241,7 @@ export function ReagendarView({ onPageChange, appointment }: ReagendarViewProps)
                 <Button
                     className=" w-full sm:w-auto 
     h-11 px-6 
-    bg-[#0039A6] hover:bg-[#1d3b2e] 
+    bg-[#0039A6] hover:bg-[#002d82] 
     text-white rounded-[10px] 
     flex flex-row items-center justify-center 
     gap-2 

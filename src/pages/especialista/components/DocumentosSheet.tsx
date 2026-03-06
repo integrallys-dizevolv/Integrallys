@@ -21,9 +21,10 @@ interface DocumentosSheetProps {
 
 export function DocumentosSheet({ open, onOpenChange, documents = [] }: DocumentosSheetProps) {
     const [isAddModalOpen, setIsAddModalOpen] = useState(false)
+    const [removedIds, setRemovedIds] = useState<number[]>([])
 
     // Fallback mock data matching the image
-    const displayDocs = documents.length > 0 ? documents : [
+    const baseDocs = documents.length > 0 ? documents : [
         {
             id: 1,
             tipo: 'Prescrição',
@@ -33,6 +34,8 @@ export function DocumentosSheet({ open, onOpenChange, documents = [] }: Document
             recebido: true
         }
     ]
+
+    const displayDocs = baseDocs.filter((doc) => !removedIds.includes(doc.id))
 
     return (
         <>
@@ -62,7 +65,7 @@ export function DocumentosSheet({ open, onOpenChange, documents = [] }: Document
                                         <span className="inline-flex items-center justify-center rounded-full border border-app-border dark:border-app-border-dark bg-white dark:bg-app-table-header-dark px-3 py-1 text-xs font-semibold text-gray-900 dark:text-gray-100">
                                             {doc.tipo}
                                         </span>
-                                        <button className="text-app-text-muted hover:text-gray-600 dark:hover:text-white transition-colors">
+                                        <button onClick={() => setRemovedIds((prev) => [...prev, doc.id])} className="text-app-text-muted hover:text-red-500 dark:hover:text-red-400 transition-colors">
                                             <X className="h-4 w-4" />
                                         </button>
                                     </div>
@@ -108,7 +111,7 @@ export function DocumentosSheet({ open, onOpenChange, documents = [] }: Document
                     <div className="mt-6 pt-0">
                         <Button
                             onClick={() => setIsAddModalOpen(true)}
-                            className="w-full h-11 bg-[#1a3d2f] hover:bg-[#142e23] text-white rounded-[8px] font-semibold text-[14px] shadow-sm transition-all flex items-center justify-center gap-2"
+                            className="w-full h-11 bg-[#0039A6] hover:bg-[#002d82] text-white rounded-[8px] font-semibold text-[14px] shadow-sm transition-all flex items-center justify-center gap-2"
                         >
                             <Plus className="h-4 w-4" />
                             Adicionar Documento

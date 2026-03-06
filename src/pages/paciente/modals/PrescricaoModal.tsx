@@ -1,3 +1,4 @@
+import { toast } from 'sonner'
 import { useState, useEffect } from 'react'
 import { Button } from '@/components/ui/Button'
 import { Download, X, ZoomIn, ZoomOut, ChevronLeft, ChevronRight } from 'lucide-react'
@@ -99,7 +100,7 @@ export function PrescricaoModal({ isOpen, onClose, selectedDoc }: PrescricaoModa
 
                     {/* Group 3: Download & Close (Desktop) */}
                     <div className="flex items-center gap-2 w-full md:w-auto">
-                        <Button className="flex flex-1 md:flex-initial flex-row items-center justify-center gap-2 h-10 px-4 whitespace-nowrap bg-[#0039A6] hover:bg-[#1d3b2e] text-white rounded-[10px] shadow-sm transition-colors">
+                        <Button onClick={() => toast.info('Download disponível em breve.')} className="flex flex-1 md:flex-initial flex-row items-center justify-center gap-2 h-10 px-4 whitespace-nowrap bg-[#0039A6] hover:bg-[#002d82] text-white rounded-[10px] shadow-sm transition-colors">
                             <Download className="h-4 w-4 shrink-0" />
                             <span className="hidden xs:inline">Download</span>
                         </Button>

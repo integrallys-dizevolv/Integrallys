@@ -54,7 +54,7 @@ export const MOCK_PRESCRICOES: Prescription[] = BASE_PRESCRICOES.map((presc, ind
     specialistName: profissional.nome,
     createdAt: '21/02/2026',
     totalValue,
-    type: 'Suplementacao',
+    type: 'Suplementação',
     status: index === 1 ? 'Convertida' : 'Ativa',
     generator: index % 2 === 0 ? 'Automatica' : 'Manual',
     validity: '30 dias',

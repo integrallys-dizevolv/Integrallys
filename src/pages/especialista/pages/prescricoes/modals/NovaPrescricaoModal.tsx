@@ -162,7 +162,7 @@ export function NovaPrescricaoModal({ isOpen, onClose }: NovaPrescricaoModalProp
                                 <Button
                                     type="button"
                                     onClick={handleSign}
-                                    className="h-12 rounded-[12px] bg-[#0039A6] hover:bg-[#1d3b2e] border border-[#2d5a46] text-white transition-all px-6 font-normal shrink-0"
+                                    className="h-12 rounded-[12px] bg-[#0039A6] hover:bg-[#002d82] border border-app-border-dark text-white transition-all px-6 font-normal shrink-0"
                                 >
                                     Validar assinatura
                                 </Button>
@@ -208,7 +208,7 @@ export function NovaPrescricaoModal({ isOpen, onClose }: NovaPrescricaoModalProp
                         Cancelar
                     </Button>
                     <Button
-                        className="w-full sm:w-auto px-8 h-12 bg-[#0039A6] hover:bg-[#1d3b2e] border border-[#2d5a46] text-white rounded-[12px] font-normal shadow-lg shadow-[#0039A6]/20 transition-all hover:scale-[1.02] active:scale-[0.98] flex items-center justify-center gap-2"
+                        className="w-full sm:w-auto px-8 h-12 bg-[#0039A6] hover:bg-[#002d82] border border-app-border-dark text-white rounded-[12px] font-normal shadow-lg shadow-[#0039A6]/20 transition-all hover:scale-[1.02] active:scale-[0.98] flex items-center justify-center gap-2"
                         onClick={onClose}
                     >
                         <FileText className="h-4 w-4" />

@@ -245,7 +245,7 @@ export const ProntuarioSection = ({ onBack, onNext }: ProntuarioSectionProps) =>
                 </Button>
                 <Button
                     onClick={onNext}
-                    className="h-12 px-8 bg-[#0039A6] hover:bg-[#1d3b2e] text-white rounded-[10px] font-normal flex items-center gap-2"
+                    className="h-12 px-8 bg-[#0039A6] hover:bg-[#002d82] text-white rounded-[10px] font-normal flex items-center gap-2"
                 >
                     Próximo: Prescrição <ChevronRight className="h-4 w-4" />
                 </Button>

@@ -3,6 +3,7 @@ import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/Card';
 import { Cake, ChevronRight } from 'lucide-react';
 import { Badge } from '@/components/ui/Badge';
 import { Button } from '@/components/ui/Button';
+import { toast } from 'sonner';
 
 export function AniversariantesCard() {
     const aniversariantes = [
@@ -48,7 +49,7 @@ export function AniversariantesCard() {
                         </div>
                     ))}
                 </div>
-                <Button variant="ghost" className="w-full mt-4 h-10 text-xs font-normal text-[#0039A6] hover:bg-[#0039A6]/5 dark:text-blue-400 rounded-xl border border-dashed border-gray-200 dark:border-gray-800">
+                <Button variant="ghost" onClick={() => toast.info('Lista completa de aniversariantes disponível em breve.')} className="w-full mt-4 h-10 text-xs font-normal text-[#0039A6] hover:bg-[#0039A6]/5 dark:text-blue-400 rounded-xl border border-dashed border-gray-200 dark:border-gray-800">
                     Ver lista completa
                 </Button>
             </CardContent>

@@ -108,7 +108,7 @@ export function VisualizarEstoqueModal({ isOpen, onClose, item }: VisualizarEsto
                 <div className="flex justify-end mt-12">
                     <Button
                         onClick={onClose}
-                        className="bg-[#0039A6] hover:bg-[#1d3b2e] text-white px-10 h-12 rounded-[12px] font-normal shadow-lg shadow-[#0039A6]/20 transition-all hover:scale-[1.02]"
+                        className="bg-[#0039A6] hover:bg-[#002d82] text-white px-10 h-12 rounded-[12px] font-normal shadow-lg shadow-[#0039A6]/20 transition-all hover:scale-[1.02]"
                     >
                         Fechar
                     </Button>

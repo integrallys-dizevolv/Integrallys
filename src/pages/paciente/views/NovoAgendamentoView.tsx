@@ -383,7 +383,7 @@ export function NovoAgendamentoView({ onPageChange }: NovoAgendamentoViewProps) 
                     className={`h-11 px-6 rounded-[10px] flex items-center gap-2 shadow-sm transition-all active:scale-95
                         ${(step === 1 && (!selectedDate || !selectedTime || !specialist || !procedure)) || (step === 3 && !paymentMethod)
                             ? 'opacity-50 cursor-not-allowed grayscale bg-gray-500'
-                            : 'bg-[#0039A6] hover:bg-[#1d3b2e] text-white'
+                            : 'bg-[#0039A6] hover:bg-[#002d82] text-white'
                         }`}
                     disabled={(step === 1 && (!selectedDate || !selectedTime || !specialist || !procedure)) || (step === 3 && !paymentMethod)}
                     onClick={() => {

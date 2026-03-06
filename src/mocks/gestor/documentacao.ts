@@ -11,7 +11,7 @@ export const documentacaoMocks = {
         {
             id: 2,
             nome: 'Declaração de Comparecimento',
-            categoria: 'Declaracao',
+            categoria: 'Declaração',
             desc: 'Documento para comprovar presença do paciente em consulta.',
             variaveis: '2',
             especialista: 'Dr. Diego'

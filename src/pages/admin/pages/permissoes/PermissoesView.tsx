@@ -158,7 +158,7 @@ export function PermissoesView({
                                 <MoreVertical className="h-4 w-4 text-[#1A1A1AB2] dark:text-white/40" />
                               </Button>
                             </DropdownMenuTrigger>
-                            <DropdownMenuContent align="end" className="dark:bg-app-bg-dark dark:border-[#2d5a46] rounded-xl shadow-xl">
+                            <DropdownMenuContent align="end" className="dark:bg-app-bg-dark dark:border-app-border-dark rounded-xl shadow-xl">
                               <DropdownMenuItem
                                 onClick={() => {
                                   setSelectedProfile(permission)

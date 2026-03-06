@@ -25,7 +25,7 @@ export const MOCK_PATIENT_PROFILE: PatientProfile = {
     cep: '01310-100',
     address: patient.endereco,
     neighborhood: 'Bela Vista',
-    city: 'Sao Paulo',
+    city: 'São Paulo',
     state: 'SP',
     initials: 'MS'
 };

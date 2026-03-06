@@ -44,7 +44,7 @@ const buildPagamentos = (status: string, valor: number) => {
     return [{ data: '2026-02-10', valor: valor * 0.5, metodo: 'PIX' }];
   }
   if (status === 'Pago') {
-    return [{ data: '2026-02-10', valor, metodo: 'Cartao' }];
+    return [{ data: '2026-02-10', valor, metodo: 'Cartão' }];
   }
   return [];
 };
@@ -81,7 +81,7 @@ export const mockAgendaPersonal: AgendaPersonalItem[] = [
     prioridade: 'Alta',
     status: 'Pendente',
     descricao: 'Alinhamento semanal com a equipe médica.',
-    data: '2026-02-21',
+    data: '2026-03-05',
     local: 'Sala de Reuniões 1',
     participantes: 'Dr. Joao, Dra. Ana'
   }

@@ -62,7 +62,7 @@ const toISO = (brDate: string) => {
   return `${year}-${month}-${day}`
 }
 
-const FORMA_OPTIONS: RecebimentoForma[] = ['PIX', 'Dinheiro', 'Cartao Debito', 'Cartao Credito', 'Boleto']
+const FORMA_OPTIONS: RecebimentoForma[] = ['PIX', 'Dinheiro', 'Cartão Débito', 'Cartão Crédito', 'Boleto']
 const getFormaLabel = (forma: string) => {
   if (forma === 'Cartao Debito') return 'Cartão Débito'
   if (forma === 'Cartao Credito') return 'Cartão Crédito'
@@ -364,14 +364,14 @@ export function RecebimentosView({ onPageChange }: { onPageChange: (page: string
               hideDateIcon
               value={filters.dataInicio}
               onChange={(e) => setFilters({ ...filters, dataInicio: e.target.value })}
-              className="h-11 px-4 bg-app-card dark:bg-[#12211C] border border-[#dee2e6] dark:border-[#2d5a46] rounded-lg text-sm transition-all focus:ring-2 focus:ring-[#0039A6]/10 outline-none"
+              className="h-11 px-4 bg-app-card dark:bg-[#0c1e3d] border border-[#dee2e6] dark:border-app-border-dark rounded-lg text-sm transition-all focus:ring-2 focus:ring-[#0039A6]/10 outline-none"
             />
             <Input
               type="date"
               hideDateIcon
               value={filters.dataFim}
               onChange={(e) => setFilters({ ...filters, dataFim: e.target.value })}
-              className="h-11 px-4 bg-app-card dark:bg-[#12211C] border border-[#dee2e6] dark:border-[#2d5a46] rounded-lg text-sm transition-all focus:ring-2 focus:ring-[#0039A6]/10 outline-none"
+              className="h-11 px-4 bg-app-card dark:bg-[#0c1e3d] border border-[#dee2e6] dark:border-app-border-dark rounded-lg text-sm transition-all focus:ring-2 focus:ring-[#0039A6]/10 outline-none"
             />
 
             <select value={filters.especialidade} onChange={(e) => setFilters({ ...filters, especialidade: e.target.value })} className="h-11 px-3 bg-app-card dark:bg-app-bg-dark border border-app-border dark:border-app-border-dark rounded-[10px] text-sm text-app-text-primary dark:text-white">
@@ -582,14 +582,14 @@ export function RecebimentosView({ onPageChange }: { onPageChange: (page: string
               hideDateIcon
               value={novoRecebimento.dataEmissao}
               onChange={(e) => setNovoRecebimento({ ...novoRecebimento, dataEmissao: e.target.value })}
-              className="h-11 px-4 bg-app-card dark:bg-[#12211C] border border-[#dee2e6] dark:border-[#2d5a46] rounded-lg text-sm transition-all focus:ring-2 focus:ring-[#0039A6]/10 outline-none"
+              className="h-11 px-4 bg-app-card dark:bg-[#0c1e3d] border border-[#dee2e6] dark:border-app-border-dark rounded-lg text-sm transition-all focus:ring-2 focus:ring-[#0039A6]/10 outline-none"
             />
             <Input
               type="date"
               hideDateIcon
               value={novoRecebimento.dataVencimento}
               onChange={(e) => setNovoRecebimento({ ...novoRecebimento, dataVencimento: e.target.value })}
-              className="h-11 px-4 bg-app-card dark:bg-[#12211C] border border-[#dee2e6] dark:border-[#2d5a46] rounded-lg text-sm transition-all focus:ring-2 focus:ring-[#0039A6]/10 outline-none"
+              className="h-11 px-4 bg-app-card dark:bg-[#0c1e3d] border border-[#dee2e6] dark:border-app-border-dark rounded-lg text-sm transition-all focus:ring-2 focus:ring-[#0039A6]/10 outline-none"
             />
             <Input placeholder="Devedor" value={novoRecebimento.devedor} onChange={(e) => setNovoRecebimento({ ...novoRecebimento, devedor: e.target.value })} />
             <Input placeholder="Valor" value={novoRecebimento.valor} onChange={(e) => setNovoRecebimento({ ...novoRecebimento, valor: e.target.value })} />

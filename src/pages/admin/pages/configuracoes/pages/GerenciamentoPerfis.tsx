@@ -104,7 +104,7 @@ export function GerenciamentoPerfis({ onPageChange }: GerenciamentoPerfisProps) 
     {
       header: 'Perfil',
       render: (u: User) => (
-        <Badge variant="outline" className="border-app-border dark:border-[#2d5a46] dark:text-white font-normal">
+        <Badge variant="outline" className="border-app-border dark:border-app-border-dark dark:text-white font-normal">
           {u.perfil}
         </Badge>
       )
@@ -285,7 +285,7 @@ export function GerenciamentoPerfis({ onPageChange }: GerenciamentoPerfisProps) 
               <SelectTrigger className="w-full sm:w-60 lg:w-72">
                 <SelectValue preferPlaceholder placeholder="Todos os perfis" />
               </SelectTrigger>
-              <SelectContent className="rounded-xl border-app-border dark:border-[#2d5a46]">
+              <SelectContent className="rounded-xl border-app-border dark:border-app-border-dark">
                 <SelectItem value="Todos">Todos os perfis</SelectItem>
                 <SelectItem value="Administrador">Administrador</SelectItem>
                 <SelectItem value="Médico">Médico</SelectItem>
@@ -299,7 +299,7 @@ export function GerenciamentoPerfis({ onPageChange }: GerenciamentoPerfisProps) 
               <SelectTrigger className="w-full sm:w-60 lg:w-72">
                 <SelectValue preferPlaceholder placeholder="Filtrar por módulo" />
               </SelectTrigger>
-              <SelectContent className="rounded-xl border-app-border dark:border-[#2d5a46]">
+              <SelectContent className="rounded-xl border-app-border dark:border-app-border-dark">
                 <SelectItem value="Todos">Todos os módulos</SelectItem>
                 <SelectItem value="Agenda">Agenda</SelectItem>
                 <SelectItem value="Gestão">Gestão</SelectItem>
@@ -379,7 +379,7 @@ function TableActions({ onView, onEdit, onDelete }: { onView?: () => void, onEdi
           <MoreVertical className="h-4 w-4 text-[#1A1A1AB2] dark:text-[#c3cec9]" />
         </Button>
       </DropdownMenuTrigger>
-      <DropdownMenuContent align="end" className="dark:bg-[#1a3028] dark:border-[#2d5a46] rounded-xl shadow-xl">
+      <DropdownMenuContent align="end" className="dark:bg-[#0c1e3d] dark:border-app-border-dark rounded-xl shadow-xl">
         <DropdownMenuItem onClick={onView} className="dark:text-white dark:hover:bg-[#0039A6] cursor-pointer">
           <Eye className="h-4 w-4 mr-2" />
           Visualizar

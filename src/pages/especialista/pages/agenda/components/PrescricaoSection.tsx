@@ -95,7 +95,7 @@ export const PrescricaoSection = ({ onBack, onNext }: PrescricaoSectionProps) =>
                                     <Button
                                         size="sm"
                                         onClick={() => handleOpenLabelEditor(item)}
-                                        className="bg-[#0039A6] hover:bg-[#1d3b2e] border border-[#2d5a46] text-white h-9 px-3 rounded-[10px] font-normal flex items-center gap-2"
+                                        className="bg-[#0039A6] hover:bg-[#002d82] border border-app-border-dark text-white h-9 px-3 rounded-[10px] font-normal flex items-center gap-2"
                                         title="Imprimir Etiqueta"
                                     >
                                         <Tag className="h-3.5 w-3.5" />
@@ -220,7 +220,7 @@ export const PrescricaoSection = ({ onBack, onNext }: PrescricaoSectionProps) =>
                 </Button>
                 <Button
                     onClick={onNext}
-                    className="h-12 px-8 bg-[#0039A6] hover:bg-[#1d3b2e] text-white rounded-[10px] font-normal flex items-center gap-2"
+                    className="h-12 px-8 bg-[#0039A6] hover:bg-[#002d82] text-white rounded-[10px] font-normal flex items-center gap-2"
                 >
                     Próximo: Documentos <ChevronRight className="h-4 w-4" />
                 </Button>

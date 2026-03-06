@@ -1,3 +1,4 @@
+import { toast } from 'sonner'
 import {
     Dialog,
     DialogContent,
@@ -184,16 +185,16 @@ export function DetalhesVendaModal({ isOpen, onClose, venda }: DetalhesVendaModa
 
                 {/* Footer Actions */}
                 <div className="p-6 bg-gray-50 dark:bg-[#0c1e3d] border-t border-gray-100 dark:border-gray-800 flex justify-between items-center">
-                    <Button variant="outline" className="h-12 px-6 rounded-xl border-gray-200 dark:border-gray-700 text-gray-600 dark:text-gray-300 hover:bg-white dark:hover:bg-white/5 font-semibold gap-2">
+                    <Button variant="outline" onClick={() => toast.info('Compartilhamento disponível em breve.')} className="h-12 px-6 rounded-xl border-gray-200 dark:border-gray-700 text-gray-600 dark:text-gray-300 hover:bg-white dark:hover:bg-white/5 font-semibold gap-2">
                         <Share2 size={18} />
                         Compartilhar
                     </Button>
                     <div className="flex gap-3">
-                        <Button variant="outline" className="h-12 px-6 rounded-xl border-gray-200 dark:border-gray-700 text-gray-600 dark:text-gray-300 hover:bg-white dark:hover:bg-white/5 font-semibold gap-2">
+                        <Button variant="outline" onClick={() => toast.info('Impressão disponível em breve.')} className="h-12 px-6 rounded-xl border-gray-200 dark:border-gray-700 text-gray-600 dark:text-gray-300 hover:bg-white dark:hover:bg-white/5 font-semibold gap-2">
                             <Printer size={18} />
                             Imprimir
                         </Button>
-                        <Button variant="primary" className="h-12 px-8 rounded-xl bg-[#0039A6] hover:bg-[#002d82] text-white font-bold shadow-lg shadow-blue-900/20 gap-2">
+                        <Button variant="primary" onClick={() => toast.info('Download do recibo disponível em breve.')} className="h-12 px-8 rounded-xl bg-[#0039A6] hover:bg-[#002d82] text-white font-bold shadow-lg shadow-blue-900/20 gap-2">
                             <Download size={18} />
                             Baixar Recibo
                         </Button>

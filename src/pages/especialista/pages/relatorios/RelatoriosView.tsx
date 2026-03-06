@@ -1,3 +1,4 @@
+import { toast } from 'sonner'
 import {
   Calendar,
   Users,
@@ -242,9 +243,9 @@ export const RelatoriosView = ({ onPageChange }: RelatoriosViewProps) => {
               icon={TrendingUpIcon}
             />
             <SummaryCard
-              title="Percentual satisfacao"
+              title="Percentual satisfação"
               value={`${desempenhoData.resumo.satisfacaoPercentual}%`}
-              subtitle="media das notas de avaliacao"
+              subtitle="média das notas de avaliação"
               icon={Activity}
             />
           </div>
@@ -319,7 +320,7 @@ export const RelatoriosView = ({ onPageChange }: RelatoriosViewProps) => {
 
             <div className="bg-white dark:bg-app-card-dark p-8 rounded-[20px] shadow-sm border border-gray-100 dark:border-gray-800/50">
               <div className="flex items-center justify-between mb-8">
-                <h3 className="text-lg font-normal text-gray-900 dark:text-white">Distribuicao de procedimentos</h3>
+                <h3 className="text-lg font-normal text-gray-900 dark:text-white">Distribuição de procedimentos</h3>
               </div>
               <div className="h-[320px] w-full flex items-center justify-center relative">
                 {desempenhoData.distribuicaoProcedimentos.length === 0 ? (
@@ -383,7 +384,7 @@ export const RelatoriosView = ({ onPageChange }: RelatoriosViewProps) => {
                 <h4 className="text-xl font-normal text-gray-900 dark:text-white">Performance geral</h4>
                 <div className="space-y-4">
                   <StatLine label="Taxa de retorno:" value={`${desempenhoData.resumo.taxaRetorno}%`} />
-                  <StatLine label="Satisfacao:" value={`${desempenhoData.resumo.satisfacao}/5`} />
+                  <StatLine label="Satisfação:" value={`${desempenhoData.resumo.satisfacao}/5`} />
                   <StatLine label="Pontualidade:" value="92%" />
                 </div>
               </div>
@@ -411,7 +412,7 @@ export const RelatoriosView = ({ onPageChange }: RelatoriosViewProps) => {
       ) : activeTab === 'repasses' ? (
         <div className="space-y-6 animate-in fade-in slide-in-from-bottom-4 duration-500">
           <div className="flex flex-col sm:flex-row justify-end items-center gap-3 md:gap-4 w-full">
-            <Button className="flex flex-row items-center justify-center gap-2 h-11 px-4 bg-[#0039A6] hover:bg-[#002d82] text-white rounded-xl whitespace-nowrap w-full sm:w-auto min-w-fit shrink-0 transition-all active:scale-95 font-normal shadow-sm">
+            <Button onClick={() => toast.info('Download disponível em breve.')} className="flex flex-row items-center justify-center gap-2 h-11 px-4 bg-[#0039A6] hover:bg-[#002d82] text-white rounded-xl whitespace-nowrap w-full sm:w-auto min-w-fit shrink-0 transition-all active:scale-95 font-normal shadow-sm">
               <Download className="h-4 w-4 shrink-0" />
               <span className="text-sm leading-none">Baixar relatorio</span>
             </Button>
@@ -476,7 +477,7 @@ export const RelatoriosView = ({ onPageChange }: RelatoriosViewProps) => {
       ) : (
         <div className="space-y-6 animate-in fade-in slide-in-from-bottom-4 duration-500">
           <div className="flex flex-col sm:flex-row justify-end items-center gap-3 md:gap-4 w-full">
-            <Button className="flex flex-row items-center justify-center gap-2 h-11 px-4 bg-[#0039A6] hover:bg-[#002d82] text-white rounded-xl whitespace-nowrap w-full sm:w-auto min-w-fit shrink-0 transition-all active:scale-95 font-normal shadow-sm">
+            <Button onClick={() => toast.info('Download disponível em breve.')} className="flex flex-row items-center justify-center gap-2 h-11 px-4 bg-[#0039A6] hover:bg-[#002d82] text-white rounded-xl whitespace-nowrap w-full sm:w-auto min-w-fit shrink-0 transition-all active:scale-95 font-normal shadow-sm">
               <Download className="h-4 w-4 shrink-0" />
               <span className="text-sm leading-none">Baixar relatorio</span>
             </Button>
@@ -642,7 +643,7 @@ function SummaryCard({ title, value, percentage, subtitle, icon: Icon }: Summary
         <div className="text-3xl font-normal text-gray-900 dark:text-white tracking-tight">{value}</div>
         <div className="flex flex-wrap items-center gap-1.5 text-[13px]">
           {percentage && (
-            <span className="font-normal text-[#1d3b2e] dark:text-[#4da885]">{percentage}</span>
+            <span className="font-normal text-[#0039A6] dark:text-[#4da885]">{percentage}</span>
           )}
           <span className="font-normal text-app-text-muted dark:text-app-text-muted">{subtitle}</span>
         </div>

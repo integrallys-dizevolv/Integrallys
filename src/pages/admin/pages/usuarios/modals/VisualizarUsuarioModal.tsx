@@ -55,7 +55,7 @@ export function VisualizarUsuarioModal({ isOpen, onClose, user }: VisualizarUsua
                         <div className="h-11 px-3 flex items-center rounded-lg border border-gray-100 bg-app-bg-secondary dark:bg-app-card/5 dark:border-app-border-dark text-sm">
                             <Badge className={user?.status === 'Ativo'
                                 ? 'bg-[#0039A6] text-white shadow-sm font-normal'
-                                : 'bg-[#F2F4F7] text-[#3b414e] border border-[#D0D5DD] dark:bg-[#1a3028] dark:text-[#c3cec9] dark:border-[#2d5a46] font-normal'
+                                : 'bg-[#F2F4F7] text-[#3b414e] border border-[#D0D5DD] dark:bg-[#0c1e3d] dark:text-gray-300 dark:border-app-border-dark font-normal'
                             }>
                                 {user?.status}
                             </Badge>
@@ -80,7 +80,7 @@ export function VisualizarUsuarioModal({ isOpen, onClose, user }: VisualizarUsua
                 <DialogFooter className="px-6 py-6 pt-4">
                     <Button
                         onClick={() => onClose(false)}
-                        className="h-11 px-8 rounded-lg bg-[#0039A6] hover:bg-[#1d3b2e] text-white font-normal shadow-sm"
+                        className="h-11 px-8 rounded-lg bg-[#0039A6] hover:bg-[#002d82] text-white font-normal shadow-sm"
                     >
                         Fechar
                     </Button>

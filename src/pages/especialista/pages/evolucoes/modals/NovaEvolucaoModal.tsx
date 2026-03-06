@@ -143,7 +143,7 @@ export function NovaEvolucaoModal({ isOpen, onClose }: NovaEvolucaoModalProps) {
                         Cancelar
                     </Button>
                     <Button
-                        className="w-full sm:w-auto px-8 h-12 bg-[#0039A6] hover:bg-[#1d3b2e] text-white rounded-[12px] font-normal shadow-lg shadow-[#0039A6]/20 transition-all hover:scale-[1.02] active:scale-[0.98] flex items-center justify-center gap-2"
+                        className="w-full sm:w-auto px-8 h-12 bg-[#0039A6] hover:bg-[#002d82] text-white rounded-[12px] font-normal shadow-lg shadow-[#0039A6]/20 transition-all hover:scale-[1.02] active:scale-[0.98] flex items-center justify-center gap-2"
                         onClick={onClose}
                     >
                         <Save className="h-4 w-4" />

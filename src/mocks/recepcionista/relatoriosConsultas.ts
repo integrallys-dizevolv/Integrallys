@@ -39,7 +39,7 @@ export const MOCK_RELATORIO_CONSULTAS: RelatorioConsultaItem[] = BASE_AGENDAMENT
     plano: index % 2 === 0 ? 'Particular' : 'Unimed',
     valorProcedimento: procedimento.valor,
     statusPagamento,
-    metodoPagamento: item.pagamento === 'Pago' ? ['Pix'] : item.pagamento === 'Pago Parcial' ? ['Pix', 'Credito'] : [],
+    metodoPagamento: item.pagamento === 'Pago' ? ['Pix'] : item.pagamento === 'Pago Parcial' ? ['Pix', 'Crédito'] : [],
     statusConsulta: item.status === 'Confirmado' ? 'Agendado' : item.status === 'Check-in' ? 'Realizado' : 'Agendado',
     recorrencia: 80 - index * 5
   }

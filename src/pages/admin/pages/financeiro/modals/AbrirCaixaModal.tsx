@@ -67,7 +67,7 @@ export function AbrirCaixaModal({ isOpen, onClose, onConfirm }: AbrirCaixaModalP
                             </Button>
                             <Button
                                 type="submit"
-                                className="w-full sm:flex-1 h-11 md:h-12 bg-[#0039A6] hover:bg-[#1d3b2e] text-white font-bold rounded-[12px] flex items-center justify-center gap-2 shadow-lg shadow-[#0039A6]/10 transition-all active:scale-[0.98]"
+                                className="w-full sm:flex-1 h-11 md:h-12 bg-[#0039A6] hover:bg-[#002d82] text-white font-bold rounded-[12px] flex items-center justify-center gap-2 shadow-lg shadow-[#0039A6]/10 transition-all active:scale-[0.98]"
                             >
                                 <Unlock className="h-4 w-4" />
                                 Abrir caixa

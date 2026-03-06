@@ -201,7 +201,7 @@ export function EditarLancamentoModal({ isOpen, onClose, onSave, transaction }: 
                             </Button>
                             <Button
                                 type="submit"
-                                className="w-full sm:flex-1 h-11 bg-[#0039A6] hover:bg-[#1d3b2e] text-white font-normal rounded-xl flex items-center justify-center gap-2 shadow-lg shadow-[#0039A6]/10 text-sm"
+                                className="w-full sm:flex-1 h-11 bg-[#0039A6] hover:bg-[#002d82] text-white font-normal rounded-xl flex items-center justify-center gap-2 shadow-lg shadow-[#0039A6]/10 text-sm"
                             >
                                 <Save className="h-4 w-4" />
                                 Salvar

@@ -90,7 +90,7 @@ export function PageHeader({
                     {primaryAction && (
                         <Button
                             onClick={primaryAction.onClick}
-                            className="bg-[#0039A6] hover:bg-[#1d3b2e] text-white rounded-[10px] h-11 px-6 shadow-lg shadow-[#0039A6]/20 transition-all hover:scale-[1.02] w-full md:w-auto flex items-center justify-center gap-2"
+                            className="bg-[#0039A6] hover:bg-[#002d82] text-white rounded-[10px] h-11 px-6 shadow-lg shadow-[#0039A6]/20 transition-all hover:scale-[1.02] w-full md:w-auto flex items-center justify-center gap-2"
                         >
                             {primaryAction.icon ? <primaryAction.icon className="h-4 w-4 shrink-0" /> : <Plus className="h-4 w-4 shrink-0" />}
                             <span className="font-normal">{primaryAction.label}</span>

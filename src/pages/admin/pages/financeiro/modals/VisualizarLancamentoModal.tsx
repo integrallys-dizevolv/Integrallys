@@ -104,7 +104,7 @@ export function VisualizarLancamentoModal({ isOpen, onClose, transaction }: Visu
                         <DialogFooter className="pt-2">
                             <Button
                                 onClick={onClose}
-                                className="w-full h-11 bg-[#0039A6] hover:bg-[#1d3b2e] text-white font-normal rounded-xl shadow-lg shadow-[#0039A6]/10"
+                                className="w-full h-11 bg-[#0039A6] hover:bg-[#002d82] text-white font-normal rounded-xl shadow-lg shadow-[#0039A6]/10"
                             >
                                 Fechar
                             </Button>

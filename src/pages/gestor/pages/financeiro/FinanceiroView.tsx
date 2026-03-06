@@ -1,3 +1,4 @@
+import { toast } from 'sonner'
 import { useState } from 'react'
 import { SegmentedControl } from '@/components/ui/SegmentedControl'
 import { getTodayDate } from '@/utils/dateUtils'
@@ -550,10 +551,10 @@ export const FinanceiroView = ({ onPageChange }: FinanceiroViewProps) => {
                         <Button variant="outline" className="h-10 px-4 py-2 rounded-[8px] text-sm font-normal bg-app-card border-app-border text-gray-700 hover:bg-app-bg-secondary dark:bg-transparent dark:border-app-border-dark dark:text-white/80 shadow-sm">
                             Registrar sangria
                         </Button>
-                        <Button variant="outline" className="h-10 px-4 py-2 rounded-[8px] text-sm font-normal bg-app-card border-app-border text-gray-700 hover:bg-app-bg-secondary dark:bg-transparent dark:border-app-border-dark dark:text-white/80 shadow-sm">
+                        <Button variant="outline" onClick={() => toast.info('Fechamento de caixa disponível em breve.')} className="h-10 px-4 py-2 rounded-[8px] text-sm font-normal bg-app-card border-app-border text-gray-700 hover:bg-app-bg-secondary dark:bg-transparent dark:border-app-border-dark dark:text-white/80 shadow-sm">
                             Fechar caixa
                         </Button>
-                        <Button variant="outline" className="h-10 px-4 py-2 rounded-[8px] text-sm font-normal bg-app-card border-app-border text-gray-700 hover:bg-app-bg-secondary dark:bg-transparent dark:border-app-border-dark dark:text-white/80 ml-2 flex items-center gap-2 shadow-sm">
+                        <Button variant="outline" onClick={() => toast.info('Exportação de extrato disponível em breve.')} className="h-10 px-4 py-2 rounded-[8px] text-sm font-normal bg-app-card border-app-border text-gray-700 hover:bg-app-bg-secondary dark:bg-transparent dark:border-app-border-dark dark:text-white/80 ml-2 flex items-center gap-2 shadow-sm">
                             <Download size={16} /> Exportar extrato
                         </Button>
                     </div>

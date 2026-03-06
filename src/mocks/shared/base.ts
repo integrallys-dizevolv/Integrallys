@@ -1,7 +1,7 @@
 ﻿export const BASE_UNIDADES = {
   central: {
     id: 'central',
-    nome: 'Clinica Central'
+    nome: 'Clínica Central'
   },
   norte: {
     id: 'norte',
@@ -21,7 +21,7 @@ export const BASE_PROFISSIONAIS = {
   joao: {
     id: 'joao',
     nome: 'Dr. Joao Santos',
-    especialidade: 'Clinico',
+    especialidade: 'Clínico',
     comissaoProdutos: 10,
     comissaoAtendimentos: 15,
     repasseAtendimentos: 55
@@ -37,7 +37,7 @@ export const BASE_PROFISSIONAIS = {
   flavia: {
     id: 'flavia',
     nome: 'Dra. Flavia Alves',
-    especialidade: 'Clinica Geral',
+    especialidade: 'Clínica Geral',
     comissaoProdutos: 8,
     comissaoAtendimentos: 12,
     repasseAtendimentos: 50
@@ -76,7 +76,7 @@ export const BASE_PACIENTES = {
     birthDate: '1985-03-15',
     phone: '(11) 99999-9999',
     email: 'maria.silva@email.com',
-    endereco: 'Av. Paulista, 1578 - Bela Vista, Sao Paulo/SP'
+    endereco: 'Av. Paulista, 1578 - Bela Vista, São Paulo/SP'
   },
   pedro: {
     id: 'p2',
@@ -85,7 +85,7 @@ export const BASE_PACIENTES = {
     birthDate: '1992-03-20',
     phone: '(11) 98888-8888',
     email: 'pedro.costa@email.com',
-    endereco: 'Rua Augusta, 101 - Consolacao, Sao Paulo/SP'
+    endereco: 'Rua Augusta, 101 - Consolação, São Paulo/SP'
   },
   ana: {
     id: 'p3',
@@ -94,7 +94,7 @@ export const BASE_PACIENTES = {
     birthDate: '1990-08-10',
     phone: '(11) 97777-7777',
     email: 'ana.santos@email.com',
-    endereco: 'Rua dos Pinheiros, 45 - Pinheiros, Sao Paulo/SP'
+    endereco: 'Rua dos Pinheiros, 45 - Pinheiros, São Paulo/SP'
   },
   julia: {
     id: 'p4',
@@ -103,7 +103,7 @@ export const BASE_PACIENTES = {
     birthDate: '1988-11-05',
     phone: '(11) 96666-6666',
     email: 'julia.martins@email.com',
-    endereco: 'Av. Brigadeiro, 800 - Jardins, Sao Paulo/SP'
+    endereco: 'Av. Brigadeiro, 800 - Jardins, São Paulo/SP'
   },
   roberto: {
     id: 'p5',
@@ -112,7 +112,7 @@ export const BASE_PACIENTES = {
     birthDate: '1982-12-15',
     phone: '(11) 95555-5555',
     email: 'roberto.almeida@email.com',
-    endereco: 'Rua Oscar Freire, 220 - Jardins, Sao Paulo/SP'
+    endereco: 'Rua Oscar Freire, 220 - Jardins, São Paulo/SP'
   },
   carlos: {
     id: 'p6',
@@ -121,7 +121,7 @@ export const BASE_PACIENTES = {
     birthDate: '1979-06-20',
     phone: '(11) 94444-4444',
     email: 'carlos.mendes@email.com',
-    endereco: 'Av. Reboucas, 320 - Pinheiros, Sao Paulo/SP'
+    endereco: 'Av. Rebouças, 320 - Pinheiros, São Paulo/SP'
   },
   carolina: {
     id: 'p7',
@@ -130,7 +130,7 @@ export const BASE_PACIENTES = {
     birthDate: '1994-04-12',
     phone: '(11) 93333-3333',
     email: 'carolina.braga@email.com',
-    endereco: 'Rua Pamplona, 510 - Jardins, Sao Paulo/SP'
+    endereco: 'Rua Pamplona, 510 - Jardins, São Paulo/SP'
   },
   fernanda: {
     id: 'p8',
@@ -139,7 +139,7 @@ export const BASE_PACIENTES = {
     birthDate: '1991-02-10',
     phone: '(11) 92222-2222',
     email: 'fernanda.oliveira@email.com',
-    endereco: 'Rua Fidalga, 90 - Vila Madalena, Sao Paulo/SP'
+    endereco: 'Rua Fidalga, 90 - Vila Madalena, São Paulo/SP'
   },
   paulo: {
     id: 'p9',
@@ -148,7 +148,7 @@ export const BASE_PACIENTES = {
     birthDate: '1975-09-22',
     phone: '(11) 91111-1111',
     email: 'paulo.henrique@email.com',
-    endereco: 'Av. Paulista, 2500 - Bela Vista, Sao Paulo/SP'
+    endereco: 'Av. Paulista, 2500 - Bela Vista, São Paulo/SP'
   }
 }
 
@@ -200,7 +200,7 @@ export const BASE_PROCEDIMENTOS = {
 export const BASE_AGENDAMENTOS = [
   {
     id: 1,
-    data: '2026-02-19',
+    data: '2026-03-02',
     hora: '09:00',
     pacienteId: BASE_PACIENTES.ana.id,
     profissionalId: BASE_PROFISSIONAIS.joao.id,
@@ -212,7 +212,7 @@ export const BASE_AGENDAMENTOS = [
   },
   {
     id: 2,
-    data: '2026-02-19',
+    data: '2026-03-02',
     hora: '10:00',
     pacienteId: BASE_PACIENTES.julia.id,
     profissionalId: BASE_PROFISSIONAIS.flavia.id,
@@ -224,7 +224,7 @@ export const BASE_AGENDAMENTOS = [
   },
   {
     id: 3,
-    data: '2026-02-20',
+    data: '2026-03-03',
     hora: '11:00',
     pacienteId: BASE_PACIENTES.paulo.id,
     profissionalId: BASE_PROFISSIONAIS.adelmo.id,
@@ -236,7 +236,7 @@ export const BASE_AGENDAMENTOS = [
   },
   {
     id: 4,
-    data: '2026-02-20',
+    data: '2026-03-04',
     hora: '16:00',
     pacienteId: BASE_PACIENTES.carolina.id,
     profissionalId: BASE_PROFISSIONAIS.diego.id,
@@ -248,7 +248,7 @@ export const BASE_AGENDAMENTOS = [
   },
   {
     id: 5,
-    data: '2026-02-21',
+    data: '2026-03-05',
     hora: '08:00',
     pacienteId: BASE_PACIENTES.maria.id,
     profissionalId: BASE_PROFISSIONAIS.joao.id,
@@ -260,7 +260,7 @@ export const BASE_AGENDAMENTOS = [
   },
   {
     id: 6,
-    data: '2026-02-21',
+    data: '2026-03-05',
     hora: '08:30',
     pacienteId: BASE_PACIENTES.pedro.id,
     profissionalId: BASE_PROFISSIONAIS.ana.id,
@@ -272,7 +272,7 @@ export const BASE_AGENDAMENTOS = [
   },
   {
     id: 7,
-    data: '2026-02-21',
+    data: '2026-03-05',
     hora: '14:00',
     pacienteId: BASE_PACIENTES.roberto.id,
     profissionalId: BASE_PROFISSIONAIS.joao.id,
@@ -284,7 +284,7 @@ export const BASE_AGENDAMENTOS = [
   },
   {
     id: 8,
-    data: '2026-02-21',
+    data: '2026-03-06',
     hora: '15:00',
     pacienteId: BASE_PACIENTES.carlos.id,
     profissionalId: BASE_PROFISSIONAIS.sofia.id,
@@ -299,7 +299,7 @@ export const BASE_AGENDAMENTOS = [
 export const BASE_PRESCRICOES = [
   {
     id: 'presc1',
-    data: '2026-02-21',
+    data: '2026-03-05',
     pacienteId: BASE_PACIENTES.maria.id,
     profissionalId: BASE_PROFISSIONAIS.joao.id,
     itens: [
@@ -309,7 +309,7 @@ export const BASE_PRESCRICOES = [
   },
   {
     id: 'presc2',
-    data: '2026-02-20',
+    data: '2026-03-04',
     pacienteId: BASE_PACIENTES.pedro.id,
     profissionalId: BASE_PROFISSIONAIS.ana.id,
     itens: [
@@ -321,13 +321,13 @@ export const BASE_PRESCRICOES = [
 export const BASE_REPASSES = [
   {
     id: 'rep1',
-    data: '2026-02-21',
+    data: '2026-03-05',
     atendimentoId: 5,
     percentual: BASE_PROFISSIONAIS.joao.repasseAtendimentos
   },
   {
     id: 'rep2',
-    data: '2026-02-20',
+    data: '2026-03-04',
     atendimentoId: 3,
     percentual: BASE_PROFISSIONAIS.adelmo.repasseAtendimentos
   }
@@ -336,15 +336,15 @@ export const BASE_REPASSES = [
 export const BASE_RECEBIMENTOS = [
   {
     id: 'rec1',
-    data: '2026-02-21',
+    data: '2026-03-05',
     atendimentoId: 5,
     valorBruto: BASE_PROCEDIMENTOS.consulta.valor,
     status: 'Pago',
-    metodo: 'Cartao'
+    metodo: 'Cartão'
   },
   {
     id: 'rec2',
-    data: '2026-02-19',
+    data: '2026-03-02',
     atendimentoId: 2,
     valorBruto: BASE_PROCEDIMENTOS.consulta.valor,
     status: 'Pago Parcial',

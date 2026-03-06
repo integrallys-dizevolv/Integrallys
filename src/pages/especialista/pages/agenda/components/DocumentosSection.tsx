@@ -39,36 +39,36 @@ const DOCUMENT_TYPES: DocumentTemplate[] = [
         id: 'dieta',
         title: 'Plano Alimentar / Dieta',
         type: 'editor',
-        defaultValue: 'PLANO ALIMENTAR\n\nCafe da Manha:\n- Opcao 1: ...\n\nAlmoco:\n- ...'
+        defaultValue: 'PLANO ALIMENTAR\n\nCafé da Manhã:\n- Opção 1: ...\n\nAlmoço:\n- ...'
     },
     {
         id: 'encaminhamento',
         title: 'Encaminhamento para Especialista',
         type: 'editor',
-        defaultValue: 'ENCAMINHAMENTO MEDICO\n\nAo Dr(a). Especialista em ...\n\nSolicito avaliacao do paciente...'
+        defaultValue: 'ENCAMINHAMENTO MÉDICO\n\nAo Dr(a). Especialista em ...\n\nSolicito avaliação do paciente...'
     },
     {
         id: 'laudo',
-        title: 'Laudo Medico',
+        title: 'Laudo Médico',
         type: 'editor',
-        defaultValue: 'LAUDO MEDICO\n\nAtesto para os devidos fins que o paciente apresenta quadro de...'
+        defaultValue: 'LAUDO MÉDICO\n\nAtesto para os devidos fins que o paciente apresenta quadro de...'
     },
     {
         id: 'declaracao',
-        title: 'Declaracao de Comparecimento',
+        title: 'Declaração de Comparecimento',
         type: 'editor',
-        defaultValue: `DECLARACAO DE COMPARECIMENTO
+        defaultValue: `DECLARAÇÃO DE COMPARECIMENTO
 
-Declaro para os devidos fins que o(a) paciente [NOME DO PACIENTE], portador(a) do CPF [CPF], compareceu a consulta medica nesta data (20/01/2026) no horario de 14:00 as 15:00.
+Declaro para os devidos fins que o(a) paciente [NOME DO PACIENTE], portador(a) do CPF [CPF], compareceu à consulta médica nesta data (20/01/2026) no horário de 14:00 às 15:00.
 
-A consulta teve duracao aproximada de 1 (uma) hora.
+A consulta teve duração aproximada de 1 (uma) hora.
 
-Esta declaracao e valida para aprovacao junto ao empregador ou instituicao de ensino.
+Esta declaração é válida para aprovação junto ao empregador ou instituição de ensino.
 
 Atenciosamente,
 
-Dr(a). [NOME DO MEDICO]
-CRM: [NUMERO]
+Dr(a). [NOME DO MÉDICO]
+CRM: [NÚMERO]
 Data: 20/01/2026`
     },
     {
@@ -392,7 +392,7 @@ export const DocumentosSection = ({ onBack, onNext }: DocumentosSectionProps) =>
             </div>
 
             {/* Electronic Signature Section (Summary) */}
-            <div className="p-8 rounded-[24px] bg-white dark:bg-app-bg-dark border border-app-border dark:border-[#2d5a46]/30 shadow-sm space-y-6">
+            <div className="p-8 rounded-[24px] bg-white dark:bg-app-bg-dark border border-app-border dark:border-app-border-dark/30 shadow-sm space-y-6">
                 <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
                     <div className="space-y-1">
                         <h3 className="text-lg font-normal text-gray-900 dark:text-white">Assinatura eletronica</h3>
@@ -445,7 +445,7 @@ export const DocumentosSection = ({ onBack, onNext }: DocumentosSectionProps) =>
                     onClick={onBack}
                     className="h-12 px-6 rounded-[10px] border-app-border dark:border-app-border-dark text-gray-900 dark:text-white font-normal hover:bg-app-bg-secondary dark:hover:bg-white/5 flex items-center gap-2"
                 >
-                    <ChevronLeft className="h-4 w-4" /> Voltar: Prescricao
+                    <ChevronLeft className="h-4 w-4" /> Voltar: Prescrição
                 </Button>
                 <Button
                     onClick={onNext}

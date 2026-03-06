@@ -76,7 +76,7 @@ export function AdicionarCartaoModal({ isOpen, onClose }: AdicionarCartaoModalPr
                         Cancelar
                     </Button>
                     <Button
-                        className="flex flex-row items-center justify-center gap-2 whitespace-nowrap h-11 px-4 shrink-0 w-full sm:w-auto bg-[#0039A6] hover:bg-[#1d3b2e] text-white rounded-[10px]"
+                        className="flex flex-row items-center justify-center gap-2 whitespace-nowrap h-11 px-4 shrink-0 w-full sm:w-auto bg-[#0039A6] hover:bg-[#002d82] text-white rounded-[10px]"
                         onClick={onClose}
                     >
                         Adicionar Cartão

@@ -42,15 +42,35 @@ import { RegistrarEvolucaoModal } from '@/pages/especialista/pages/evolucoes/mod
 import { AjustePosologiaModal } from '@/pages/especialista/pages/paciente/modals/AjustePosologiaModal'
 import { PrescricaoComplementarModal } from '@/pages/especialista/pages/paciente/modals/PrescricaoComplementarModal'
 import { getOrCreateUltimaPrescricao, PrescricaoAtiva } from '@/services/especialistaPrescricoes.service'
+import { NovoPacienteModal } from '@/pages/recepcao/pages/pacientes/modals/NovoPacienteModal'
+import { VisualizarPacienteModal } from '@/pages/recepcao/pages/pacientes/modals/VisualizarPacienteModal'
+import { EditarPacienteModal } from '@/pages/recepcao/pages/pacientes/modals/EditarPacienteModal'
+import { ExcluirPacienteModal } from '@/pages/recepcao/pages/pacientes/modals/ExcluirPacienteModal'
+import type { Patient as RecepPatient } from '@/pages/recepcao/context/types'
 
 
 interface PacientesViewProps {
     onPageChange?: (page: string) => void
 }
 
+const toRecepPatient = (p: Patient): RecepPatient => ({
+    id: String(p.id),
+    name: p.name,
+    cpf: p.cpf,
+    phone: p.phone,
+    email: p.email,
+    source: 'Sistema',
+    status: p.status === 'Cadastro Completo' ? 'complete' : 'incomplete',
+    activeStatus: p.activeStatus,
+})
+
 export const PacientesView = ({ onPageChange }: PacientesViewProps) => {
     const [searchTerm, setSearchTerm] = useState('')
     const [selectedPatient, setSelectedPatient] = useState<Patient | null>(null)
+    const [isNovoOpen, setIsNovoOpen] = useState(false)
+    const [isVisualizarOpen, setIsVisualizarOpen] = useState(false)
+    const [isEditarOpen, setIsEditarOpen] = useState(false)
+    const [isExcluirOpen, setIsExcluirOpen] = useState(false)
     const [isEvolucaoModalOpen, setIsEvolucaoModalOpen] = useState(false)
     const [isAjustePosologiaOpen, setIsAjustePosologiaOpen] = useState(false)
     const [isComplementarOpen, setIsComplementarOpen] = useState(false)
@@ -116,6 +136,30 @@ export const PacientesView = ({ onPageChange }: PacientesViewProps) => {
 
     return (
         <div className="space-y-6">
+            <NovoPacienteModal
+                isOpen={isNovoOpen}
+                onClose={() => setIsNovoOpen(false)}
+            />
+
+            <VisualizarPacienteModal
+                isOpen={isVisualizarOpen}
+                onClose={() => setIsVisualizarOpen(false)}
+                paciente={selectedPatient ? toRecepPatient(selectedPatient) : null}
+            />
+
+            <EditarPacienteModal
+                isOpen={isEditarOpen}
+                onClose={() => setIsEditarOpen(false)}
+                paciente={selectedPatient ? toRecepPatient(selectedPatient) : null}
+            />
+
+            <ExcluirPacienteModal
+                isOpen={isExcluirOpen}
+                onClose={() => setIsExcluirOpen(false)}
+                onConfirm={() => setIsExcluirOpen(false)}
+                paciente={selectedPatient ? toRecepPatient(selectedPatient) : null}
+            />
+
             <RegistrarEvolucaoModal
                 isOpen={isEvolucaoModalOpen}
                 onClose={() => setIsEvolucaoModalOpen(false)}
@@ -157,6 +201,7 @@ export const PacientesView = ({ onPageChange }: PacientesViewProps) => {
                 </div>
 
                 <Button
+                    onClick={() => setIsNovoOpen(true)}
                     className="h-11 px-6 bg-[#0039A6] hover:bg-[#002d82] text-white rounded-xl flex items-center justify-center gap-2 shadow-sm shrink-0 transition-all font-normal"
                 >
                     <Plus className="h-5 w-5" />
@@ -250,11 +295,17 @@ export const PacientesView = ({ onPageChange }: PacientesViewProps) => {
                                                             </Button>
                                                         </DropdownMenuTrigger>
                                                         <DropdownMenuContent align="end" className="w-48 rounded-xl shadow-lg border-app-border dark:border-app-border-dark dark:bg-[#0c1e3d]">
-                                                            <DropdownMenuItem className="py-2.5 rounded-lg focus:bg-app-bg-secondary dark:focus:bg-app-card/10 group cursor-pointer font-normal">
+                                                            <DropdownMenuItem
+                                                                onClick={() => { setSelectedPatient(patient); setIsVisualizarOpen(true) }}
+                                                                className="py-2.5 rounded-lg focus:bg-app-bg-secondary dark:focus:bg-app-card/10 group cursor-pointer font-normal"
+                                                            >
                                                                 <Eye className="h-4 w-4 mr-3 text-app-text-muted group-hover:text-[#0039A6] dark:group-hover:text-white" />
                                                                 <span className="text-gray-700 dark:text-gray-200 group-hover:text-[#101828] dark:group-hover:text-white">Visualizar</span>
                                                             </DropdownMenuItem>
-                                                            <DropdownMenuItem className="py-2.5 rounded-lg focus:bg-app-bg-secondary dark:focus:bg-app-card/10 group cursor-pointer font-normal">
+                                                            <DropdownMenuItem
+                                                                onClick={() => { setSelectedPatient(patient); setIsEditarOpen(true) }}
+                                                                className="py-2.5 rounded-lg focus:bg-app-bg-secondary dark:focus:bg-app-card/10 group cursor-pointer font-normal"
+                                                            >
                                                                 <Edit2 className="h-4 w-4 mr-3 text-app-text-muted group-hover:text-[#0039A6] dark:group-hover:text-white" />
                                                                 <span className="text-gray-700 dark:text-gray-200 group-hover:text-[#101828] dark:group-hover:text-white">Editar</span>
                                                             </DropdownMenuItem>
@@ -279,7 +330,10 @@ export const PacientesView = ({ onPageChange }: PacientesViewProps) => {
                                                                 <PlusCircle className="h-4 w-4 mr-3 text-app-text-muted group-hover:text-[#0039A6] dark:group-hover:text-white" />
                                                                 <span className="text-gray-700 dark:text-gray-200 group-hover:text-[#101828] dark:group-hover:text-white">Prescrição complementar</span>
                                                             </DropdownMenuItem>
-                                                            <DropdownMenuItem className="py-2.5 rounded-lg focus:bg-red-50 dark:focus:bg-red-900/20 text-red-600 dark:text-red-400 group cursor-pointer font-normal">
+                                                            <DropdownMenuItem
+                                                                onClick={() => { setSelectedPatient(patient); setIsExcluirOpen(true) }}
+                                                                className="py-2.5 rounded-lg focus:bg-red-50 dark:focus:bg-red-900/20 text-red-600 dark:text-red-400 group cursor-pointer font-normal"
+                                                            >
                                                                 <Trash2 className="h-4 w-4 mr-3 text-red-400 group-hover:text-red-600" />
                                                                 <span>Excluir</span>
                                                             </DropdownMenuItem>

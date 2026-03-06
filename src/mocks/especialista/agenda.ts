@@ -18,7 +18,7 @@ export const MOCK_APPOINTMENTS: Appointment[] = [
         id: 1,
         time: '08:30',
         duration: '1h',
-        title: 'Reuniao com equipe de TI',
+        title: 'Reunião com equipe de TI',
         type: 'administrativo',
         description: 'Discussao sobre atualizacao do sistema',
         status: 'agendado'

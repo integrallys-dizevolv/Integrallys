@@ -201,7 +201,7 @@ export function MarcarConsultaModal({ isOpen, onClose, initialData }: MarcarCons
             </Button>
             <Button
               type="submit"
-              className="w-full sm:w-auto h-11 px-8 rounded-[10px] bg-[#0039A6] hover:bg-[#1d3b2e] text-white font-normal shadow-sm transition-all active:scale-[0.98]"
+              className="w-full sm:w-auto h-11 px-8 rounded-[10px] bg-[#0039A6] hover:bg-[#002d82] text-white font-normal shadow-sm transition-all active:scale-[0.98]"
             >
               Agendar consulta
             </Button>

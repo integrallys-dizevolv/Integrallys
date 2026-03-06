@@ -2,7 +2,7 @@ export interface InventoryItem {
   id: string;
   productName: string;
   category: string;
-  stockType: "Suprimentos" | "Prescricao/Vendas";
+  stockType: "Suprimentos" | "Prescrição/Vendas";
   unit: string;
   quantity: number;
   minQuantity: number;
@@ -15,8 +15,8 @@ export interface InventoryItem {
 export interface InventoryMovement {
   id: string;
   type: "Entrada" | "Saida";
-  stockType: "Suprimentos" | "Prescricao/Vendas";
-  origin: "Procedimento Pago" | "Prescricao/Venda" | "Entrada Manual";
+  stockType: "Suprimentos" | "Prescrição/Vendas";
+  origin: "Procedimento Pago" | "Prescrição/Venda" | "Entrada Manual";
   procedureName?: string;
   date: string;
   time: string;
@@ -89,7 +89,7 @@ export const MOCK_ESTOQUE_SALDO: InventoryItem[] = [
     id: "5",
     productName: "Anestesico Topico 30g",
     category: "Medicamentos",
-    stockType: "Prescricao/Vendas",
+    stockType: "Prescrição/Vendas",
     unit: "Central",
     quantity: 25,
     minQuantity: 10,
@@ -149,8 +149,8 @@ export const MOCK_ESTOQUE_MOVIMENTACAO: InventoryMovement[] = [
   {
     id: "4",
     type: "Saida",
-    stockType: "Prescricao/Vendas",
-    origin: "Prescricao/Venda",
+    stockType: "Prescrição/Vendas",
+    origin: "Prescrição/Venda",
     date: "2026-02-10",
     time: "16:20",
     unit: "Norte",
@@ -165,7 +165,7 @@ export const MOCK_ESTOQUE_MOVIMENTACAO: InventoryMovement[] = [
     type: "Saida",
     stockType: "Suprimentos",
     origin: "Procedimento Pago",
-    procedureName: "Sessao de Fisioterapia",
+    procedureName: "Sessão de Fisioterapia",
     date: "2026-02-09",
     time: "10:15",
     unit: "Sul",

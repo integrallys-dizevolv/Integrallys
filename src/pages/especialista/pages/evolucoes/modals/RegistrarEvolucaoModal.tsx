@@ -117,7 +117,7 @@ export function RegistrarEvolucaoModal({ isOpen, onClose, paciente }: RegistrarE
                                 Cancelar
                             </Button>
                             <Button
-                                className="h-11 px-8 rounded-[10px] bg-[#0039A6] hover:bg-[#1d3b2e] text-white font-normal shadow-lg shadow-[#0039A6]/20 transition-all hover:scale-[1.02]"
+                                className="h-11 px-8 rounded-[10px] bg-[#0039A6] hover:bg-[#002d82] text-white font-normal shadow-lg shadow-[#0039A6]/20 transition-all hover:scale-[1.02]"
                                 onClick={() => {
                                     // Aqui iria a lógica de salvar
                                     onClose();

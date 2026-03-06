@@ -25,24 +25,24 @@ export const mockAgendaPersonal = [
         id: 201,
         hora: '08:30',
         duracao: '1h',
-        titulo: 'Reuniao de Gestao Semanal',
+        titulo: 'Reunião de Gestão Semanal',
         tipo: 'Reunião' as const,
         prioridade: 'Alta' as const,
         status: 'Pendente' as const,
         descricao: 'Alinhamento com diretores de unidade',
-        local: 'Sala de Conferencia',
+        local: 'Sala de Conferência',
         participantes: 'Diretoria (3 pessoas)',
-        data: '2026-02-21'
+        data: '2026-03-05'
     },
     {
         id: 202,
         hora: '11:00',
         duracao: '30min',
-        titulo: 'Revisar Estoque Critico',
+        titulo: 'Revisar Estoque Crítico',
         tipo: 'Tarefa' as const,
         prioridade: 'Alta' as const,
         status: 'Em Andamento' as const,
-        descricao: 'Validar itens abaixo do minimo',
-        data: '2026-02-21'
+        descricao: 'Validar itens abaixo do mínimo',
+        data: '2026-03-05'
     }
 ]

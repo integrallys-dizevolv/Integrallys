@@ -34,7 +34,7 @@ const PATIENT_DETAILS: PatientDetails[] = [
     nome: 'Maria Silva',
     dataNascimento: '15/03/1985',
     cpf: '123.456.789-00',
-    endereco: 'Rua das Acacias, 123 - Centro, Sao Paulo/SP',
+    endereco: 'Rua das Acácias, 123 - Centro, São Paulo/SP',
     telefone: '(11) 99999-9999',
     email: 'maria.silva@email.com'
   },
@@ -42,7 +42,7 @@ const PATIENT_DETAILS: PatientDetails[] = [
     nome: 'Joao Santos',
     dataNascimento: '02/08/1978',
     cpf: '987.654.321-00',
-    endereco: 'Av. Paulista, 987 - Bela Vista, Sao Paulo/SP',
+    endereco: 'Av. Paulista, 987 - Bela Vista, São Paulo/SP',
     telefone: '(11) 98888-8888',
     email: 'joao.santos@email.com'
   }
@@ -75,7 +75,7 @@ const getAgeFromBirthDate = (dateStr?: string) => {
 const steps = [
   { id: 1, label: 'Anamnese' },
   { id: 2, label: 'Prontuario' },
-  { id: 3, label: 'Prescricao' },
+  { id: 3, label: 'Prescrição' },
   { id: 4, label: 'Documentos' },
   { id: 5, label: 'Conclusao' }
 ]

@@ -491,7 +491,7 @@ export function CadastrosTab() {
                         className="pl-10 h-11 rounded-xl font-normal"
                     />
                 </div>
-                <Button onClick={handleOpenCreate} className="h-11 px-6 bg-[#0039A6] hover:bg-[#1d3b2e] text-white rounded-xl gap-2 font-normal">
+                <Button onClick={handleOpenCreate} className="h-11 px-6 bg-[#0039A6] hover:bg-[#002d82] text-white rounded-xl gap-2 font-normal">
                     <Plus size={18} />
                     Novo
                 </Button>
@@ -873,7 +873,7 @@ export function CadastrosTab() {
                             <Button variant="outline" onClick={() => setIsEditModalOpen(false)} className="flex-1 h-11 rounded-xl font-normal">
                                 Cancelar
                             </Button>
-                            <Button onClick={handleSave} className="flex-1 h-11 bg-[#0039A6] hover:bg-[#1d3b2e] text-white rounded-xl font-normal">
+                            <Button onClick={handleSave} className="flex-1 h-11 bg-[#0039A6] hover:bg-[#002d82] text-white rounded-xl font-normal">
                                 {isCreating ? 'Criar' : 'Salvar'}
                             </Button>
                         </DialogFooter>

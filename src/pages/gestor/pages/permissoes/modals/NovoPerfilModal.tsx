@@ -137,7 +137,7 @@ export const NovoPerfilModal = ({ isOpen, onClose, perfilInicial, onSave }: Novo
                                 placeholder="Ex: Enfermeiro, Recepcionista"
                                 value={nome}
                                 onChange={(e) => setNome(e.target.value)}
-                                className="h-11 rounded-xl border-app-border bg-app-card dark:bg-[#020817] dark:border-app-border-dark text-sm placeholder:text-app-text-muted font-normal focus-visible:ring-1 focus-visible:ring-emerald-500"
+                                className="h-11 rounded-xl border-app-border bg-app-card dark:bg-[#020817] dark:border-app-border-dark text-sm placeholder:text-app-text-muted font-normal focus-visible:ring-1 focus-visible:ring-[#0039A6]"
                             />
                         </div>
 
@@ -147,7 +147,7 @@ export const NovoPerfilModal = ({ isOpen, onClose, perfilInicial, onSave }: Novo
                                 placeholder="Descreva brevemente as responsabilidades deste perfil..."
                                 value={descricao}
                                 onChange={(e) => setDescricao(e.target.value)}
-                                className="min-h-[70px] rounded-xl border-app-border bg-app-card dark:bg-[#020817] dark:border-app-border-dark text-sm placeholder:text-app-text-muted focus-visible:ring-1 focus-visible:ring-emerald-500 resize-none font-normal"
+                                className="min-h-[70px] rounded-xl border-app-border bg-app-card dark:bg-[#020817] dark:border-app-border-dark text-sm placeholder:text-app-text-muted focus-visible:ring-1 focus-visible:ring-[#0039A6] resize-none font-normal"
                             />
                         </div>
 
@@ -272,7 +272,7 @@ export const NovoPerfilModal = ({ isOpen, onClose, perfilInicial, onSave }: Novo
                         Cancelar
                     </Button>
                     <Button
-                        className="flex-1 sm:flex-none h-11 px-8 rounded-xl bg-[#0039A6] hover:bg-[#1d3b2e] text-white shadow-sm font-normal"
+                        className="flex-1 sm:flex-none h-11 px-8 rounded-xl bg-[#0039A6] hover:bg-[#002d82] text-white shadow-sm font-normal"
                         onClick={() => {
                             if (!nome.trim()) return
                             onSave?.({

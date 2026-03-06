@@ -246,7 +246,7 @@ export function VisualizarAnamneseModal({ isOpen, onClose, anamnese }: Visualiza
                     <div className="flex items-center justify-end pt-6 mt-6 border-t border-gray-100 dark:border-gray-800">
                         <Button
                             onClick={onClose}
-                            className="h-9 px-6 rounded-lg bg-[#0039A6] hover:bg-[#1d3b2e] text-white font-normal text-sm shadow-lg shadow-[#0039A6]/20 transition-all hover:scale-[1.02]"
+                            className="h-9 px-6 rounded-lg bg-[#0039A6] hover:bg-[#002d82] text-white font-normal text-sm shadow-lg shadow-[#0039A6]/20 transition-all hover:scale-[1.02]"
                         >
                             Fechar
                         </Button>

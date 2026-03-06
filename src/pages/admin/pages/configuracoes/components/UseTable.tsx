@@ -29,12 +29,12 @@ export function UseTable<T>({
     rowKey,
 }: UseTableProps<T>) {
     return (
-        <Card className="rounded-xl border-app-border dark:border-[#2d5a46] bg-app-card dark:bg-[#1a3028] shadow-sm overflow-hidden animate-in fade-in duration-500">
+        <Card className="rounded-xl border-app-border dark:border-app-border-dark bg-app-card dark:bg-[#0c1e3d] shadow-sm overflow-hidden animate-in fade-in duration-500">
             <CardContent className="p-0">
                 <div className="overflow-x-auto custom-scrollbar">
                     <Table>
                         <TableHeader>
-                            <TableRow className="bg-slate-50/50 dark:bg-app-card/5 border-b border-gray-100 dark:border-[#2d5a46] hover:bg-transparent">
+                            <TableRow className="bg-slate-50/50 dark:bg-app-card/5 border-b border-gray-100 dark:border-app-border-dark hover:bg-transparent">
                                 {columns.map((column, index) => (
                                     <TableHead
                                         key={index}
@@ -59,7 +59,7 @@ export function UseTable<T>({
                                 data.map((item) => (
                                     <TableRow
                                         key={rowKey(item)}
-                                        className="border-b border-gray-50 dark:border-[#2d5a46] hover:bg-app-bg-secondary/50 dark:hover:bg-app-card/5 transition-colors group"
+                                        className="border-b border-gray-50 dark:border-app-border-dark hover:bg-app-bg-secondary/50 dark:hover:bg-app-card/5 transition-colors group"
                                     >
                                         {columns.map((column, index) => (
                                             <TableCell

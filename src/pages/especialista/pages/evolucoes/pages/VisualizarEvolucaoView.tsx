@@ -118,7 +118,7 @@ export const VisualizarEvolucaoView = ({ onPageChange }: VisualizarEvolucaoViewP
                     </Button>
                     <Button
                         onClick={() => setIsRetornoModalOpen(true)}
-                        className="h-10 rounded-[10px] bg-[#0039A6] hover:bg-[#1d3b2e] text-white font-normal gap-2 px-4 shadow-sm flex flex-row items-center justify-center whitespace-nowrap w-full xl:w-auto"
+                        className="h-10 rounded-[10px] bg-[#0039A6] hover:bg-[#002d82] text-white font-normal gap-2 px-4 shadow-sm flex flex-row items-center justify-center whitespace-nowrap w-full xl:w-auto"
                     >
                         <CalendarPlus className="h-4 w-4 shrink-0" />
                         Marcar retorno
@@ -129,7 +129,7 @@ export const VisualizarEvolucaoView = ({ onPageChange }: VisualizarEvolucaoViewP
                     </Button>
                     <Button
                         onClick={() => setIsPrescricaoModalOpen(true)}
-                        className="h-10 rounded-[10px] bg-[#0039A6] hover:bg-[#1d3b2e] text-white font-normal gap-2 px-4 shadow-sm flex flex-row items-center justify-center whitespace-nowrap w-full xl:w-auto"
+                        className="h-10 rounded-[10px] bg-[#0039A6] hover:bg-[#002d82] text-white font-normal gap-2 px-4 shadow-sm flex flex-row items-center justify-center whitespace-nowrap w-full xl:w-auto"
                     >
                         <Plus className="h-4 w-4 shrink-0" />
                         Nova prescrição
@@ -212,7 +212,7 @@ export const VisualizarEvolucaoView = ({ onPageChange }: VisualizarEvolucaoViewP
                         <h3 className="text-lg font-normal text-gray-900 dark:text-white">Documentos enviados</h3>
                         <Button
                             onClick={() => setIsAddDocumentoModalOpen(true)}
-                            className="h-10 rounded-[8px] bg-[#0039A6] hover:bg-[#1d3b2e] text-white font-normal gap-2 shadow-sm shadow-[#0039A6]/20 px-4 flex flex-row items-center whitespace-nowrap"
+                            className="h-10 rounded-[8px] bg-[#0039A6] hover:bg-[#002d82] text-white font-normal gap-2 shadow-sm shadow-[#0039A6]/20 px-4 flex flex-row items-center whitespace-nowrap"
                         >
                             <Plus className="h-4 w-4 shrink-0" />
                             Adicionar documento
@@ -268,7 +268,7 @@ export const VisualizarEvolucaoView = ({ onPageChange }: VisualizarEvolucaoViewP
                         <h3 className="text-lg font-normal text-gray-900 dark:text-white">Prescrições do paciente</h3>
                         <Button
                             onClick={() => setIsAddProdutoModalOpen(true)}
-                            className="h-10 rounded-[8px] bg-[#0039A6] hover:bg-[#1d3b2e] text-white font-normal gap-2 shadow-sm shadow-[#0039A6]/20 px-4 flex flex-row items-center whitespace-nowrap"
+                            className="h-10 rounded-[8px] bg-[#0039A6] hover:bg-[#002d82] text-white font-normal gap-2 shadow-sm shadow-[#0039A6]/20 px-4 flex flex-row items-center whitespace-nowrap"
                         >
                             <Plus className="h-4 w-4 shrink-0" />
                             Adicionar produto

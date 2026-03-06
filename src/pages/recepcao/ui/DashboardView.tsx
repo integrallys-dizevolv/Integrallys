@@ -2,6 +2,7 @@ import React from 'react'
 import { Clock, Bell, User } from 'lucide-react'
 import { Button } from '@/components/ui/Button'
 import { Card, CardContent } from '@/components/ui/Card'
+import { toast } from 'sonner'
 
 interface DashboardViewProps {
     onPageChange?: (page: string) => void
@@ -76,7 +77,7 @@ export const DashboardView = ({ onPageChange }: DashboardViewProps) => {
                                     <span className="font-normal text-app-text-primary dark:text-white text-sm">
                                         {app.time}
                                     </span>
-                                    <button className="text-app-text-muted hover:text-app-text-secondary dark:hover:text-white/80 transition-colors">
+                                    <button onClick={() => toast.info('Notificações disponíveis em breve.')} className="text-app-text-muted hover:text-app-text-secondary dark:hover:text-white/80 transition-colors">
                                         <Bell size={20} />
                                     </button>
                                 </div>

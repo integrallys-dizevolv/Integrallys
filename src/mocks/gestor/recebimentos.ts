@@ -9,7 +9,7 @@ import {
 } from '@/mocks/shared/base'
 
 export type RecebimentoStatus = 'Liquidado' | 'Em Aberto' | 'A Vencer' | 'Atrasado'
-export type RecebimentoForma = 'PIX' | 'Dinheiro' | 'Cartao Debito' | 'Cartao Credito' | 'Boleto'
+export type RecebimentoForma = 'PIX' | 'Dinheiro' | 'Cartão Débito' | 'Cartão Crédito' | 'Boleto'
 
 export interface GestorRecebimento {
   id: string
@@ -53,7 +53,7 @@ const recebimentosAtendimentos: GestorRecebimento[] = BASE_AGENDAMENTOS.map((ite
 
   if (item.pagamento === 'Pago') {
     valorRecebido = valorTotal
-    formaRecebimento = index % 2 === 0 ? 'Cartao Credito' : 'PIX'
+    formaRecebimento = index % 2 === 0 ? 'Cartão Crédito' : 'PIX'
     status = 'Liquidado'
   }
 
@@ -92,7 +92,7 @@ const recebimentosProdutos: GestorRecebimento[] = BASE_PRESCRICOES.flatMap((pres
     const produto = getProdutoById(item.produtoId)!
     const valorTotal = round2(produto.valor * item.quantidade)
     const documento = `REC-PRD-${String(idxPresc + 1).padStart(4, '0')}-${idxItem + 1}`
-    const formaRecebimento: RecebimentoForma = idxItem % 2 === 0 ? 'Cartao Debito' : 'Dinheiro'
+    const formaRecebimento: RecebimentoForma = idxItem % 2 === 0 ? 'Cartão Débito' : 'Dinheiro'
     const valorRecebido = idxItem % 2 === 0 ? round2(valorTotal * 0.7) : valorTotal
     const status: RecebimentoStatus = valorRecebido === valorTotal ? 'Liquidado' : 'Em Aberto'
 
@@ -101,11 +101,11 @@ const recebimentosProdutos: GestorRecebimento[] = BASE_PRESCRICOES.flatMap((pres
       numeroDocumento: documento,
       parcela: valorRecebido === valorTotal ? '1/1' : '1/2',
       devedor: paciente.nome,
-      descricao: `Prescricao/Venda - ${produto.nome}`,
+      descricao: `Prescrição/Venda - ${produto.nome}`,
       profissional: profissional.nome,
       especialidade: profissional.especialidade,
       produto: produto.nome,
-      categoria: 'Prescricao/Venda',
+      categoria: 'Prescrição/Venda',
       dataEmissao: addDays(prescricao.data, -1),
       dataVencimento: addDays(prescricao.data, 15),
       formaRecebimento,

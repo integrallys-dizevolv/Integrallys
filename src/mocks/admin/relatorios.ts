@@ -88,7 +88,7 @@ export const MOCK_CLIENTES_REPORT = [
         cidade: 'São Paulo',
         midia: 'Instagram',
         procedimento: 'Consulta',
-        unidade: 'Clinica Central',
+        unidade: 'Clínica Central',
         convenio: 'Particular',
         atendimentos: 24,
         ultimo: '21/11/2026',
@@ -162,7 +162,7 @@ export const MOCK_ORCAMENTOS_REPORT = [
         cliente: 'Carlos Alberto',
         profissional: 'Dra. Ana Paula',
         produto: 'Kit Suplementos Completo',
-        unidade: 'Clinica Central',
+        unidade: 'Clínica Central',
         valor: 450.00,
         validade: '30/11/2026',
         dias: 9,
@@ -173,7 +173,7 @@ export const MOCK_ORCAMENTOS_REPORT = [
         cliente: 'Patrícia Souza',
         profissional: 'Dr. Carlos Mendes',
         produto: 'Vitaminas Especiais',
-        unidade: 'Clinica Central',
+        unidade: 'Clínica Central',
         valor: 320.00,
         validade: '25/11/2026',
         dias: -4,
@@ -195,7 +195,7 @@ export const MOCK_ESTOQUE_REPORT = [
     {
         produto: 'Ômega 3 Premium',
         categoria: 'Suplementos',
-        tipoEstoque: 'Prescricao/Vendas',
+        tipoEstoque: 'Prescrição/Vendas',
         quantidade: 45,
         minimo: 20,
         custoUnitario: 52.00,
@@ -210,7 +210,7 @@ export const MOCK_ESTOQUE_REPORT = [
     {
         produto: 'Colágeno Hidrolisado',
         categoria: 'Suplementos',
-        tipoEstoque: 'Prescricao/Vendas',
+        tipoEstoque: 'Prescrição/Vendas',
         quantidade: 12,
         minimo: 15,
         custoUnitario: 60.00,
@@ -245,7 +245,7 @@ export const MOCK_REPASSE_REPORT = [
         horario: '09:00',
         profissional: 'Dra. Ana Paula',
         procedimento: 'Consulta Nutricional',
-        unidade: 'Clinica Central',
+        unidade: 'Clínica Central',
         situacao: 'Atendido',
         cliente: 'Maria Silva Santos',
         recebido: 200.00,
@@ -504,12 +504,12 @@ export const MOCK_COMISSOES_REPORT = [
 
 export const MOCK_ESTOQUE_ENTRADAS_DIARIAS = [
     {
-        unidade: 'Clinica Central',
+        unidade: 'Clínica Central',
         usuario: 'Administrador',
         data: '21/11/2026',
         notaFiscal: 'NF-89341',
         fornecedor: 'Nutriplus',
-        tipoEstoque: 'Prescricao/Vendas',
+        tipoEstoque: 'Prescrição/Vendas',
         produto: '?mega 3 Premium',
         quantidade: 20,
         custoUnitario: 52.00,
@@ -531,11 +531,11 @@ export const MOCK_ESTOQUE_ENTRADAS_DIARIAS = [
 
 export const MOCK_ESTOQUE_SAIDAS_DIARIAS = [
     {
-        unidade: 'Clinica Central',
+        unidade: 'Clínica Central',
         usuario: 'Recep??o',
         data: '21/11/2026',
         cliente: 'Maria Silva Santos',
-        tipoEstoque: 'Prescricao/Vendas',
+        tipoEstoque: 'Prescrição/Vendas',
         produto: '?mega 3 Premium',
         quantidade: 2,
         custoUnitario: 52.00,

@@ -123,7 +123,7 @@ export function CheckoutModal({ isOpen, onClose, paymentData }: CheckoutModalPro
                                             )}
                                         </div>
                                     ))}
-                                    <Button variant="outline" size="sm" className="w-full border-dashed text-slate-500 h-9 hover:text-emerald-600 hover:border-emerald-200 hover:bg-emerald-50/50 text-xs">
+                                    <Button variant="outline" size="sm" className="w-full border-dashed text-slate-500 h-9 hover:text-[#0039A6] hover:border-blue-200 hover:bg-blue-50/50 text-xs">
                                         + Adicionar novo cartão
                                     </Button>
                                 </div>
@@ -165,7 +165,7 @@ export function CheckoutModal({ isOpen, onClose, paymentData }: CheckoutModalPro
                     {showConfirmButton && (
                         <div className="mt-2 animate-in slide-in-from-bottom-2 fade-in duration-300">
                             <Button
-                                className="w-full bg-[#0039A6] hover:bg-[#1d3b2e] text-white rounded-[10px] h-11 font-medium gap-2 flex items-center justify-center transition-all"
+                                className="w-full bg-[#0039A6] hover:bg-[#002d82] text-white rounded-[10px] h-11 font-medium gap-2 flex items-center justify-center transition-all"
                                 onClick={() => undefined}
                             >
                                 {method === 'pix' ? <CheckCircle className="h-4 w-4" /> : <CreditCard className="h-4 w-4" />}

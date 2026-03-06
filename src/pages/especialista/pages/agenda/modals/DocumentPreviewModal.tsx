@@ -1,3 +1,4 @@
+import { toast } from 'sonner'
 import React from 'react';
 import { Button } from '@/components/ui/Button';
 import { Dialog, DialogContent, DialogTitle } from '@/components/ui/Dialog';
@@ -88,7 +89,7 @@ export function DocumentPreviewModal({ isOpen, onClose, docTitle, docContent }: 
                 </div>
 
                 <div className="sticky bottom-0 z-10 bg-white dark:bg-[#0c1e3d] border-t border-gray-100 dark:border-gray-800 p-6 flex items-center justify-center gap-4">
-                    <Button variant="outline" className="h-12 px-8 rounded-full border-gray-200 dark:border-gray-800 font-normal">
+                    <Button variant="outline" onClick={() => toast.info('Download disponível em breve.')} className="h-12 px-8 rounded-full border-gray-200 dark:border-gray-800 font-normal">
                         <Download className="h-4 w-4 mr-2" /> Baixar PDF
                     </Button>
                     <Button onClick={() => window.print()} className="h-12 px-10 rounded-full bg-[#0039A6] hover:bg-[#002d82] text-white font-normal flex items-center gap-2">

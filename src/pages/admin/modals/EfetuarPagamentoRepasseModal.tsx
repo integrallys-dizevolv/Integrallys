@@ -154,7 +154,7 @@ export function EfetuarPagamentoRepasseModal({ isOpen, onClose, repasse }: Efetu
                                 </Button>
                                 <Button
                                     onClick={handleConfirm}
-                                    className={`flex-1 h-12 rounded-xl text-white font-normal shadow-lg ${isParceiro ? 'bg-orange-600 hover:bg-orange-700 shadow-orange-500/10' : 'bg-[#0039A6] hover:bg-[#1d3b2e] shadow-[#0039A6]/10'}`}
+                                    className={`flex-1 h-12 rounded-xl text-white font-normal shadow-lg ${isParceiro ? 'bg-orange-600 hover:bg-orange-700 shadow-orange-500/10' : 'bg-[#0039A6] hover:bg-[#002d82] shadow-[#0039A6]/10'}`}
                                 >
                                     Confirmar
                                 </Button>
@@ -193,7 +193,7 @@ export function EfetuarPagamentoRepasseModal({ isOpen, onClose, repasse }: Efetu
 
                         <Button
                             onClick={handleClose}
-                            className="w-full h-12 bg-[#0039A6] hover:bg-[#1d3b2e] text-white rounded-xl font-normal shadow-lg shadow-[#0039A6]/10"
+                            className="w-full h-12 bg-[#0039A6] hover:bg-[#002d82] text-white rounded-xl font-normal shadow-lg shadow-[#0039A6]/10"
                         >
                             Fechar
                         </Button>

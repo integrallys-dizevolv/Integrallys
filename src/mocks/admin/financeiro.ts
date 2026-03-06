@@ -48,7 +48,7 @@ export const MOCK_TRANSACTIONS = [
         dataEmissao: '04/11/2026',
         cartaoBandeira: 'Visa Business',
         cartaoFinal: '4821',
-        cartaoTitular: 'Integrallys Clinica Ltda',
+        cartaoTitular: 'Integrallys Clínica Ltda',
         fechamentoFatura: '10',
         vencimentoFatura: '20',
     },

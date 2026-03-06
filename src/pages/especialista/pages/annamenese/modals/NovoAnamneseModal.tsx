@@ -143,7 +143,7 @@ export function NovoAnamneseModal({ isOpen, onClose }: NovoAnamneseModalProps) {
                                 Cancelar
                             </Button>
                             <Button
-                                className="h-12 px-10 rounded-[12px] bg-[#0039A6] hover:bg-[#1d3b2e] text-white font-normal text-base shadow-lg shadow-[#0039A6]/20 transition-all hover:scale-[1.02] hover:shadow-xl"
+                                className="h-12 px-10 rounded-[12px] bg-[#0039A6] hover:bg-[#002d82] text-white font-normal text-base shadow-lg shadow-[#0039A6]/20 transition-all hover:scale-[1.02] hover:shadow-xl"
                                 onClick={() => {
                                     onClose();
                                 }}

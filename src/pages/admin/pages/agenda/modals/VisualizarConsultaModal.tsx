@@ -160,7 +160,7 @@ export function VisualizarConsultaModal({
         <DialogFooter>
           <Button
             onClick={onClose}
-            className="w-full h-11 bg-[#0039A6] hover:bg-[#1d3b2e] text-white font-normal rounded-[10px] shadow-sm transition-all active:scale-[0.98]"
+            className="w-full h-11 bg-[#0039A6] hover:bg-[#002d82] text-white font-normal rounded-[10px] shadow-sm transition-all active:scale-[0.98]"
           >
             Fechar detalhes
           </Button>

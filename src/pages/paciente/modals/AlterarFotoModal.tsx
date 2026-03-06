@@ -83,7 +83,7 @@ export function AlterarFotoModal({ isOpen, onClose }: AlterarFotoModalProps) {
                             Cancelar
                         </Button>
                         <Button
-                            className="h-11 rounded-[10px] px-6 bg-[#0039A6] hover:bg-[#1d3b2e] text-white w-full sm:w-auto"
+                            className="h-11 rounded-[10px] px-6 bg-[#0039A6] hover:bg-[#002d82] text-white w-full sm:w-auto"
                             onClick={onClose} // Logic to save would go here
                         >
                             Salvar Foto

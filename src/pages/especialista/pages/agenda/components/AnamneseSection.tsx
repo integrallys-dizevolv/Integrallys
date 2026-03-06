@@ -27,9 +27,9 @@ const MEDICAMENTOS = [
     'Diuretico',
     'Insulina',
     'Hipertensivos',
-    'Medicacao para colesterol',
-    'Medicacao para triglicerideos',
-    'Medicacao para tireoide'
+    'Medicação para colesterol',
+    'Medicação para triglicerídeos',
+    'Medicação para tireoide'
 ]
 
 export const AnamneseSection = ({ onCancel, onNext }: AnamneseSectionProps) => {
@@ -118,7 +118,7 @@ export const AnamneseSection = ({ onCancel, onNext }: AnamneseSectionProps) => {
                         </div>
                         <div>
                             <h4 className="font-normal text-gray-900 dark:text-white">Consulta</h4>
-                            <p className="text-sm text-app-text-muted">Primeira vez / Avaliacao inicial completa</p>
+                            <p className="text-sm text-app-text-muted">Primeira vez / Avaliação inicial completa</p>
                         </div>
                     </div>
                     <div
@@ -130,7 +130,7 @@ export const AnamneseSection = ({ onCancel, onNext }: AnamneseSectionProps) => {
                         </div>
                         <div>
                             <h4 className="font-normal text-gray-900 dark:text-white">Reconsulta</h4>
-                            <p className="text-sm text-app-text-muted">Retorno / Avaliacao de evolucao</p>
+                            <p className="text-sm text-app-text-muted">Retorno / Avaliação de evolução</p>
                         </div>
                     </div>
                 </div>
@@ -333,16 +333,16 @@ export const AnamneseSection = ({ onCancel, onNext }: AnamneseSectionProps) => {
                     {/* Info Banner for Reconsulta */}
                     <div className="bg-green-50 dark:bg-green-900/20 border-l-4 border-green-500 p-4 rounded-r-[10px]">
                         <p className="text-green-700 dark:text-green-300 font-normal text-sm">
-                            <span className="font-normal">Reconsulta (Retorno)</span> - Avalie a evolucao do tratamento do paciente
+                            <span className="font-normal">Reconsulta (Retorno)</span> - Avalie a evolução do tratamento do paciente
                         </p>
                     </div>
 
                     {/* Reconsulta specific fields */}
                     <div className="space-y-6">
                         <div className="space-y-2">
-                            <Label className="font-normal text-gray-900 dark:text-white">Avaliacao do Cliente *</Label>
+                            <Label className="font-normal text-gray-900 dark:text-white">Avaliação do Cliente *</Label>
                             <Textarea
-                                placeholder="Registre a percepcao do especialista sobre o estado atual do paciente..."
+                                placeholder="Registre a percepção do especialista sobre o estado atual do paciente..."
                                 value={anamneseData.avaliacaoCliente}
                                 onChange={(e) => setAnamneseData(p => ({ ...p, avaliacaoCliente: e.target.value }))}
                                 readOnly={isReadOnly}
@@ -362,9 +362,9 @@ export const AnamneseSection = ({ onCancel, onNext }: AnamneseSectionProps) => {
                         </div>
 
                         <div className="space-y-2">
-                            <Label className="font-normal text-gray-900 dark:text-white">Indicacao para os Proximos Tratamentos *</Label>
+                            <Label className="font-normal text-gray-900 dark:text-white">Indicação para os Próximos Tratamentos *</Label>
                             <Textarea
-                                placeholder="Planejamento dos proximos passos ou encaminhamentos..."
+                                placeholder="Planejamento dos próximos passos ou encaminhamentos..."
                                 value={anamneseData.indicacaoTratamento}
                                 onChange={(e) => setAnamneseData(p => ({ ...p, indicacaoTratamento: e.target.value }))}
                                 readOnly={isReadOnly}
@@ -386,7 +386,7 @@ export const AnamneseSection = ({ onCancel, onNext }: AnamneseSectionProps) => {
                 </Button>
                 <Button
                     onClick={onNext}
-                    className="h-12 px-8 bg-[#0039A6] hover:bg-[#1d3b2e] text-white rounded-[10px] font-normal flex items-center gap-2"
+                    className="h-12 px-8 bg-[#0039A6] hover:bg-[#002d82] text-white rounded-[10px] font-normal flex items-center gap-2"
                 >
                     Proximo: Prontuario <ChevronRight className="h-4 w-4" />
                 </Button>

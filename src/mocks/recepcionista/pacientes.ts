@@ -35,10 +35,10 @@ export const MOCK_PACIENTES: Patient[] = BASE_PACIENTES_LIST.map((paciente, inde
     number: '123',
     complement: '',
     neighborhood: 'Centro',
-    city: 'Sao Paulo',
+    city: 'São Paulo',
     state: 'SP'
   },
-  source: index % 2 === 0 ? 'Indicacao' : 'Instagram',
+  source: index % 2 === 0 ? 'Indicação' : 'Instagram',
   specialNeeds: {
     hasNeeds: false
   },

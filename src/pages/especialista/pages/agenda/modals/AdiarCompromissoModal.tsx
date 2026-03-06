@@ -112,7 +112,7 @@ export function AdiarCompromissoModal({ isOpen, onClose, appointment }: AdiarCom
                             Cancelar
                         </Button>
                         <Button
-                            className="h-12 px-8 rounded-[10px] bg-[#0039A6] hover:bg-[#1d3b2e] text-white font-normal shadow-lg shadow-[#0039A6]/20 transition-all hover:scale-[1.02]"
+                            className="h-12 px-8 rounded-[10px] bg-[#0039A6] hover:bg-[#002d82] text-white font-normal shadow-lg shadow-[#0039A6]/20 transition-all hover:scale-[1.02]"
                             onClick={() => {
                                 // Lógica de adiamento aqui
                                 onClose();

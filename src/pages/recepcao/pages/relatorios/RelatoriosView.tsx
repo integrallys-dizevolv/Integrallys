@@ -1,3 +1,4 @@
+import { toast } from 'sonner'
 import { useState, useMemo, useEffect } from 'react'
 import { SegmentedControl } from '@/components/ui/SegmentedControl'
 import { Card, CardContent } from '@/components/ui/Card'
@@ -666,11 +667,11 @@ export const RelatoriosView = ({ onPageChange }: RelatoriosViewProps) => {
                                 ))}
                             </div>
                             <div className="flex items-center gap-2">
-                                <Button variant="outline" className="h-10 px-4 rounded-xl border-app-border dark:border-app-border-dark font-normal flex items-center gap-2 hover:bg-app-bg-secondary transition-all">
+                                <Button variant="outline" onClick={() => toast.info("Impressão disponível em breve.")} className="h-10 px-4 rounded-xl border-app-border dark:border-app-border-dark font-normal flex items-center gap-2 hover:bg-app-bg-secondary transition-all">
                                     <Printer size={16} />
                                     Imprimir
                                 </Button>
-                                <Button className="h-10 px-4 rounded-xl bg-[#0039A6] hover:bg-[#002d82] text-white font-normal flex items-center gap-2 shadow-lg shadow-[#0039A6]/10 transition-all">
+                                <Button onClick={() => toast.info("Exportação disponível em breve.")} className="h-10 px-4 rounded-xl bg-[#0039A6] hover:bg-[#002d82] text-white font-normal flex items-center gap-2 shadow-lg shadow-[#0039A6]/10 transition-all">
                                     <Download size={16} />
                                     Exportar
                                 </Button>
@@ -1735,7 +1736,7 @@ export const RelatoriosView = ({ onPageChange }: RelatoriosViewProps) => {
                                     <SelectContent>
                                         <SelectItem value="todos">Todos os tipos</SelectItem>
                                         <SelectItem value="Suprimentos">Suprimentos</SelectItem>
-                                        <SelectItem value="Prescricao/Vendas">Prescrição/Vendas</SelectItem>
+                                        <SelectItem value="Prescrição/Vendas">Prescrição/Vendas</SelectItem>
                                     </SelectContent>
                                 </Select>
 

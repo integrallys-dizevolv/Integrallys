@@ -17,7 +17,7 @@ export function PerfilModal({ isOpen, onClose, profile, mode }: PerfilModalProps
 
     return (
         <Dialog open={isOpen} onOpenChange={onClose}>
-            <DialogContent className="max-w-[500px] w-[95%] sm:w-full gap-0 h-auto max-h-[90vh] flex flex-col p-0 rounded-[24px] overflow-hidden dark:bg-app-bg-dark dark:border-[#2d5a46]">
+            <DialogContent className="max-w-[500px] w-[95%] sm:w-full gap-0 h-auto max-h-[90vh] flex flex-col p-0 rounded-[24px] overflow-hidden dark:bg-app-bg-dark dark:border-app-border-dark">
                 <DialogHeader className="px-6 pt-6 pb-4 shrink-0">
                     <DialogTitle className="text-xl font-bold dark:text-white">
                         {isEdit ? 'Editar Perfil de Acesso' : 'Novo Perfil de Acesso'}

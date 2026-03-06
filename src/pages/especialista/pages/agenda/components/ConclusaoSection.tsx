@@ -61,7 +61,7 @@ export const ConclusaoSection = ({ onBack, onFinalize }: ConclusaoSectionProps) 
                                 <Button
                                     size="sm"
                                     onClick={handlePrintLabels}
-                                    className="bg-[#0039A6] hover:bg-[#1d3b2e] border border-[#2d5a46] text-white h-8 px-3 rounded-[8px] font-normal flex items-center gap-2 text-xs"
+                                    className="bg-[#0039A6] hover:bg-[#002d82] border border-app-border-dark text-white h-8 px-3 rounded-[8px] font-normal flex items-center gap-2 text-xs"
                                 >
                                     <Tag className="h-3 w-3" />
                                     Imprimir Todos os Rótulos
@@ -120,7 +120,7 @@ export const ConclusaoSection = ({ onBack, onFinalize }: ConclusaoSectionProps) 
                 </Button>
                 <Button
                     onClick={onFinalize}
-                    className="h-12 px-8 bg-[#0039A6] hover:bg-[#1d3b2e] border border-[#2d5a46] text-white rounded-[10px] font-normal flex items-center gap-2 shadow-lg hover:shadow-xl transition-all"
+                    className="h-12 px-8 bg-[#0039A6] hover:bg-[#002d82] border border-app-border-dark text-white rounded-[10px] font-normal flex items-center gap-2 shadow-lg hover:shadow-xl transition-all"
                 >
                     <Check className="h-4 w-4" /> Finalizar Atendimento
                 </Button>

@@ -1,3 +1,4 @@
+import { toast } from 'sonner'
 import { useEffect, useState } from 'react';
 import { Card } from '@/components/ui/Card';
 import { Button } from '@/components/ui/Button';
@@ -225,10 +226,10 @@ export const DreView = ({ dreItemsSource = MOCK_DRE_ITEMS, loading = false }: Dr
                         <p className="text-sm text-[#64748B] dark:text-app-text-muted">Baixe o demonstrativo para {dreFilters.mesAno}</p>
                     </div>
                     <div className="flex gap-3">
-                        <Button variant="outline" className="h-11 px-6 rounded-xl border-app-border dark:border-app-border-dark hover:bg-app-card dark:hover:bg-app-card/5 font-normal text-app-text-primary dark:text-white whitespace-nowrap flex items-center">
+                        <Button variant="outline" onClick={() => toast.info('Exportação PDF disponível em breve.')} className="h-11 px-6 rounded-xl border-app-border dark:border-app-border-dark hover:bg-app-card dark:hover:bg-app-card/5 font-normal text-app-text-primary dark:text-white whitespace-nowrap flex items-center">
                             <Download size={18} className="mr-2 shrink-0" /> Exportar PDF
                         </Button>
-                        <Button variant="outline" className="h-11 px-6 rounded-xl border-app-border dark:border-app-border-dark hover:bg-app-card dark:hover:bg-app-card/5 font-normal text-app-text-primary dark:text-white whitespace-nowrap flex items-center">
+                        <Button variant="outline" onClick={() => toast.info('Exportação XLSX disponível em breve.')} className="h-11 px-6 rounded-xl border-app-border dark:border-app-border-dark hover:bg-app-card dark:hover:bg-app-card/5 font-normal text-app-text-primary dark:text-white whitespace-nowrap flex items-center">
                             <FileText size={18} className="mr-2 shrink-0" /> Exportar XLSX
                         </Button>
                     </div>

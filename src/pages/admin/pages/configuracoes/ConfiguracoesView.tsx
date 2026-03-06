@@ -308,7 +308,7 @@ export function ConfiguracoesView({ onPageChange }: ConfiguracoesViewProps) {
 
               <div className="flex justify-end gap-3 pt-6 border-t border-gray-100 dark:border-app-border-dark">
                 <Button variant="outline" className="h-11 px-6 rounded-[10px] font-normal">Cancelar</Button>
-                <Button className="h-11 px-8 rounded-[10px] bg-[#0039A6] hover:bg-[#1d3b2e] text-white font-normal">Salvar configurações</Button>
+                <Button className="h-11 px-8 rounded-[10px] bg-[#0039A6] hover:bg-[#002d82] text-white font-normal">Salvar configurações</Button>
               </div>
             </div>
           )}

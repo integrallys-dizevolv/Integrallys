@@ -234,7 +234,7 @@ export function FinanceiroView({
                 </div>
                 <div className="flex justify-end gap-3 pt-2">
                   <Button variant="outline" onClick={closeModal} className="rounded-xl h-11 px-6 font-normal text-sm">Cancelar</Button>
-                  <Button onClick={closeModal} className="bg-[#0039A6] hover:bg-[#1d3b2e] text-white rounded-xl h-11 px-8 font-normal text-sm">Abrir caixa</Button>
+                  <Button onClick={closeModal} className="bg-[#0039A6] hover:bg-[#002d82] text-white rounded-xl h-11 px-8 font-normal text-sm">Abrir caixa</Button>
                 </div>
               </div>
             </div>
@@ -265,7 +265,7 @@ export function FinanceiroView({
                 </div>
                 <div className="flex justify-end gap-3 pt-2">
                   <Button variant="outline" onClick={closeModal} className="rounded-xl h-11 px-6 font-normal text-sm">Cancelar</Button>
-                  <Button onClick={closeModal} className="bg-[#0039A6] hover:bg-[#1d3b2e] text-white rounded-xl h-11 px-8 font-normal text-sm">Confirmar</Button>
+                  <Button onClick={closeModal} className="bg-[#0039A6] hover:bg-[#002d82] text-white rounded-xl h-11 px-8 font-normal text-sm">Confirmar</Button>
                 </div>
               </div>
             </div>
@@ -333,7 +333,7 @@ export function FinanceiroView({
                 </div>
                 <div className="flex justify-end gap-3 pt-2">
                   <Button variant="outline" onClick={closeModal} className="rounded-xl h-11 px-6 font-normal text-sm">Cancelar</Button>
-                  <Button onClick={closeModal} className="bg-[#0039A6] hover:bg-[#1d3b2e] text-white rounded-xl h-11 px-8 font-normal text-sm">Fechar caixa</Button>
+                  <Button onClick={closeModal} className="bg-[#0039A6] hover:bg-[#002d82] text-white rounded-xl h-11 px-8 font-normal text-sm">Fechar caixa</Button>
                 </div>
               </div>
             </div>

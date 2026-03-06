@@ -564,6 +564,7 @@ export const CaixaView = ({ onPageChange }: CaixaViewProps) => {
                         <div className="flex flex-col sm:flex-row gap-3 md:gap-4 pt-4">
                             <Button
                                 variant="outline"
+                                onClick={() => toast.info('Exportação disponível em breve.')}
                                 className="w-full sm:flex-1 h-12 md:h-13 rounded-xl font-bold gap-2 text-[#667085] dark:text-gray-300 border-gray-200 dark:border-gray-800 hover:bg-gray-50 dark:hover:bg-white/5 transition-all shadow-sm"
                             >
                                 <Download size={18} />
@@ -571,6 +572,7 @@ export const CaixaView = ({ onPageChange }: CaixaViewProps) => {
                             </Button>
                             <Button
                                 variant="outline"
+                                onClick={() => toast.info('Geração de relatório disponível em breve.')}
                                 className="w-full sm:flex-1 h-12 md:h-13 rounded-xl font-bold gap-2 text-[#667085] dark:text-gray-300 border-gray-200 dark:border-gray-800 hover:bg-gray-50 dark:hover:bg-white/5 transition-all shadow-sm"
                             >
                                 <FileText size={18} />

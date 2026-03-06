@@ -23,7 +23,7 @@ const getProfileScope = (profile: PerfilPermissaoModal | null) => {
 export function VisualizarPerfilModal({ isOpen, onClose, profile }: VisualizarPerfilModalProps) {
     return (
         <Dialog open={isOpen} onOpenChange={onClose}>
-            <DialogContent className="max-w-[600px] w-[95%] sm:w-full gap-0 overflow-hidden rounded-[24px] dark:bg-app-bg-dark dark:border-[#2d5a46]">
+            <DialogContent className="max-w-[600px] w-[95%] sm:w-full gap-0 overflow-hidden rounded-[24px] dark:bg-app-bg-dark dark:border-app-border-dark">
                 <DialogHeader className="px-6 pt-6 pb-4 shrink-0">
                     <DialogTitle className="text-xl font-normal dark:text-white">Visualizar perfil de acesso</DialogTitle>
                     <DialogDescription className="text-app-text-muted mt-1.5 dark:text-app-text-muted font-normal">
@@ -78,7 +78,7 @@ export function VisualizarPerfilModal({ isOpen, onClose, profile }: VisualizarPe
                 <DialogFooter className="px-6 py-6 pt-4 shrink-0">
                     <Button
                         onClick={() => onClose(false)}
-                        className="h-11 px-8 rounded-lg bg-[#0039A6] hover:bg-[#1d3b2e] text-white shadow-sm font-normal"
+                        className="h-11 px-8 rounded-lg bg-[#0039A6] hover:bg-[#002d82] text-white shadow-sm font-normal"
                     >
                         Fechar
                     </Button>

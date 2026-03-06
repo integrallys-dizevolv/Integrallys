@@ -173,7 +173,7 @@ export function AuditoriaView({ setCurrentPage }: AuditoriaViewProps) {
 
           <div className="flex gap-2 w-full">
             <Button
-              className="flex-1 flex flex-row items-center justify-center gap-2 h-11 px-3 sm:px-4 bg-[#0039A6] hover:bg-[#1d3b2e] text-white rounded-lg whitespace-nowrap transition-all active:scale-95 shadow-sm font-normal"
+              className="flex-1 flex flex-row items-center justify-center gap-2 h-11 px-3 sm:px-4 bg-[#0039A6] hover:bg-[#002d82] text-white rounded-lg whitespace-nowrap transition-all active:scale-95 shadow-sm font-normal"
             >
               <Download className="h-4 w-4 shrink-0" />
               <span className="text-sm font-normal leading-none">Exportar</span>
@@ -308,7 +308,7 @@ export function AuditoriaView({ setCurrentPage }: AuditoriaViewProps) {
               <div className="flex justify-end pt-2">
                 <Button
                   onClick={closeModal}
-                  className="bg-[#0039A6] hover:bg-[#1d3b2e] text-white px-8 h-11 rounded-xl font-normal shadow-sm transition-all active:scale-95"
+                  className="bg-[#0039A6] hover:bg-[#002d82] text-white px-8 h-11 rounded-xl font-normal shadow-sm transition-all active:scale-95"
                 >
                   Fechar
                 </Button>

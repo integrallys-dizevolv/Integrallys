@@ -81,14 +81,14 @@ export const MOCK_AGENDA_PERSONAL: AgendaPersonalItem[] = [
     id: 201,
     hora: '08:30',
     duracao: '1h',
-    titulo: 'Reuniao com equipe de TI',
+    titulo: 'Reunião com equipe de TI',
     tipo: 'Reunião',
     prioridade: 'Alta',
     status: 'Pendente',
     descricao: 'Discussao sobre atualizacao do sistema',
-    local: 'Sala de Reunioes 1',
+    local: 'Sala de Reuniões 1',
     participantes: 'Equipe TI (5 pessoas)',
-    data: '2026-02-21',
+    data: '2026-03-05',
     profissional: 'Dr. Joao Santos'
   }
 ];

@@ -13,7 +13,7 @@ interface ExcluirPerfilModalProps {
 export function ExcluirPerfilModal({ isOpen, onClose, profile, onConfirm }: ExcluirPerfilModalProps) {
     return (
         <Dialog open={isOpen} onOpenChange={onClose}>
-            <DialogContent className="max-w-[450px] w-[95%] sm:w-full gap-0 overflow-hidden rounded-[24px] dark:bg-app-bg-dark dark:border-[#2d5a46]">
+            <DialogContent className="max-w-[450px] w-[95%] sm:w-full gap-0 overflow-hidden rounded-[24px] dark:bg-app-bg-dark dark:border-app-border-dark">
                 <DialogHeader className="px-6 pt-8 pb-4 flex flex-col items-center text-center">
                     <div className="w-14 h-14 rounded-full bg-red-50 dark:bg-red-900/20 flex items-center justify-center mb-4">
                         <AlertTriangle className="h-7 w-7 text-red-600 dark:text-red-500" />

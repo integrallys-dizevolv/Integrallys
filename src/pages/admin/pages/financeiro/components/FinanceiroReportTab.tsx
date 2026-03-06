@@ -53,7 +53,7 @@ export function FinanceiroReportTab({
       {/* Botão de Ocultar Fluxo de Caixa (sempre visível) */}
       <div className="flex justify-start">
         <Button
-          className="bg-[#0039A6] hover:bg-[#1d3b2e] text-white"
+          className="bg-[#0039A6] hover:bg-[#002d82] text-white"
           onClick={() => setShowFluxoCaixa(!showFluxoCaixa)}
         >
           {showFluxoCaixa ? (
@@ -73,7 +73,7 @@ export function FinanceiroReportTab({
       {/* 4 Cards principais de resumo */}
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
         {/* Total em Caixas */}
-        <Card className={isDarkMode ? 'bg-[#1d3b2e]/30 border-[#0039A6]' : 'bg-app-card border-[#e6e6e6]'}>
+        <Card className={isDarkMode ? 'bg-[#0c1e3d]/30 border-[#0039A6]' : 'bg-app-card border-[#e6e6e6]'}>
           <CardContent className="pt-6 pb-6 px-6">
             <div className="flex items-center justify-between mb-2">
               <p className="text-sm text-[#6c757d]">Total em Caixas</p>
@@ -86,7 +86,7 @@ export function FinanceiroReportTab({
         </Card>
 
         {/* Entradas do Período */}
-        <Card className={isDarkMode ? 'bg-[#1d3b2e]/30 border-[#0039A6]' : 'bg-app-card border-[#e6e6e6]'}>
+        <Card className={isDarkMode ? 'bg-[#0c1e3d]/30 border-[#0039A6]' : 'bg-app-card border-[#e6e6e6]'}>
           <CardContent className="pt-6 pb-6 px-6">
             <div className="flex items-center justify-between mb-2">
               <p className="text-sm text-[#6c757d]">Entradas do Período</p>
@@ -99,7 +99,7 @@ export function FinanceiroReportTab({
         </Card>
 
         {/* Saídas do Período */}
-        <Card className={isDarkMode ? 'bg-[#1d3b2e]/30 border-[#0039A6]' : 'bg-app-card border-[#e6e6e6]'}>
+        <Card className={isDarkMode ? 'bg-[#0c1e3d]/30 border-[#0039A6]' : 'bg-app-card border-[#e6e6e6]'}>
           <CardContent className="pt-6 pb-6 px-6">
             <div className="flex items-center justify-between mb-2">
               <p className="text-sm text-[#6c757d]">Saídas do Período</p>
@@ -112,7 +112,7 @@ export function FinanceiroReportTab({
         </Card>
 
         {/* Saldo do Período */}
-        <Card className={isDarkMode ? 'bg-[#1d3b2e]/30 border-[#0039A6]' : 'bg-app-card border-[#e6e6e6]'}>
+        <Card className={isDarkMode ? 'bg-[#0c1e3d]/30 border-[#0039A6]' : 'bg-app-card border-[#e6e6e6]'}>
           <CardContent className="pt-6 pb-6 px-6">
             <div className="flex items-center justify-between mb-2">
               <p className="text-sm text-[#6c757d]">Saldo do Período</p>
@@ -127,7 +127,7 @@ export function FinanceiroReportTab({
 
       {/* Tabela de Saldo Detalhado por Caixa - mostra/oculta baseado no estado */}
       {showFluxoCaixa && (
-        <Card className={isDarkMode ? 'bg-[#1d3b2e]/30' : 'bg-app-card'}>
+        <Card className={isDarkMode ? 'bg-[#0c1e3d]/30' : 'bg-app-card'}>
           <CardHeader className="border-b border-[#e6e6e6]">
             <div>
               <CardTitle className="text-base">Saldo Detalhado por Caixa</CardTitle>
@@ -181,7 +181,7 @@ export function FinanceiroReportTab({
       )}
 
       {/* Gerador de Relatórios */}
-      <Card className={isDarkMode ? 'bg-[#1d3b2e]/30' : 'bg-app-card'}>
+      <Card className={isDarkMode ? 'bg-[#0c1e3d]/30' : 'bg-app-card'}>
         <CardHeader>
           <CardTitle>Gerar Novo Relatório</CardTitle>
           <p className="text-sm text-muted-foreground">Personalize e exporte relatórios financeiros</p>

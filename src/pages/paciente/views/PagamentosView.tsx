@@ -217,7 +217,7 @@ export function PagamentosView({ mockFaturas, onPageChange }: PagamentosViewProp
                                             Gerar Boleto
                                         </Button>
                                         <Button
-                                            className="flex-1 md:flex-none h-10 rounded-[10px] gap-2 whitespace-nowrap bg-[#0039A6] hover:bg-[#1d3b2e] text-white px-2 sm:px-4 text-xs sm:text-sm flex items-center justify-center"
+                                            className="flex-1 md:flex-none h-10 rounded-[10px] gap-2 whitespace-nowrap bg-[#0039A6] hover:bg-[#002d82] text-white px-2 sm:px-4 text-xs sm:text-sm flex items-center justify-center"
                                             onClick={() => handleOpenCheckout(item)}
                                         >
                                             <CreditCard className="h-3 w-3 sm:h-4 sm:w-4 shrink-0" />

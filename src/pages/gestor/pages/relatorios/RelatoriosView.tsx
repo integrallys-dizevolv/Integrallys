@@ -630,7 +630,7 @@ export function RelatoriosView({ onPageChange }: RelatoriosViewProps) {
                 <div className="flex flex-col sm:flex-row justify-between items-center gap-3 w-full">
                     <Button
                         variant="outline"
-                        className="flex items-center gap-2 h-11 px-4 border-[#dee2e6] dark:border-[#2d5a46] rounded-lg w-full sm:w-auto font-normal"
+                        className="flex items-center gap-2 h-11 px-4 border-[#dee2e6] dark:border-app-border-dark rounded-lg w-full sm:w-auto font-normal"
                         onClick={() => setShowFilters(!showFilters)}
                     >
                         <Filter className="h-4 w-4 text-[#4a5565] dark:text-app-text-muted" />
@@ -730,7 +730,7 @@ export function RelatoriosView({ onPageChange }: RelatoriosViewProps) {
                                     <InputField label="Produto" value={getFilter(activeReport, 'produto')} onChange={(v) => updateFilter(activeReport, 'produto', v)} />
                                     <InputField label="Categoria" value={getFilter(activeReport, 'categoria')} onChange={(v) => updateFilter(activeReport, 'categoria', v)} />
                                     <SelectField label="Tipo estoque" value={getFilter(activeReport, 'tipoEstoque', 'todos')} onChange={(v) => updateFilter(activeReport, 'tipoEstoque', v)} options={[
-                                        ['todos', 'Todos'], ['suprimentos', 'Suprimentos'], ['prescricao/vendas', 'Prescricao/Vendas'],
+                                        ['todos', 'Todos'], ['suprimentos', 'Suprimentos'], ['Prescrição/Vendas', 'Prescrição/Vendas'],
                                     ]} />
                                     <SelectField label="Status" value={getFilter(activeReport, 'status', 'todas')} onChange={(v) => updateFilter(activeReport, 'status', v)} options={[
                                         ['todas', 'Todas'], ['adequado', 'Normal'], ['baixo', 'Baixo'], ['critico', 'Critico'],
@@ -809,7 +809,7 @@ export function RelatoriosView({ onPageChange }: RelatoriosViewProps) {
                         </div>
                         <TableWrapper>
                             <TableHeader>
-                                <TableRow className="border-b border-[#dee2e6] dark:border-[#2d5a46]">
+                                <TableRow className="border-b border-[#dee2e6] dark:border-app-border-dark">
                                     <TableHead className="px-6 py-4">Data</TableHead>
                                     <TableHead className="px-6 py-4">Horário</TableHead>
                                     <TableHead className="px-6 py-4">Cliente</TableHead>
@@ -819,7 +819,7 @@ export function RelatoriosView({ onPageChange }: RelatoriosViewProps) {
                             </TableHeader>
                             <TableBody>
                                 {agendamentosFiltrados.map((item, i) => (
-                                    <TableRow key={i} className="border-b border-[#dee2e6] dark:border-[#2d5a46] hover:bg-app-bg-secondary dark:hover:bg-app-card/5">
+                                    <TableRow key={i} className="border-b border-[#dee2e6] dark:border-app-border-dark hover:bg-app-bg-secondary dark:hover:bg-app-card/5">
                                         <TableCell className="px-6 py-4">{item.data}</TableCell>
                                         <TableCell className="px-6 py-4">{item.horario}</TableCell>
                                         <TableCell className="px-6 py-4 font-medium text-[#101828] dark:text-white">{item.cliente}</TableCell>
@@ -843,7 +843,7 @@ export function RelatoriosView({ onPageChange }: RelatoriosViewProps) {
                 {activeReport === 'clientes' && (
                     <TableWrapper>
                         <TableHeader>
-                            <TableRow className="border-b border-[#dee2e6] dark:border-[#2d5a46]">
+                            <TableRow className="border-b border-[#dee2e6] dark:border-app-border-dark">
                                 <TableHead className="px-6 py-4">Nome</TableHead>
                                 <TableHead className="px-6 py-4">Cidade</TableHead>
                                 <TableHead className="px-6 py-4">Convênio</TableHead>
@@ -852,7 +852,7 @@ export function RelatoriosView({ onPageChange }: RelatoriosViewProps) {
                         </TableHeader>
                         <TableBody>
                             {clientesFiltrados.map((item, i) => (
-                                <TableRow key={i} className="border-b border-[#dee2e6] dark:border-[#2d5a46] hover:bg-app-bg-secondary dark:hover:bg-app-card/5">
+                                <TableRow key={i} className="border-b border-[#dee2e6] dark:border-app-border-dark hover:bg-app-bg-secondary dark:hover:bg-app-card/5">
                                     <TableCell className="px-6 py-4 font-normal text-[#101828] dark:text-white">{item.nome}</TableCell>
                                     <TableCell className="px-6 py-4 font-normal">{item.cidade}</TableCell>
                                     <TableCell className="px-6 py-4 font-normal">{item.convenio}</TableCell>
@@ -868,7 +868,7 @@ export function RelatoriosView({ onPageChange }: RelatoriosViewProps) {
                         <StatCard title="Total em Prescrição/Vendas" value={`R$ ${totalVendas.toFixed(2)}`} color="text-green-600" bg="bg-green-100 dark:bg-emerald-900/40" icon={DollarSign} />
                         <TableWrapper>
                             <TableHeader>
-                                <TableRow className="border-b border-[#dee2e6] dark:border-[#2d5a46]">
+                                <TableRow className="border-b border-[#dee2e6] dark:border-app-border-dark">
                                     <TableHead className="px-6 py-4">Data</TableHead>
                                     <TableHead className="px-6 py-4">Cliente</TableHead>
                                     <TableHead className="px-6 py-4">Total</TableHead>
@@ -877,7 +877,7 @@ export function RelatoriosView({ onPageChange }: RelatoriosViewProps) {
                             </TableHeader>
                             <TableBody>
                                 {vendasFiltrados.map((item, i) => (
-                                    <TableRow key={i} className="border-b border-[#dee2e6] dark:border-[#2d5a46] hover:bg-app-bg-secondary dark:hover:bg-app-card/5">
+                                    <TableRow key={i} className="border-b border-[#dee2e6] dark:border-app-border-dark hover:bg-app-bg-secondary dark:hover:bg-app-card/5">
                                         <TableCell className="px-6 py-4 font-normal">{item.data}</TableCell>
                                         <TableCell className="px-6 py-4 font-normal text-[#101828] dark:text-white">{item.cliente}</TableCell>
                                         <TableCell className="px-6 py-4 font-normal">R$ {item.total.toFixed(2)}</TableCell>
@@ -899,7 +899,7 @@ export function RelatoriosView({ onPageChange }: RelatoriosViewProps) {
 
                         <TableWrapper>
                             <TableHeader>
-                                <TableRow className="border-b border-[#dee2e6] dark:border-[#2d5a46]">
+                                <TableRow className="border-b border-[#dee2e6] dark:border-app-border-dark">
                                     <TableHead className="px-6 py-4">Data</TableHead>
                                     <TableHead className="px-6 py-4">Hora</TableHead>
                                     <TableHead className="px-6 py-4">Usuário</TableHead>
@@ -912,7 +912,7 @@ export function RelatoriosView({ onPageChange }: RelatoriosViewProps) {
                             </TableHeader>
                             <TableBody>
                                 {consumoInternoFiltrado.length > 0 ? consumoInternoFiltrado.map((item) => (
-                                    <TableRow key={item.id} className="border-b border-[#dee2e6] dark:border-[#2d5a46] hover:bg-app-bg-secondary dark:hover:bg-app-card/5">
+                                    <TableRow key={item.id} className="border-b border-[#dee2e6] dark:border-app-border-dark hover:bg-app-bg-secondary dark:hover:bg-app-card/5">
                                         <TableCell className="px-6 py-4">{item.data.split('-').reverse().join('/')}</TableCell>
                                         <TableCell className="px-6 py-4">{item.hora}</TableCell>
                                         <TableCell className="px-6 py-4 font-medium text-[#101828] dark:text-white">{item.usuario}</TableCell>
@@ -937,7 +937,7 @@ export function RelatoriosView({ onPageChange }: RelatoriosViewProps) {
                 {activeReport === 'orcamentos' && (
                     <TableWrapper>
                         <TableHeader>
-                            <TableRow className="border-b border-[#dee2e6] dark:border-[#2d5a46]">
+                            <TableRow className="border-b border-[#dee2e6] dark:border-app-border-dark">
                                 <TableHead className="px-6 py-4">Data</TableHead>
                                 <TableHead className="px-6 py-4">Cliente</TableHead>
                                 <TableHead className="px-6 py-4">Profissional</TableHead>
@@ -948,7 +948,7 @@ export function RelatoriosView({ onPageChange }: RelatoriosViewProps) {
                         </TableHeader>
                         <TableBody>
                             {orcamentosFiltrados.map((item, i) => (
-                                <TableRow key={i} className="border-b border-[#dee2e6] dark:border-[#2d5a46] hover:bg-app-bg-secondary dark:hover:bg-app-card/5">
+                                <TableRow key={i} className="border-b border-[#dee2e6] dark:border-app-border-dark hover:bg-app-bg-secondary dark:hover:bg-app-card/5">
                                     <TableCell className="px-6 py-4">{item.data}</TableCell>
                                     <TableCell className="px-6 py-4 font-medium text-[#101828] dark:text-white">{item.cliente}</TableCell>
                                     <TableCell className="px-6 py-4">{item.profissional}</TableCell>
@@ -977,7 +977,7 @@ export function RelatoriosView({ onPageChange }: RelatoriosViewProps) {
                         </div>
                         <TableWrapper>
                             <TableHeader>
-                                <TableRow className="border-b border-[#dee2e6] dark:border-[#2d5a46]">
+                                <TableRow className="border-b border-[#dee2e6] dark:border-app-border-dark">
                                     <TableHead className="px-6 py-4">Produto</TableHead>
                                     <TableHead className="px-6 py-4">Tipo Estoque</TableHead>
                                     <TableHead className="px-6 py-4">Lote</TableHead>
@@ -992,7 +992,7 @@ export function RelatoriosView({ onPageChange }: RelatoriosViewProps) {
                             </TableHeader>
                             <TableBody>
                                 {estoqueFiltrados.map((item, i) => (
-                                    <TableRow key={i} className="border-b border-[#dee2e6] dark:border-[#2d5a46] hover:bg-app-bg-secondary dark:hover:bg-app-card/5">
+                                    <TableRow key={i} className="border-b border-[#dee2e6] dark:border-app-border-dark hover:bg-app-bg-secondary dark:hover:bg-app-card/5">
                                         <TableCell className="px-6 py-4 font-medium text-[#101828] dark:text-white">{item.produto}</TableCell>
                                         <TableCell className="px-6 py-4">{item.tipoEstoque || "-"}</TableCell>
                                         <TableCell className="px-6 py-4">{item.lote}</TableCell>
@@ -1024,7 +1024,7 @@ export function RelatoriosView({ onPageChange }: RelatoriosViewProps) {
 
                         <TableWrapper>
                             <TableHeader>
-                                <TableRow className="border-b border-[#dee2e6] dark:border-[#2d5a46]">
+                                <TableRow className="border-b border-[#dee2e6] dark:border-app-border-dark">
                                     <TableHead className="px-6 py-4">Entrada - Unidade</TableHead>
                                     <TableHead className="px-6 py-4">Tipo Estoque</TableHead>
                                     <TableHead className="px-6 py-4">Usu?rio</TableHead>
@@ -1041,7 +1041,7 @@ export function RelatoriosView({ onPageChange }: RelatoriosViewProps) {
                             </TableHeader>
                             <TableBody>
                                 {MOCK_ESTOQUE_ENTRADAS_DIARIAS.map((item, i) => (
-                                    <TableRow key={i} className="border-b border-[#dee2e6] dark:border-[#2d5a46] hover:bg-app-bg-secondary dark:hover:bg-app-card/5">
+                                    <TableRow key={i} className="border-b border-[#dee2e6] dark:border-app-border-dark hover:bg-app-bg-secondary dark:hover:bg-app-card/5">
                                         <TableCell className="px-6 py-4">{item.unidade}</TableCell>
                                         <TableCell className="px-6 py-4">{item.tipoEstoque || "-"}</TableCell>
                                         <TableCell className="px-6 py-4">{item.usuario}</TableCell>
@@ -1061,7 +1061,7 @@ export function RelatoriosView({ onPageChange }: RelatoriosViewProps) {
 
                         <TableWrapper>
                             <TableHeader>
-                                <TableRow className="border-b border-[#dee2e6] dark:border-[#2d5a46]">
+                                <TableRow className="border-b border-[#dee2e6] dark:border-app-border-dark">
                                     <TableHead className="px-6 py-4">Sa?da - Unidade</TableHead>
                                     <TableHead className="px-6 py-4">Tipo Estoque</TableHead>
                                     <TableHead className="px-6 py-4">Usu?rio</TableHead>
@@ -1077,7 +1077,7 @@ export function RelatoriosView({ onPageChange }: RelatoriosViewProps) {
                             </TableHeader>
                             <TableBody>
                                 {MOCK_ESTOQUE_SAIDAS_DIARIAS.map((item, i) => (
-                                    <TableRow key={i} className="border-b border-[#dee2e6] dark:border-[#2d5a46] hover:bg-app-bg-secondary dark:hover:bg-app-card/5">
+                                    <TableRow key={i} className="border-b border-[#dee2e6] dark:border-app-border-dark hover:bg-app-bg-secondary dark:hover:bg-app-card/5">
                                         <TableCell className="px-6 py-4">{item.unidade}</TableCell>
                                         <TableCell className="px-6 py-4">{item.tipoEstoque || "-"}</TableCell>
                                         <TableCell className="px-6 py-4">{item.usuario}</TableCell>
@@ -1101,7 +1101,7 @@ export function RelatoriosView({ onPageChange }: RelatoriosViewProps) {
                         <StatCard title="Total Repasse" value={`R$ ${totalRecebidoRepasse.toFixed(2)}`} color="text-[#0039A6] dark:text-white" bg="bg-[#0039A6]/10 dark:bg-[#0039A6]/30" icon={UserCheck} />
                         <TableWrapper>
                             <TableHeader>
-                                <TableRow className="border-b border-[#dee2e6] dark:border-[#2d5a46]">
+                                <TableRow className="border-b border-[#dee2e6] dark:border-app-border-dark">
                                     <TableHead className="px-6 py-4">Data</TableHead>
                                     <TableHead className="px-6 py-4">Profissional</TableHead>
                                     <TableHead className="px-6 py-4">Procedimento</TableHead>
@@ -1111,7 +1111,7 @@ export function RelatoriosView({ onPageChange }: RelatoriosViewProps) {
                             </TableHeader>
                             <TableBody>
                                 {repasseFiltrados.map((item, i) => (
-                                    <TableRow key={i} className="border-b border-[#dee2e6] dark:border-[#2d5a46] hover:bg-app-bg-secondary dark:hover:bg-app-card/5">
+                                    <TableRow key={i} className="border-b border-[#dee2e6] dark:border-app-border-dark hover:bg-app-bg-secondary dark:hover:bg-app-card/5">
                                         <TableCell className="px-6 py-4">{item.data}</TableCell>
                                         <TableCell className="px-6 py-4 font-medium text-[#101828] dark:text-white">{item.profissional}</TableCell>
                                         <TableCell className="px-6 py-4">{item.procedimento}</TableCell>
@@ -1127,7 +1127,7 @@ export function RelatoriosView({ onPageChange }: RelatoriosViewProps) {
                 {activeReport === 'nfs' && (
                     <TableWrapper>
                         <TableHeader>
-                            <TableRow className="border-b border-[#dee2e6] dark:border-[#2d5a46]">
+                            <TableRow className="border-b border-[#dee2e6] dark:border-app-border-dark">
                                 <TableHead className="px-6 py-4">Número</TableHead>
                                 <TableHead className="px-6 py-4">Data</TableHead>
                                 <TableHead className="px-6 py-4">Cliente</TableHead>
@@ -1137,7 +1137,7 @@ export function RelatoriosView({ onPageChange }: RelatoriosViewProps) {
                         </TableHeader>
                         <TableBody>
                             {nfsFiltrados.map((item, i) => (
-                                <TableRow key={i} className="border-b border-[#dee2e6] dark:border-[#2d5a46] hover:bg-app-bg-secondary dark:hover:bg-app-card/5">
+                                <TableRow key={i} className="border-b border-[#dee2e6] dark:border-app-border-dark hover:bg-app-bg-secondary dark:hover:bg-app-card/5">
                                     <TableCell className="px-6 py-4 font-medium text-[#101828] dark:text-white">{item.numero}</TableCell>
                                     <TableCell className="px-6 py-4">{item.data}</TableCell>
                                     <TableCell className="px-6 py-4">{item.cliente}</TableCell>
@@ -1152,7 +1152,7 @@ export function RelatoriosView({ onPageChange }: RelatoriosViewProps) {
                 {activeReport === 'nfe' && (
                     <TableWrapper>
                         <TableHeader>
-                            <TableRow className="border-b border-[#dee2e6] dark:border-[#2d5a46]">
+                            <TableRow className="border-b border-[#dee2e6] dark:border-app-border-dark">
                                 <TableHead className="px-6 py-4">Chave de Acesso</TableHead>
                                 <TableHead className="px-6 py-4">Data</TableHead>
                                 <TableHead className="px-6 py-4">Cliente</TableHead>
@@ -1162,7 +1162,7 @@ export function RelatoriosView({ onPageChange }: RelatoriosViewProps) {
                         </TableHeader>
                         <TableBody>
                             {nfeFiltrados.map((item, i) => (
-                                <TableRow key={i} className="border-b border-[#dee2e6] dark:border-[#2d5a46] hover:bg-app-bg-secondary dark:hover:bg-app-card/5">
+                                <TableRow key={i} className="border-b border-[#dee2e6] dark:border-app-border-dark hover:bg-app-bg-secondary dark:hover:bg-app-card/5">
                                     <TableCell className="px-6 py-4 font-mono text-xs">{item.chave}</TableCell>
                                     <TableCell className="px-6 py-4 whitespace-nowrap">{item.data}</TableCell>
                                     <TableCell className="px-6 py-4 font-medium text-[#101828] dark:text-white">{item.cliente}</TableCell>
@@ -1182,7 +1182,7 @@ export function RelatoriosView({ onPageChange }: RelatoriosViewProps) {
                         </div>
                         <TableWrapper>
                             <TableHeader>
-                                <TableRow className="border-b border-[#dee2e6] dark:border-[#2d5a46]">
+                                <TableRow className="border-b border-[#dee2e6] dark:border-app-border-dark">
                                     <TableHead className="px-6 py-4">Data</TableHead>
                                     <TableHead className="px-6 py-4">Descrição</TableHead>
                                     <TableHead className="px-6 py-4">Categoria</TableHead>
@@ -1192,7 +1192,7 @@ export function RelatoriosView({ onPageChange }: RelatoriosViewProps) {
                             </TableHeader>
                             <TableBody>
                                 {financeiroFiltrado.map((item, i) => (
-                                    <TableRow key={i} className="border-b border-[#dee2e6] dark:border-[#2d5a46] hover:bg-app-bg-secondary dark:hover:bg-app-card/5">
+                                    <TableRow key={i} className="border-b border-[#dee2e6] dark:border-app-border-dark hover:bg-app-bg-secondary dark:hover:bg-app-card/5">
                                         <TableCell className="px-6 py-4 whitespace-nowrap">{item.data}</TableCell>
                                         <TableCell className="px-6 py-4 font-medium text-[#101828] dark:text-white">{item.descricao}</TableCell>
                                         <TableCell className="px-6 py-4">{item.categoria}</TableCell>
@@ -1214,7 +1214,7 @@ export function RelatoriosView({ onPageChange }: RelatoriosViewProps) {
                 {activeReport === 'comissoes' && (
                     <TableWrapper>
                         <TableHeader>
-                            <TableRow className="border-b border-[#dee2e6] dark:border-[#2d5a46]">
+                            <TableRow className="border-b border-[#dee2e6] dark:border-app-border-dark">
                                 <TableHead className="px-6 py-4">Data</TableHead>
                                 <TableHead className="px-6 py-4">Vendedor</TableHead>
                                 <TableHead className="px-6 py-4">Cliente</TableHead>
@@ -1224,7 +1224,7 @@ export function RelatoriosView({ onPageChange }: RelatoriosViewProps) {
                         </TableHeader>
                         <TableBody>
                             {comissoesFiltrados.map((item, i) => (
-                                <TableRow key={i} className="border-b border-[#dee2e6] dark:border-[#2d5a46] hover:bg-app-bg-secondary dark:hover:bg-app-card/5">
+                                <TableRow key={i} className="border-b border-[#dee2e6] dark:border-app-border-dark hover:bg-app-bg-secondary dark:hover:bg-app-card/5">
                                     <TableCell className="px-6 py-4">{item.data}</TableCell>
                                     <TableCell className="px-6 py-4 font-medium text-[#101828] dark:text-white">{item.vendedor}</TableCell>
                                     <TableCell className="px-6 py-4">{item.cliente}</TableCell>
@@ -1239,7 +1239,7 @@ export function RelatoriosView({ onPageChange }: RelatoriosViewProps) {
                 {activeReport === 'justificativas' && (
                     <TableWrapper>
                         <TableHeader>
-                            <TableRow className="border-b border-[#dee2e6] dark:border-[#2d5a46]">
+                            <TableRow className="border-b border-[#dee2e6] dark:border-app-border-dark">
                                 <TableHead className="px-6 py-4">Data/Hora</TableHead>
                                 <TableHead className="px-6 py-4">Cliente</TableHead>
                                 <TableHead className="px-6 py-4">Motivo</TableHead>
@@ -1249,7 +1249,7 @@ export function RelatoriosView({ onPageChange }: RelatoriosViewProps) {
                         </TableHeader>
                         <TableBody>
                             {justificativasFiltrados.map((item, i) => (
-                                <TableRow key={i} className="border-b border-[#dee2e6] dark:border-[#2d5a46] hover:bg-app-bg-secondary dark:hover:bg-app-card/5">
+                                <TableRow key={i} className="border-b border-[#dee2e6] dark:border-app-border-dark hover:bg-app-bg-secondary dark:hover:bg-app-card/5">
                                     <TableCell className="px-6 py-4 whitespace-nowrap">{item.data} {item.horario}</TableCell>
                                     <TableCell className="px-6 py-4 font-medium text-[#101828] dark:text-white">{item.cliente}</TableCell>
                                     <TableCell className="px-6 py-4">
@@ -1266,7 +1266,7 @@ export function RelatoriosView({ onPageChange }: RelatoriosViewProps) {
                 {activeReport === 'aniversariantes' && (
                     <TableWrapper>
                         <TableHeader>
-                            <TableRow className="border-b border-[#dee2e6] dark:border-[#2d5a46]">
+                            <TableRow className="border-b border-[#dee2e6] dark:border-app-border-dark">
                                 <TableHead className="px-6 py-4">Cliente</TableHead>
                                 <TableHead className="px-6 py-4">Data de Nascimento</TableHead>
                                 <TableHead className="px-6 py-4">Idade</TableHead>
@@ -1276,7 +1276,7 @@ export function RelatoriosView({ onPageChange }: RelatoriosViewProps) {
                         </TableHeader>
                         <TableBody>
                             {aniversariantesFiltrados.map((item) => (
-                                <TableRow key={item.id} className="border-b border-[#dee2e6] dark:border-[#2d5a46] hover:bg-app-bg-secondary dark:hover:bg-app-card/5">
+                                <TableRow key={item.id} className="border-b border-[#dee2e6] dark:border-app-border-dark hover:bg-app-bg-secondary dark:hover:bg-app-card/5">
                                     <TableCell className="px-6 py-4 font-medium text-[#101828] dark:text-white">{item.nome}</TableCell>
                                     <TableCell className="px-6 py-4">{item.dataNascimento.split('-').reverse().join('/')}</TableCell>
                                     <TableCell className="px-6 py-4">{item.idade}</TableCell>
@@ -1311,7 +1311,7 @@ export function RelatoriosView({ onPageChange }: RelatoriosViewProps) {
                         </div>
                         <TableWrapper>
                             <TableHeader>
-                                <TableRow className="border-b border-[#dee2e6] dark:border-[#2d5a46]">
+                                <TableRow className="border-b border-[#dee2e6] dark:border-app-border-dark">
                                     <TableHead className="px-6 py-4">Cliente</TableHead>
                                     <TableHead className="px-6 py-4">Últimos 3 Procedimentos</TableHead>
                                     <TableHead className="px-6 py-4">Profissional</TableHead>
@@ -1332,7 +1332,7 @@ export function RelatoriosView({ onPageChange }: RelatoriosViewProps) {
                                         ? item.proximoRetorno
                                         : item.proximoRetorno.split('-').reverse().join('/');
                                     return (
-                                        <TableRow key={item.id} className="border-b border-[#dee2e6] dark:border-[#2d5a46] hover:bg-app-bg-secondary dark:hover:bg-app-card/5">
+                                        <TableRow key={item.id} className="border-b border-[#dee2e6] dark:border-app-border-dark hover:bg-app-bg-secondary dark:hover:bg-app-card/5">
                                             <TableCell className="px-6 py-4 font-medium text-[#101828] dark:text-white">{item.cliente}</TableCell>
                                             <TableCell className="px-6 py-4 text-sm text-app-text-muted">{item.procedimentosRecentes.join(' · ')}</TableCell>
                                             <TableCell className="px-6 py-4">{item.profissional}</TableCell>
@@ -1371,7 +1371,7 @@ function InputField({ label, value, onChange, type = 'text' }: { label: string; 
                 hideDateIcon={type === 'date'}
                 value={value}
                 onChange={(e: React.ChangeEvent<HTMLInputElement>) => onChange(e.target.value)}
-                className="w-full h-11 px-4 bg-app-card dark:bg-[#12211C] border border-[#dee2e6] dark:border-[#2d5a46] rounded-lg text-sm transition-all focus:ring-2 focus:ring-[#0039A6]/10 outline-none"
+                className="w-full h-11 px-4 bg-app-card dark:bg-[#0c1e3d] border border-[#dee2e6] dark:border-app-border-dark rounded-lg text-sm transition-all focus:ring-2 focus:ring-[#0039A6]/10 outline-none"
             />
         </div>
     );
@@ -1382,10 +1382,10 @@ function SelectField({ label, value, onChange, options }: { label: string; value
         <div>
             <label className="block text-sm mb-2 text-[#6c757d] dark:text-white/80">{label}</label>
             <Select value={value} onValueChange={onChange}>
-                <SelectTrigger className="h-11 bg-app-card dark:bg-[#12211C] border-[#dee2e6] dark:border-[#2d5a46] rounded-lg text-sm">
+                <SelectTrigger className="h-11 bg-app-card dark:bg-[#0c1e3d] border-[#dee2e6] dark:border-app-border-dark rounded-lg text-sm">
                     <SelectValue preferPlaceholder placeholder="Todos" />
                 </SelectTrigger>
-                <SelectContent className="dark:bg-[#1a2e23] dark:border-[#2d5a46]">
+                <SelectContent className="dark:bg-[#1a2e23] dark:border-app-border-dark">
                     {options.map(([v, l]) => (
                         <SelectItem key={v} value={v}>{l}</SelectItem>
                     ))}
@@ -1397,7 +1397,7 @@ function SelectField({ label, value, onChange, options }: { label: string; value
 
 function StatCard({ title, value, color, bg, icon: Icon }: { title: string; value: string; color: string; bg: string; icon: React.ElementType }) {
     return (
-        <Card className="p-6 bg-app-card dark:bg-[#1a2e23] border-[#dee2e6] dark:border-[#2d5a46] shadow-sm rounded-xl transition-all hover:border-[#0039A6]/20">
+        <Card className="p-6 bg-app-card dark:bg-[#1a2e23] border-[#dee2e6] dark:border-app-border-dark shadow-sm rounded-xl transition-all hover:border-[#0039A6]/20">
             <div className="flex items-center justify-between">
                 <div className="space-y-1">
                     <p className="text-[10px] font-normal text-app-text-muted dark:text-app-text-muted uppercase tracking-widest">{title}</p>
@@ -1413,7 +1413,7 @@ function StatCard({ title, value, color, bg, icon: Icon }: { title: string; valu
 
 function TableWrapper({ children }: { children: React.ReactNode }) {
     return (
-        <Card className="overflow-hidden bg-app-card dark:bg-[#1a2e23] border-[#dee2e6] dark:border-[#2d5a46] shadow-premium rounded-xl">
+        <Card className="overflow-hidden bg-app-card dark:bg-[#1a2e23] border-[#dee2e6] dark:border-app-border-dark shadow-premium rounded-xl">
             <div className="overflow-x-auto custom-scrollbar">
                 <Table>
                     {children}

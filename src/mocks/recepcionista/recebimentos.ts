@@ -33,13 +33,13 @@ export const MOCK_RECEIVABLES: ReceivableItem[] = BASE_AGENDAMENTOS.map((item, i
         procedure: item.tipo,
         description: item.pagamento === 'Pago Parcial' ? 'Saldo restante em aberto' : '',
         value: procedimento.valor,
-        method: item.pagamento === 'Pago' ? 'Cartao de Credito' : '',
+        method: item.pagamento === 'Pago' ? 'Cartão de Crédito' : '',
         dueDate: formatDate(item.data),
         status: statusMap[item.pagamento] || (index % 3 === 0 ? 'atrasado' : 'pago'),
         pagamentos: item.pagamento === 'Pago Parcial'
             ? [{ data: item.data, valor: procedimento.valor * 0.5, metodo: 'PIX' }]
             : item.pagamento === 'Pago'
-                ? [{ data: item.data, valor: procedimento.valor, metodo: 'Cartao de Credito' }]
+                ? [{ data: item.data, valor: procedimento.valor, metodo: 'Cartão de Crédito' }]
                 : []
     }
 })

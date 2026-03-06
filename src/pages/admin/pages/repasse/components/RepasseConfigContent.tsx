@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { toast } from 'sonner';
 import { Card } from '@/components/ui/Card';
 import { Button } from '@/components/ui/Button';
 import { Badge } from '@/components/ui/Badge';
@@ -63,7 +64,7 @@ export const RepasseConfigContent = () => {
                 <h3 className="text-lg font-normal text-app-text-primary dark:text-white">
                     Configuração de repasse por especialista
                 </h3>
-                <Button className="h-10 px-6 bg-[#0039A6] hover:bg-[#1a3329] text-white font-normal rounded-xl flex items-center gap-2 shadow-sm shrink-0">
+                <Button onClick={() => toast.info('Cadastro de especialista disponível em breve.')} className="h-10 px-6 bg-[#0039A6] hover:bg-[#002d82] text-white font-normal rounded-xl flex items-center gap-2 shadow-sm shrink-0">
                     <Plus size={18} /> Adicionar especialista
                 </Button>
             </div>
@@ -114,11 +115,11 @@ export const RepasseConfigContent = () => {
                                             </Button>
                                         </DropdownMenuTrigger>
                                         <DropdownMenuContent align="end" className="w-48 p-2 rounded-xl border-app-border dark:border-app-border-dark shadow-lg dark:bg-app-card-dark">
-                                            <DropdownMenuItem className="flex items-center gap-3 px-4 py-2.5 rounded-lg cursor-pointer hover:bg-app-bg-secondary dark:hover:bg-app-card/10 transition-colors font-normal text-sm">
+                                            <DropdownMenuItem onClick={() => toast.info('Edição de regra disponível em breve.')} className="flex items-center gap-3 px-4 py-2.5 rounded-lg cursor-pointer hover:bg-app-bg-secondary dark:hover:bg-app-card/10 transition-colors font-normal text-sm">
                                                 <Edit2 size={16} className="text-app-text-muted" />
                                                 <span>Editar regra</span>
                                             </DropdownMenuItem>
-                                            <DropdownMenuItem className="flex items-center gap-3 px-4 py-2.5 rounded-lg cursor-pointer hover:bg-red-50 dark:hover:bg-red-900/10 transition-colors font-normal text-sm text-red-600 dark:text-red-400">
+                                            <DropdownMenuItem onClick={() => toast.info('Remoção de especialista disponível em breve.')} className="flex items-center gap-3 px-4 py-2.5 rounded-lg cursor-pointer hover:bg-red-50 dark:hover:bg-red-900/10 transition-colors font-normal text-sm text-red-600 dark:text-red-400">
                                                 <Trash2 size={16} />
                                                 <span>Remover</span>
                                             </DropdownMenuItem>

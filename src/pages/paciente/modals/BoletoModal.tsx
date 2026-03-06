@@ -49,7 +49,7 @@ export function BoletoModal({ isOpen, onClose, paymentData }: BoletoModalProps) 
                     </div>
 
                     <Button
-                        className="bg-[#0039A6] hover:bg-[#1d3b2e] text-white rounded-[10px] h-10 sm:h-11 px-6 flex items-center justify-center gap-2 w-full sm:w-auto font-medium transition-colors"
+                        className="bg-[#0039A6] hover:bg-[#002d82] text-white rounded-[10px] h-10 sm:h-11 px-6 flex items-center justify-center gap-2 w-full sm:w-auto font-medium transition-colors"
                         onClick={() => undefined}
                     >
                         <Download className="h-4 w-4" />

@@ -105,7 +105,7 @@ export function RegistrarRecebimentoModal({ isOpen, onClose, paciente = 'Maria S
             </Button>
             <Button
               type="submit"
-              className="w-full sm:w-auto h-11 px-8 bg-[#0039A6] hover:bg-[#1d3b2e] text-white font-normal rounded-[10px] shadow-sm transition-all active:scale-[0.98]"
+              className="w-full sm:w-auto h-11 px-8 bg-[#0039A6] hover:bg-[#002d82] text-white font-normal rounded-[10px] shadow-sm transition-all active:scale-[0.98]"
             >
               Registrar recebimento
             </Button>

@@ -1,3 +1,4 @@
+import { toast } from 'sonner'
 import { useState } from 'react'
 import { SegmentedControl } from '@/components/ui/SegmentedControl'
 import {
@@ -102,7 +103,7 @@ export const ConfiguracoesView = ({ onPageChange }: ConfiguracoesViewProps) => {
                                     {MOCK_REPC_PROFILE.initials}
                                 </div>
                                 <div className="space-y-3 text-center md:text-left">
-                                    <Button variant="outline" className="h-10 px-6 rounded-xl border-app-border dark:border-app-border-dark font-normal flex items-center gap-2 hover:bg-app-bg-secondary dark:hover:bg-white/5 transition-all">
+                                    <Button variant="outline" onClick={() => toast.info("Upload de foto disponível em breve.")} className="h-10 px-6 rounded-xl border-app-border dark:border-app-border-dark font-normal flex items-center gap-2 hover:bg-app-bg-secondary dark:hover:bg-white/5 transition-all">
                                         <Camera size={18} />
                                         Alterar foto
                                     </Button>

@@ -24,7 +24,7 @@ export interface EspecialistaRepasseRelatorio {
 export interface RelatoriosRecepcaoFiltrosMock {
   produtos: string[];
   usuarios: string[];
-  midiasCaptacao: Array<'Facebook' | 'Instagram' | 'Radio' | 'Indicacao' | 'Outro'>;
+  midiasCaptacao: Array<'Facebook' | 'Instagram' | 'Radio' | 'Indicação' | 'Outro'>;
   procedimentos: string[];
 }
 
@@ -88,19 +88,19 @@ export const MOCK_RELATORIOS_RECEPCAO_FILTROS: RelatoriosRecepcaoFiltrosMock = {
     'Consulta Dermatologica',
     'Limpeza de Pele',
     'Creme Hidratante Facial',
-    'Sessao Laser',
+    'Sessão Laser',
     'Bioestimulador',
     'Preenchimento Labial',
     'Protetor Solar',
   ],
   usuarios: ['Ana Recepcionista', 'Beatriz Recepcionista', 'Carla Recepcionista'],
-  midiasCaptacao: ['Facebook', 'Instagram', 'Radio', 'Indicacao', 'Outro'],
+  midiasCaptacao: ['Facebook', 'Instagram', 'Radio', 'Indicação', 'Outro'],
   procedimentos: [
     'Consulta inicial',
     'Consulta de retorno',
     'Consulta dermatologica',
     'Limpeza de pele',
-    'Aplicacao de toxina',
+    'Aplicação de toxina',
     'Bioestimulador',
   ],
 };

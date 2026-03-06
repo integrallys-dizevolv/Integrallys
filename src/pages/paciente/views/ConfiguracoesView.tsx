@@ -406,7 +406,7 @@ export function ConfiguracoesView({ onPageChange }: ConfiguracoesViewProps) {
                                             <SelectContent>
                                                 <SelectItem value="instagram">Instagram</SelectItem>
                                                 <SelectItem value="google">Google</SelectItem>
-                                                <SelectItem value="indicacao">Indicacao</SelectItem>
+                                                <SelectItem value="indicacao">Indicação</SelectItem>
                                                 <SelectItem value="outros">Outros</SelectItem>
                                             </SelectContent>
                                         </Select>

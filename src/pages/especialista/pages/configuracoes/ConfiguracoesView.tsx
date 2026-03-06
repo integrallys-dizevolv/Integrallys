@@ -177,7 +177,7 @@ export const ConfiguracoesView = ({ onPageChange }: ConfiguracoesViewProps) => {
 
                             {/* Footer Actions */}
                             <div className="flex justify-end pt-6 border-t border-gray-50 dark:border-gray-800">
-                                <Button className="bg-[#0039A6] hover:bg-[#1d3b2e] text-white px-10 h-12 rounded-[14px] font-normal shadow-lg shadow-[#0039A6]/20 transition-all hover:scale-[1.02] flex items-center gap-2">
+                                <Button className="bg-[#0039A6] hover:bg-[#002d82] text-white px-10 h-12 rounded-[14px] font-normal shadow-lg shadow-[#0039A6]/20 transition-all hover:scale-[1.02] flex items-center gap-2">
                                     <Save className="h-4.5 w-4.5" />
                                     Salvar alterações
                                 </Button>
@@ -283,7 +283,7 @@ export const ConfiguracoesView = ({ onPageChange }: ConfiguracoesViewProps) => {
 
                             {/* Footer Actions */}
                             <div className="flex justify-end pt-8 border-t border-gray-50 dark:border-gray-800">
-                                <Button className="bg-[#0039A6] hover:bg-[#1d3b2e] text-white px-10 h-12 rounded-[14px] font-normal shadow-lg shadow-[#0039A6]/20 transition-all hover:scale-[1.02] flex items-center gap-2">
+                                <Button className="bg-[#0039A6] hover:bg-[#002d82] text-white px-10 h-12 rounded-[14px] font-normal shadow-lg shadow-[#0039A6]/20 transition-all hover:scale-[1.02] flex items-center gap-2">
                                     <Save className="h-4.5 w-4.5" />
                                     Salvar alterações
                                 </Button>
@@ -418,7 +418,7 @@ export const ConfiguracoesView = ({ onPageChange }: ConfiguracoesViewProps) => {
 
                             {/* Footer Actions */}
                             <div className="flex justify-end pt-8 border-t border-gray-50 dark:border-gray-800">
-                                <Button className="bg-[#0039A6] hover:bg-[#1d3b2e] text-white px-10 h-12 rounded-[14px] font-normal shadow-lg shadow-[#0039A6]/20 transition-all hover:scale-[1.02] flex items-center gap-2">
+                                <Button className="bg-[#0039A6] hover:bg-[#002d82] text-white px-10 h-12 rounded-[14px] font-normal shadow-lg shadow-[#0039A6]/20 transition-all hover:scale-[1.02] flex items-center gap-2">
                                     <Save className="h-4.5 w-4.5" />
                                     Salvar alterações
                                 </Button>
@@ -482,7 +482,7 @@ export const ConfiguracoesView = ({ onPageChange }: ConfiguracoesViewProps) => {
 
                             {/* Footer Actions */}
                             <div className="flex justify-end pt-8 border-t border-gray-50 dark:border-gray-800">
-                                <Button className="bg-[#0039A6] hover:bg-[#1d3b2e] text-white px-10 h-12 rounded-[14px] font-normal shadow-lg shadow-[#0039A6]/20 transition-all hover:scale-[1.02] flex items-center gap-2">
+                                <Button className="bg-[#0039A6] hover:bg-[#002d82] text-white px-10 h-12 rounded-[14px] font-normal shadow-lg shadow-[#0039A6]/20 transition-all hover:scale-[1.02] flex items-center gap-2">
                                     <Save className="h-4.5 w-4.5" />
                                     Salvar alterações
                                 </Button>
@@ -679,7 +679,7 @@ function DigitalSignaturePINSection() {
 
             <Button
                 onClick={handleSavePin}
-                className="bg-[#0039A6] hover:bg-[#1d3b2e] text-white h-11 px-8 rounded-[12px] font-normal transition-all shadow-sm"
+                className="bg-[#0039A6] hover:bg-[#002d82] text-white h-11 px-8 rounded-[12px] font-normal transition-all shadow-sm"
             >
                 Salvar PIN
             </Button>

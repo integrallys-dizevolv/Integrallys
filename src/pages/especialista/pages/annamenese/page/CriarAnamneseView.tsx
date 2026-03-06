@@ -215,7 +215,7 @@ export const CriarAnamneseView = ({ onPageChange }: CriarAnamneseViewProps) => {
                             <Button
                                 onClick={handleSave}
                                 disabled={!paciente || !peso || !altura || !queixa || !diagnostico}
-                                className="h-12 px-10 rounded-[12px] bg-[#0039A6] hover:bg-[#1d3b2e] text-white font-normal transition-all shadow-lg shadow-[#0039A6]/20 flex items-center gap-2"
+                                className="h-12 px-10 rounded-[12px] bg-[#0039A6] hover:bg-[#002d82] text-white font-normal transition-all shadow-lg shadow-[#0039A6]/20 flex items-center gap-2"
                             >
                                 <Save className="h-4 w-4" />
                                 Salvar anamnese

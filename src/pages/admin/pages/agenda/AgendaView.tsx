@@ -54,7 +54,6 @@ import {
   BreadcrumbPage,
   BreadcrumbSeparator,
 } from "@/components/ui/Breadcrumb";
-import { MOCK_WEEKLY_CONSULTAS } from "@/mocks/admin/agenda";
 import {
   ChamarEspecialistaModal,
   VisualizarConsultaModal,
@@ -637,9 +636,6 @@ export function AgendaView({
     const maxId = Math.max(
       0,
       ...agendaItems.map((item) => item.id),
-      ...Object.values(MOCK_WEEKLY_CONSULTAS)
-        .flat()
-        .map((item) => item.id),
     );
 
     const typeMap: Record<string, string> = {
@@ -842,12 +838,9 @@ export function AgendaView({
 
   const getConsultasForDate = (dateKey: string) => {
     const currentDateKey = format(currentDate, "yyyy-MM-dd");
-    let targetConsultas = [
-      ...agendaItems.filter((item) =>
-        item.data ? item.data === dateKey : dateKey === currentDateKey,
-      ),
-      ...(MOCK_WEEKLY_CONSULTAS[dateKey] || []),
-    ];
+    let targetConsultas = agendaItems.filter((item) =>
+      item.data ? item.data === dateKey : dateKey === currentDateKey,
+    );
     if (allowedProfessionalSet) {
       targetConsultas = targetConsultas.filter((item) =>
         isAllowedProfessional(item.profissional),
@@ -906,19 +899,18 @@ export function AgendaView({
       }));
     }
 
-    // Distribuir consultas mockadas nos dias da semana (agenda global)
+    // Distribuir consultas nos dias da semana usando agendaItems do prop
     return buildWeekDaysFromCurrentDate().map((dia) => {
-      let consultasDoDia = MOCK_WEEKLY_CONSULTAS[dia.data] || [];
+      let consultasDoDia = agendaItems.filter((item) => item.data === dia.data);
       if (allowedProfessionalSet) {
         consultasDoDia = consultasDoDia.filter((item) =>
           isAllowedProfessional(item.profissional),
         );
       }
-      const consultasFiltradas = consultasDoDia;
 
       return {
         ...dia,
-        consultas: consultasFiltradas,
+        consultas: consultasDoDia,
         isToday: dia.data === format(currentDate, "yyyy-MM-dd"),
       };
     });
@@ -2142,7 +2134,7 @@ export function AgendaView({
                                           onClick={() =>
                                             onStartAtendimento(item)
                                           }
-                                          className="bg-[#0039A6] hover:bg-[#1d3b2e] text-white h-9 px-3 sm:px-4 rounded-[10px] font-normal flex items-center gap-2 shadow-sm transition-all active:scale-95 flex-1 sm:flex-initial justify-center"
+                                          className="bg-[#0039A6] hover:bg-[#002d82] text-white h-9 px-3 sm:px-4 rounded-[10px] font-normal flex items-center gap-2 shadow-sm transition-all active:scale-95 flex-1 sm:flex-initial justify-center"
                                         >
                                           <Play className="h-3.5 w-3.5 fill-current shrink-0" />
                                           <span className="text-sm">
@@ -2163,10 +2155,10 @@ export function AgendaView({
                                       </DropdownMenuTrigger>
                                       <DropdownMenuContent
                                         align="end"
-                                        className="bg-app-card dark:bg-app-bg-dark border-app-border dark:border-[#1a3028] text-gray-700 dark:text-white/80 z-[9999] shadow-lg"
+                                        className="bg-app-card dark:bg-app-bg-dark border-app-border dark:border-app-border-dark text-gray-700 dark:text-white/80 z-[9999] shadow-lg"
                                       >
                                         <DropdownMenuItem
-                                          className="hover:bg-app-bg-secondary dark:hover:bg-[#1a3028] cursor-pointer"
+                                          className="hover:bg-app-bg-secondary dark:hover:bg-white/5 cursor-pointer"
                                           onClick={() =>
                                             handleStatusChange(
                                               item.id,
@@ -2177,7 +2169,7 @@ export function AgendaView({
                                           Confirmado
                                         </DropdownMenuItem>
                                         <DropdownMenuItem
-                                          className="hover:bg-app-bg-secondary dark:hover:bg-[#1a3028] cursor-pointer"
+                                          className="hover:bg-app-bg-secondary dark:hover:bg-white/5 cursor-pointer"
                                           onClick={() =>
                                             handleStatusChange(
                                               item.id,
@@ -2188,7 +2180,7 @@ export function AgendaView({
                                           Check-in
                                         </DropdownMenuItem>
                                         <DropdownMenuItem
-                                          className="hover:bg-app-bg-secondary dark:hover:bg-[#1a3028] cursor-pointer"
+                                          className="hover:bg-app-bg-secondary dark:hover:bg-white/5 cursor-pointer"
                                           onClick={() =>
                                             handleStatusChange(
                                               item.id,
@@ -2199,7 +2191,7 @@ export function AgendaView({
                                           Em Atendimento
                                         </DropdownMenuItem>
                                         <DropdownMenuItem
-                                          className="hover:bg-app-bg-secondary dark:hover:bg-[#1a3028] cursor-pointer"
+                                          className="hover:bg-app-bg-secondary dark:hover:bg-white/5 cursor-pointer"
                                           onClick={() =>
                                             handleStatusChange(
                                               item.id,
@@ -2210,7 +2202,7 @@ export function AgendaView({
                                           Check-out
                                         </DropdownMenuItem>
                                         <DropdownMenuItem
-                                          className="hover:bg-app-bg-secondary dark:hover:bg-[#1a3028] cursor-pointer"
+                                          className="hover:bg-app-bg-secondary dark:hover:bg-white/5 cursor-pointer"
                                           onClick={() =>
                                             handleStatusChange(
                                               item.id,
@@ -2221,7 +2213,7 @@ export function AgendaView({
                                           Em Atraso
                                         </DropdownMenuItem>
                                         <DropdownMenuItem
-                                          className="hover:bg-app-bg-secondary dark:hover:bg-[#1a3028] cursor-pointer"
+                                          className="hover:bg-app-bg-secondary dark:hover:bg-white/5 cursor-pointer"
                                           onClick={() =>
                                             handleRequestCancelamento(item.id)
                                           }
@@ -2466,7 +2458,7 @@ export function AgendaView({
                                   currentStatus === "Check-in") && (
                                   <Button
                                     onClick={() => onStartAtendimento(item)}
-                                    className="bg-[#0039A6] hover:bg-[#1d3b2e] text-white h-9 px-3 sm:px-4 rounded-[10px] font-normal flex items-center gap-2 shadow-sm transition-all active:scale-95 flex-1 sm:flex-initial justify-center"
+                                    className="bg-[#0039A6] hover:bg-[#002d82] text-white h-9 px-3 sm:px-4 rounded-[10px] font-normal flex items-center gap-2 shadow-sm transition-all active:scale-95 flex-1 sm:flex-initial justify-center"
                                   >
                                     <Play className="h-3.5 w-3.5 fill-current shrink-0" />
                                     <span className="text-sm">
@@ -2487,10 +2479,10 @@ export function AgendaView({
                                 </DropdownMenuTrigger>
                                 <DropdownMenuContent
                                   align="end"
-                                  className="bg-app-card dark:bg-app-bg-dark border-app-border dark:border-[#1a3028] text-gray-700 dark:text-white/80 z-[9999] shadow-lg"
+                                  className="bg-app-card dark:bg-app-bg-dark border-app-border dark:border-app-border-dark text-gray-700 dark:text-white/80 z-[9999] shadow-lg"
                                 >
                                   <DropdownMenuItem
-                                    className="hover:bg-app-bg-secondary dark:hover:bg-[#1a3028] cursor-pointer"
+                                    className="hover:bg-app-bg-secondary dark:hover:bg-white/5 cursor-pointer"
                                     onClick={() =>
                                       handleStatusChange(item.id, "Confirmado")
                                     }
@@ -2498,7 +2490,7 @@ export function AgendaView({
                                     Confirmado
                                   </DropdownMenuItem>
                                   <DropdownMenuItem
-                                    className="hover:bg-app-bg-secondary dark:hover:bg-[#1a3028] cursor-pointer"
+                                    className="hover:bg-app-bg-secondary dark:hover:bg-white/5 cursor-pointer"
                                     onClick={() =>
                                       handleStatusChange(item.id, "Check-in")
                                     }
@@ -2506,7 +2498,7 @@ export function AgendaView({
                                     Check-in
                                   </DropdownMenuItem>
                                   <DropdownMenuItem
-                                    className="hover:bg-app-bg-secondary dark:hover:bg-[#1a3028] cursor-pointer"
+                                    className="hover:bg-app-bg-secondary dark:hover:bg-white/5 cursor-pointer"
                                     onClick={() =>
                                       handleStatusChange(
                                         item.id,
@@ -2517,7 +2509,7 @@ export function AgendaView({
                                     Em Atendimento
                                   </DropdownMenuItem>
                                   <DropdownMenuItem
-                                    className="hover:bg-app-bg-secondary dark:hover:bg-[#1a3028] cursor-pointer"
+                                    className="hover:bg-app-bg-secondary dark:hover:bg-white/5 cursor-pointer"
                                     onClick={() =>
                                       handleStatusChange(item.id, "Check-out")
                                     }
@@ -2525,7 +2517,7 @@ export function AgendaView({
                                     Check-out
                                   </DropdownMenuItem>
                                   <DropdownMenuItem
-                                    className="hover:bg-app-bg-secondary dark:hover:bg-[#1a3028] cursor-pointer"
+                                    className="hover:bg-app-bg-secondary dark:hover:bg-white/5 cursor-pointer"
                                     onClick={() =>
                                       handleStatusChange(item.id, "Em Atraso")
                                     }
@@ -2533,7 +2525,7 @@ export function AgendaView({
                                     Em Atraso
                                   </DropdownMenuItem>
                                   <DropdownMenuItem
-                                    className="hover:bg-app-bg-secondary dark:hover:bg-[#1a3028] cursor-pointer"
+                                    className="hover:bg-app-bg-secondary dark:hover:bg-white/5 cursor-pointer"
                                     onClick={() =>
                                       handleRequestCancelamento(item.id)
                                     }
@@ -2750,7 +2742,7 @@ export function AgendaView({
                             <p className="text-[16px] font-normal text-app-text-primary dark:text-white">
                               {item.titulo}
                             </p>
-                            <span className="bg-[#0039A6] dark:bg-[#1d3b2e] text-white px-2 py-0.5 rounded text-[12px] font-normal">
+                            <span className="bg-[#0039A6] dark:bg-[#0c1e3d] text-white px-2 py-0.5 rounded text-[12px] font-normal">
                               {item.tipo}
                             </span>
                           </div>
@@ -2852,7 +2844,7 @@ export function AgendaView({
                 <div
                   className={`p-3 text-center border-b border-app-border dark:border-app-border-dark ${
                     dia.isToday
-                      ? "bg-[#0039A6] dark:bg-[#1d3b2e]"
+                      ? "bg-[#0039A6] dark:bg-[#0c1e3d]"
                       : "bg-app-bg-secondary dark:bg-app-bg-dark/50"
                   }`}
                 >
@@ -2980,7 +2972,7 @@ export function AgendaView({
                                   e.stopPropagation();
                                   onStartAtendimento(consulta);
                                 }}
-                                className="h-7 text-[10px] bg-[#0039A6] hover:bg-[#1d3b2e] text-white rounded-lg flex items-center gap-1 font-normal shadow-sm group-hover:scale-105 transition-all"
+                                className="h-7 text-[10px] bg-[#0039A6] hover:bg-[#002d82] text-white rounded-lg flex items-center gap-1 font-normal shadow-sm group-hover:scale-105 transition-all"
                               >
                                 <Play className="h-3 w-3 fill-current" />
                                 <span>Atender</span>
@@ -2997,10 +2989,10 @@ export function AgendaView({
                                 </DropdownMenuTrigger>
                                 <DropdownMenuContent
                                   align="end"
-                                  className="bg-app-card dark:bg-app-bg-dark border-app-border dark:border-[#1a3028] text-gray-700 dark:text-white/80 z-[9999] shadow-lg"
+                                  className="bg-app-card dark:bg-app-bg-dark border-app-border dark:border-app-border-dark text-gray-700 dark:text-white/80 z-[9999] shadow-lg"
                                 >
                                   <DropdownMenuItem
-                                    className="hover:bg-app-bg-secondary dark:hover:bg-[#1a3028] cursor-pointer"
+                                    className="hover:bg-app-bg-secondary dark:hover:bg-white/5 cursor-pointer"
                                     onClick={() =>
                                       handleStatusChange(
                                         consulta.id,
@@ -3011,7 +3003,7 @@ export function AgendaView({
                                     Confirmado
                                   </DropdownMenuItem>
                                   <DropdownMenuItem
-                                    className="hover:bg-app-bg-secondary dark:hover:bg-[#1a3028] cursor-pointer"
+                                    className="hover:bg-app-bg-secondary dark:hover:bg-white/5 cursor-pointer"
                                     onClick={() =>
                                       handleStatusChange(
                                         consulta.id,
@@ -3022,7 +3014,7 @@ export function AgendaView({
                                     Check-in
                                   </DropdownMenuItem>
                                   <DropdownMenuItem
-                                    className="hover:bg-app-bg-secondary dark:hover:bg-[#1a3028] cursor-pointer"
+                                    className="hover:bg-app-bg-secondary dark:hover:bg-white/5 cursor-pointer"
                                     onClick={() =>
                                       handleStatusChange(
                                         consulta.id,
@@ -3033,7 +3025,7 @@ export function AgendaView({
                                     Em Atendimento
                                   </DropdownMenuItem>
                                   <DropdownMenuItem
-                                    className="hover:bg-app-bg-secondary dark:hover:bg-[#1a3028] cursor-pointer"
+                                    className="hover:bg-app-bg-secondary dark:hover:bg-white/5 cursor-pointer"
                                     onClick={() =>
                                       handleStatusChange(
                                         consulta.id,
@@ -3044,7 +3036,7 @@ export function AgendaView({
                                     Check-out
                                   </DropdownMenuItem>
                                   <DropdownMenuItem
-                                    className="hover:bg-app-bg-secondary dark:hover:bg-[#1a3028] cursor-pointer"
+                                    className="hover:bg-app-bg-secondary dark:hover:bg-white/5 cursor-pointer"
                                     onClick={() =>
                                       handleStatusChange(
                                         consulta.id,
@@ -3055,7 +3047,7 @@ export function AgendaView({
                                     Em Atraso
                                   </DropdownMenuItem>
                                   <DropdownMenuItem
-                                    className="hover:bg-app-bg-secondary dark:hover:bg-[#1a3028] cursor-pointer"
+                                    className="hover:bg-app-bg-secondary dark:hover:bg-white/5 cursor-pointer"
                                     onClick={() =>
                                       handleRequestCancelamento(consulta.id)
                                     }
@@ -3094,10 +3086,10 @@ export function AgendaView({
                               </DropdownMenuTrigger>
                               <DropdownMenuContent
                                 align="end"
-                                className="bg-[#020817] border-[#1a3028] text-gray-300 z-[9999]"
+                                className="bg-[#020817] border-app-border-dark text-gray-300 z-[9999]"
                               >
                                 <DropdownMenuItem
-                                  className="hover:bg-[#1a3028] hover:text-white cursor-pointer"
+                                  className="hover:bg-[#002d82] hover:text-white cursor-pointer"
                                   onClick={() =>
                                     handleOpenEmitirCobranca(consulta)
                                   }
@@ -3105,7 +3097,7 @@ export function AgendaView({
                                   Emitir nova cobrança
                                 </DropdownMenuItem>
                                 <DropdownMenuItem
-                                  className="hover:bg-[#1a3028] hover:text-white cursor-pointer"
+                                  className="hover:bg-[#002d82] hover:text-white cursor-pointer"
                                   onClick={() =>
                                     handleEmitirReciboOuNf(consulta)
                                   }
@@ -3113,7 +3105,7 @@ export function AgendaView({
                                   Emissão de recibo ou NF
                                 </DropdownMenuItem>
                                 <DropdownMenuItem
-                                  className="hover:bg-[#1a3028] hover:text-white cursor-pointer"
+                                  className="hover:bg-[#002d82] hover:text-white cursor-pointer"
                                   onClick={() =>
                                     handleOpenVisualizarConsulta(consulta)
                                   }
@@ -3121,7 +3113,7 @@ export function AgendaView({
                                   Visualizar
                                 </DropdownMenuItem>
                                 <DropdownMenuItem
-                                  className="hover:bg-[#1a3028] hover:text-white cursor-pointer"
+                                  className="hover:bg-[#002d82] hover:text-white cursor-pointer"
                                   onClick={() =>
                                     handleOpenRemarcarConsulta(consulta)
                                   }
@@ -3129,7 +3121,7 @@ export function AgendaView({
                                   Reagendar
                                 </DropdownMenuItem>
                                 <DropdownMenuItem
-                                  className="text-red-500 hover:bg-[#1a3028] hover:text-red-400 cursor-pointer"
+                                  className="text-red-500 hover:bg-red-50 dark:hover:bg-red-950/20 hover:text-red-400 cursor-pointer"
                                   onClick={() =>
                                     handleOpenCancelarConsulta(consulta)
                                   }

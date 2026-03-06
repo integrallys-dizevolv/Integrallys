@@ -6,6 +6,7 @@ import { Badge } from '@/components/ui/Badge'
 import { Button } from '@/components/ui/Button'
 import { History, FileText, Download } from 'lucide-react'
 import type { PatientHistoryItem } from '@/types'
+import { toast } from 'sonner'
 
 import { Breadcrumb, BreadcrumbItem, BreadcrumbLink, BreadcrumbList, BreadcrumbPage, BreadcrumbSeparator } from '@/components/ui/Breadcrumb'
 
@@ -135,7 +136,7 @@ export function HistoricoView({ mockHistorico, onPageChange }: HistoricoViewProp
                                     </TableCell>
                                     <TableCell className="py-4">
                                         <div className="flex flex-row w-fit pl-0  items-center justify-center gap-2 ">
-                                            <Button variant="ghost" size="sm" className="h-8 text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white font-medium whitespace-nowrap gap-2 flex items-center">
+                                            <Button variant="ghost" size="sm" onClick={() => toast.info('Download de documentos disponível em breve.')} className="h-8 text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white font-medium whitespace-nowrap gap-2 flex items-center">
                                                 <Download className="h-4 w-4" />
                                                 Documentos
                                             </Button>
